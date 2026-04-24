@@ -12,25 +12,76 @@ permalink: /print/
 
   Order:
     1. Cover page
-    2. Classes  (one article per class, each starting on a new page)
-    3. Clubs    (one article per club)
-    4. Sports   (one article per team)
-    5. Staff    (all staff/teachers together)
-    6. Photo pages
-    7. Printing instructions (screen-only)
+    2. Table of contents
+    3. Classes  (one article per class, each starting on a new page)
+    4. Clubs    (one article per club)
+    5. Sports   (one article per team)
+    6. Staff    (all staff/teachers together)
+    7. Photo pages
+    8. Back cover
+    9. Printing instructions (screen-only)
   =============================================================================
 {%- endcomment -%}
 
 {%- comment -%} ═══ 1. COVER ═══ {%- endcomment -%}
 <section class="print-cover print-page-break">
-  <p class="print-cover__eyebrow">{{ site.school_year }}</p>
-  <h1 class="print-cover__title">{{ site.title }}</h1>
-  <p class="print-cover__mascot">Home of {{ site.mascot }}</p>
-  <p class="print-cover__label">Yearbook</p>
+  <div class="print-cover__accent-bar"></div>
+  <div class="print-cover__body">
+    <p class="print-cover__eyebrow">{{ site.school_year }}</p>
+    <h1 class="print-cover__title">{{ site.title }}</h1>
+    <div class="print-cover__rule"></div>
+    <p class="print-cover__mascot">Home of {{ site.mascot }}</p>
+    <p class="print-cover__label">Yearbook</p>
+  </div>
+  <div class="print-cover__accent-bar"></div>
 </section>
 
-{%- comment -%} ═══ 2. CLASSES ═══ {%- endcomment -%}
+{%- comment -%} ═══ 2. TABLE OF CONTENTS ═══ {%- endcomment -%}
 {%- assign classes_sorted = site.classes | sort: "grade_sort" -%}
+<section class="print-toc print-page-break">
+  <header class="print-toc__header">
+    <h2 class="print-toc__title">Contents</h2>
+  </header>
+  <ol class="print-toc__list">
+    {%- for c in classes_sorted %}
+    <li class="print-toc__item">
+      <span class="print-toc__label">
+        {%- if c.grade == "PK" -%}Pre-K
+        {%- elsif c.grade == 0 or c.grade == "K" -%}Kinder.
+        {%- else -%}Grade {{ c.grade }}
+        {%- endif -%}
+      </span>
+      <span class="print-toc__name">{{ c.title }}</span>
+    </li>
+    {%- endfor %}
+    {%- for club in site.clubs %}
+    <li class="print-toc__item">
+      <span class="print-toc__label">{{ site.labels.eyebrow_club }}</span>
+      <span class="print-toc__name">{{ club.title }}</span>
+    </li>
+    {%- endfor %}
+    {%- for team in site.sports %}
+    <li class="print-toc__item">
+      <span class="print-toc__label">{{ site.labels.eyebrow_sport }}</span>
+      <span class="print-toc__name">{{ team.title }}</span>
+    </li>
+    {%- endfor %}
+    <li class="print-toc__item">
+      <span class="print-toc__label">{{ site.labels.eyebrow_staff }}</span>
+      <span class="print-toc__name">Faculty &amp; Staff</span>
+    </li>
+    {%- if site.photos and site.photos.size > 0 %}
+    {%- for pp in site.photos %}
+    <li class="print-toc__item">
+      <span class="print-toc__label">Photos</span>
+      <span class="print-toc__name">{{ pp.title }}</span>
+    </li>
+    {%- endfor %}
+    {%- endif %}
+  </ol>
+</section>
+
+{%- comment -%} ═══ 3. CLASSES ═══ {%- endcomment -%}
 {%- for c in classes_sorted %}
 <article class="print-section print-page-break">
 
@@ -88,7 +139,7 @@ permalink: /print/
 </article>
 {%- endfor %}
 
-{%- comment -%} ═══ 3. CLUBS ═══ {%- endcomment -%}
+{%- comment -%} ═══ 4. CLUBS ═══ {%- endcomment -%}
 {%- for club in site.clubs %}
 <article class="print-section print-page-break">
 
@@ -168,7 +219,7 @@ permalink: /print/
 </article>
 {%- endfor %}
 
-{%- comment -%} ═══ 4. SPORTS ═══ {%- endcomment -%}
+{%- comment -%} ═══ 5. SPORTS ═══ {%- endcomment -%}
 {%- for team in site.sports %}
 <article class="print-section print-page-break">
 
@@ -254,7 +305,7 @@ permalink: /print/
 </article>
 {%- endfor %}
 
-{%- comment -%} ═══ 5. STAFF ═══ {%- endcomment -%}
+{%- comment -%} ═══ 6. STAFF ═══ {%- endcomment -%}
 {%- assign staff_only = site.data.people | where: "role", "staff" -%}
 {%- assign teachers   = site.data.people | where: "role", "teacher" -%}
 {%- assign all_staff  = staff_only | concat: teachers -%}
@@ -274,7 +325,7 @@ permalink: /print/
 </article>
 {%- endif %}
 
-{%- comment -%} ═══ 6. PHOTO PAGES ═══ {%- endcomment -%}
+{%- comment -%} ═══ 7. PHOTO PAGES ═══ {%- endcomment -%}
 {%- if site.photos and site.photos.size > 0 %}
 {%- for pp in site.photos %}
 <article class="print-section print-page-break">
@@ -288,7 +339,17 @@ permalink: /print/
 {%- endfor %}
 {%- endif %}
 
-{%- comment -%} ═══ 7. PRINT INSTRUCTIONS (screen only) ═══ {%- endcomment -%}
+{%- comment -%} ═══ 8. BACK COVER ═══ {%- endcomment -%}
+<section class="print-back-cover print-page-break">
+  <div class="print-back-cover__accent-bar"></div>
+  <div class="print-back-cover__body">
+    <p class="print-back-cover__year">{{ site.school_year }}</p>
+    <p class="print-back-cover__name">{{ site.title }}</p>
+  </div>
+  <div class="print-back-cover__accent-bar"></div>
+</section>
+
+{%- comment -%} ═══ 9. PRINT INSTRUCTIONS (screen only) ═══ {%- endcomment -%}
 <section class="print-instructions no-print" id="print-instructions">
   <h2 class="print-instructions__heading">How to save and submit your yearbook to a book printing service</h2>
 

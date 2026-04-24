@@ -106,6 +106,34 @@ module Yearbook
           when ''   then 0   # grade not set — place after K, before 1st
           else grade.to_i
         end
+
+        # Sort students alphabetically by last name, then first name.
+        if doc.data['students']
+          doc.data['students'] = doc.data['students'].sort_by do |sid|
+            p = by_id[sid]
+            p ? [p['last'].to_s.downcase, p['first'].to_s.downcase] : ['', '']
+          end
+        end
+      end
+
+      # Sort club members alphabetically by last name, then first name.
+      (site.collections['clubs']&.docs || []).each do |doc|
+        if doc.data['members']
+          doc.data['members'] = doc.data['members'].sort_by do |sid|
+            p = by_id[sid]
+            p ? [p['last'].to_s.downcase, p['first'].to_s.downcase] : ['', '']
+          end
+        end
+      end
+
+      # Sort sport roster members alphabetically by last name, then first name.
+      (site.collections['sports']&.docs || []).each do |doc|
+        if doc.data['members']
+          doc.data['members'] = doc.data['members'].sort_by do |sid|
+            p = by_id[sid]
+            p ? [p['last'].to_s.downcase, p['first'].to_s.downcase] : ['', '']
+          end
+        end
       end
     end
 

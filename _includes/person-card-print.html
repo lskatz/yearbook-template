@@ -37,6 +37,9 @@
     {%- elsif p.role == 'teacher' -%}
       <span class="person-card__meta">{{ site.labels.teachers_one }}</span>
     {%- endif -%}
+    {%- if p.quote -%}
+      <span class="person-card__quote">{{ p.quote }}</span>
+    {%- endif -%}
   </figcaption>
 </div>
 {%- else -%}
