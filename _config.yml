@@ -45,6 +45,7 @@ labels:
   nav_staff:     "Staff"
   nav_photos:    "Photos"
   nav_help:      "Help"
+  nav_print:     "Print PDF"
 
   # "Eyebrow" text — small all-caps label above page titles
   eyebrow_class: "Class"
