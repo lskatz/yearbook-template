@@ -14,6 +14,11 @@ description: "2025–2026 school year"
 school_year: "2025–2026"
 mascot: "The Krelboynes"
 
+# The public URL of this yearbook's GitHub repository. Shown on the /help/
+# page so visitors who want to create their own yearbook can find the template.
+# Update this to your own fork's URL after you use the template.
+github_repo: "https://github.com/lskatz/yearbook-template"
+
 # If your site is deployed at https://your-org.github.io (no subpath), leave
 # both of these empty. If it's at https://your-org.github.io/yearbook/, set
 # baseurl to "/yearbook".

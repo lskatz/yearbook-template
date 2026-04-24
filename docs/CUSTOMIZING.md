@@ -20,6 +20,14 @@ school_year: "2025–2026"
 mascot: "The Rockets"
 ```
 
+Also update `github_repo` to point to **your fork's** URL. This value
+appears on the public `/help/` page so visitors who want their own yearbook
+can find the template:
+
+```yaml
+github_repo: "https://github.com/your-org/your-yearbook"
+```
+
 ---
 
 ## Changing colors

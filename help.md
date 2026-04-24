@@ -59,4 +59,37 @@ permalink: /help/
   site is maintained by volunteers and they're happy to fix things.
 </p>
 
+<hr>
+
+<h2>Want to make a yearbook like this for your school?</h2>
+<p>
+  This site is built with a free, open-source yearbook template hosted on
+  GitHub. Anyone can use it to create an online yearbook for their own school
+  — no coding experience required.
+</p>
+<p>
+  <strong>To get started:</strong>
+</p>
+<ol>
+  <li>
+    Go to the template repository on GitHub:<br>
+    <a href="{{ site.github_repo }}" target="_blank" rel="noopener noreferrer">{{ site.github_repo }}</a>
+  </li>
+  <li>
+    Click <strong>"Use this template"</strong> → <strong>"Create a new
+    repository"</strong> to make your own private copy.
+  </li>
+  <li>
+    Follow the step-by-step instructions in the repository's
+    <code>docs/SETUP.md</code> file to configure your school name, add
+    students and teachers, and publish your site.
+  </li>
+</ol>
+<p>
+  The template includes full documentation for yearbook committee volunteers
+  covering how to add students, upload photos, create class pages, add clubs
+  and sports teams, and customize colors and fonts — all without needing to
+  know how to code.
+</p>
+
 </article>
