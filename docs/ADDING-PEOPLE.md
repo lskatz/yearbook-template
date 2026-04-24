@@ -333,6 +333,43 @@ for a full description of each field.
 
 ---
 
+## Adding a photo page (events, field trips, etc.)
+
+Photo pages are freeform gallery pages you can use for any occasion that
+doesn't fit into a class, club, or sports roster — field day, science fair,
+spring concert, etc. Each page holds any number of photos, and each photo
+can have an optional description and a list of people labels.
+
+Create a `.md` file in `_photos/`:
+
+```markdown
+---
+title: "Field Day 2026"
+date: "May 15, 2026"
+thumbnail: "/assets/images/photos/field-day-thumb.jpg"
+photos:
+  - src: "/assets/images/photos/field-day-race.jpg"
+    description: "Students at the sack race"
+    labels:
+      - malcolm-wilkerson
+      - reese-wilkerson
+  - src: "/assets/images/photos/field-day-pie.jpg"
+    # No description or labels — both are optional.
+---
+
+Field Day was a huge success this year!
+```
+
+The filename becomes the URL slug (`field-day.md` → `/photos/field-day/`).
+The page automatically appears as a card in the **Photos** section of the
+home page.
+
+For the full reference — all front-matter fields, labeling tips, thumbnail
+configuration, and the full error table — see
+**[`docs/PHOTO-PAGES.md`](PHOTO-PAGES.md)**.
+
+---
+
 ## Common mistakes (and how you'll find out)
 
 The test suite (runs automatically on every push) catches the usual

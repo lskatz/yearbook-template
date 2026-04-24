@@ -1,0 +1,79 @@
+---
+layout: default
+---
+{%- comment -%}
+  =============================================================================
+  photo-page.html — renders a standalone photo gallery page (e.g. /photos/field-day/)
+  =============================================================================
+  Data source: any .md file in the _photos/ folder.
+
+  A photo page is a freeform scrapbook-style page that can hold any number of
+  photos. Each photo may have an optional text description and an optional list
+  of person IDs labeling the people who appear in it. This makes photo pages
+  ideal for events (field day, school play, science fair) or any occasion that
+  doesn't fit neatly into a class, club, or sports page.
+
+  Expected front-matter fields:
+    title       — page title, e.g. "Field Day 2026" (required)
+    date        — optional date string shown beneath the title, e.g. "May 15, 2026"
+    thumbnail   — path to a thumbnail shown on the home page card (optional)
+                  Falls back to `photo_thumbnail_default` from _config.yml.
+                  Set thumbnail: "" to suppress the thumbnail for a specific page.
+    photos      — list of photo objects (optional; omit for a text-only page)
+                  Each item supports:
+                    src         — path to the image file (required per item)
+                    description — short text caption (optional)
+                    labels      — list of person IDs who appear in the photo
+                                  (optional); names are auto-resolved from
+                                  _data/people.yml and linked to profile pages.
+                  Example:
+                    photos:
+                      - src: "/assets/images/photos/field-day-race.jpg"
+                        description: "Students at the sack race"
+                        labels:
+                          - malcolm-wilkerson
+                          - reese-wilkerson
+                      - src: "/assets/images/photos/field-day-pie.jpg"
+
+  The body of the .md file (below the front-matter) is optional free-text
+  shown above the photo grid. Good for a one-paragraph intro.
+
+  To customize:
+    • Add/edit photo entries → edit the `photos:` list in the page's front-matter.
+    • Add a description → add a `description:` line under the `src:` of any photo.
+    • Label people → add a `labels:` list of person IDs under any photo.
+    • Change the page title → change `title:` in front-matter.
+    • Reorder photos → drag the list items in a new order.
+    • Hide a photo → delete (or comment out) its entry in the list.
+  =============================================================================
+{%- endcomment -%}
+<article class="page-photos wrap">
+  <header class="page-header">
+    {%- comment -%} "Photos" eyebrow label above the title {%- endcomment -%}
+    <p class="page-header__eyebrow">Photos</p>
+    <h1 class="page-header__title">{{ page.title }}</h1>
+    {%- if page.date %}
+    {%- comment -%} Optional date — e.g. "May 15, 2026" {%- endcomment -%}
+    <p class="page-header__meta">{{ page.date }}</p>
+    {%- endif %}
+  </header>
+
+  {%- comment -%}
+    Optional free-text intro from the Markdown body of the .md file.
+    Appears above the photo grid.
+  {%- endcomment -%}
+  {%- if content and content != "" %}
+  <section class="prose">
+    {{ content }}
+  </section>
+  {%- endif %}
+
+  {%- comment -%}
+    Photo gallery — renders all photos defined in the `photos:` list.
+    The photo-gallery.html include handles the grid layout, captions,
+    and person-label links.
+    Passes the full photos list to the include; safe to omit (nothing renders).
+  {%- endcomment -%}
+  {% include photo-gallery.html photos=page.photos %}
+
+</article>

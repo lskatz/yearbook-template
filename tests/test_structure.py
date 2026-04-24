@@ -24,16 +24,19 @@ REQUIRED_PATHS = [
     "_layouts/class.html",
     "_layouts/club.html",
     "_layouts/sport.html",
+    "_layouts/photo-page.html",
     "_layouts/person.html",
     "_layouts/staff.html",
     "_includes/head.html",
     "_includes/header.html",
     "_includes/footer.html",
     "_includes/person-card.html",
+    "_includes/photo-gallery.html",
     "_plugins/people_generator.rb",
     "assets/css/main.css",
     "assets/js/search.js",
     "assets/images/site/placeholder.svg",
+    "assets/images/site/photo-thumbnail-default.svg",
     "people.json",
     "index.md",
     "staff.md",
@@ -44,6 +47,7 @@ REQUIRED_PATHS = [
     "docs/ADDING-PEOPLE.md",
     "docs/CUSTOMIZING.md",
     "docs/DEVELOPING.md",
+    "docs/PHOTO-PAGES.md",
 ]
 
 
@@ -55,7 +59,7 @@ def test_required_files_exist(root):
 def test_config_declares_expected_collections(root):
     cfg = load_yaml(root / "_config.yml")
     collections = cfg.get("collections", {})
-    for expected in ("classes", "clubs", "sports", "people"):
+    for expected in ("classes", "clubs", "sports", "photos", "people"):
         assert expected in collections, f"_config.yml missing collection: {expected}"
         assert collections[expected].get("output") is True, (
             f"Collection '{expected}' must have `output: true` to render pages"
@@ -69,12 +73,13 @@ def test_config_has_labels_block(root):
     assert isinstance(labels, dict), "_config.yml must define a `labels:` block"
     required = {
         "nav_classes", "nav_clubs", "nav_sports", "nav_staff", "nav_help",
+        "nav_photos",
         "eyebrow_class", "eyebrow_club", "eyebrow_sport", "eyebrow_staff",
         "teachers_one", "teachers_many", "students",
         "advisors_one", "advisors_many", "members",
         "coaches_one", "coaches_many", "roster",
         "appears_in",
-        "section_classes", "section_clubs", "section_sports",
+        "section_classes", "section_clubs", "section_sports", "section_photos",
         "search_placeholder",
     }
     missing = required - set(labels.keys())

@@ -30,6 +30,9 @@ All of the setup and usage documentation is in [`docs/`](docs/):
 - **[`docs/ADDING-PEOPLE.md`](docs/ADDING-PEOPLE.md)** — the everyday workflow
   for yearbook committee volunteers: how to add a student, a teacher, a club
   member. Send this link to your volunteers.
+- **[`docs/PHOTO-PAGES.md`](docs/PHOTO-PAGES.md)** — how to add freeform photo
+  gallery pages (field trips, events, assemblies) with optional captions and
+  people labels.
 - **[`docs/CUSTOMIZING.md`](docs/CUSTOMIZING.md)** — change school colors,
   fonts, labels, and layout. Most customization requires no HTML knowledge.
 - **[`docs/DEVELOPING.md`](docs/DEVELOPING.md)** — local development, the
