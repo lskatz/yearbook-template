@@ -1,0 +1,91 @@
+---
+layout: default
+---
+{%- comment -%}
+  =============================================================================
+  person.html — individual profile page (e.g. /people/malcolm-wilkerson/)
+  =============================================================================
+  These pages are NOT created by hand. The Ruby plugin in
+  _plugins/people_generator.rb auto-generates one page per entry in
+  _data/people.yml, and passes two variables to this layout:
+
+    page.person       — the full record from people.yml, plus derived fields
+                        (display_name, initials, photo URL, etc.)
+    page.memberships  — an index of every class/club/sport they appear in
+
+  So profile pages always stay in sync with the rosters — you never have to
+  manually edit /people/*. Just edit _data/people.yml or the rosters.
+
+  To customize:
+    • Change the "Appears in" heading → edit `labels.appears_in` in _config.yml.
+    • Show additional fields (e.g. "favorite food") → add the field in
+      _data/people.yml, then reference it here as {{ p.favorite_food }}.
+  =============================================================================
+{%- endcomment -%}
+{%- assign p = page.person -%}
+<article class="page-person wrap">
+
+  {%- comment -%} Hero block: portrait on the left, name + details on the right {%- endcomment -%}
+  <div class="person-hero">
+    <figure class="person-hero__portrait">
+      <img
+        src="{{ p.photo | relative_url }}"
+        alt="{{ p.display_name }}"
+        onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'person-hero__fallback',textContent:{{ p.initials | jsonify }}}))">
+    </figure>
+
+    <div class="person-hero__info">
+      {%- comment -%} Eyebrow: grade for students, title for staff, role otherwise {%- endcomment -%}
+      <p class="person-hero__eyebrow">
+        {%- if p.role == 'student' and p.grade -%}
+          Grade {{ p.grade }}
+        {%- elsif p.title -%}
+          {{ p.title }}
+        {%- elsif p.role == 'teacher' -%}
+          {{ site.labels.teachers_one }}
+        {%- elsif p.role == 'staff' -%}
+          {{ site.labels.eyebrow_staff }}
+        {%- endif -%}
+      </p>
+
+      <h1 class="person-hero__name">{{ p.display_name }}</h1>
+
+      {%- comment -%} Show full name in small text if display name is a nickname {%- endcomment -%}
+      {%- if p.nickname and p.nickname != p.first %}
+        <p class="person-hero__detail">Full name: {{ p.first }} {{ p.last }}</p>
+      {%- endif %}
+      {%- if p.pronouns %}
+        <p class="person-hero__detail">{{ p.pronouns }}</p>
+      {%- endif %}
+
+      {%- comment -%} Signature quote — nice for 5th graders' farewells {%- endcomment -%}
+      {%- if p.quote %}
+        <blockquote class="person-hero__quote">
+          <p>“{{ p.quote }}”</p>
+        </blockquote>
+      {%- endif %}
+    </div>
+  </div>
+
+  {%- comment -%}
+    Memberships: every class/club/team this person is in. Built automatically
+    by the Ruby plugin so edits to rosters are reflected here with zero work.
+  {%- endcomment -%}
+  {%- assign m = page.memberships -%}
+  {%- if m.classes.size > 0 or m.clubs.size > 0 or m.sports.size > 0 %}
+  <section class="memberships">
+    <h2 class="memberships__heading">{{ site.labels.appears_in }}</h2>
+    <ul class="memberships__list">
+      {%- for group in m.classes %}
+        <li><span class="memberships__tag">{{ site.labels.eyebrow_class }}</span><a href="{{ group.url | relative_url }}">{{ group.title }}</a></li>
+      {%- endfor %}
+      {%- for group in m.clubs %}
+        <li><span class="memberships__tag">{{ site.labels.eyebrow_club }}</span><a href="{{ group.url | relative_url }}">{{ group.title }}</a></li>
+      {%- endfor %}
+      {%- for group in m.sports %}
+        <li><span class="memberships__tag">{{ site.labels.eyebrow_sport }}</span><a href="{{ group.url | relative_url }}">{{ group.title }}</a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endif %}
+</article>

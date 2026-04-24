@@ -1,0 +1,134 @@
+# =============================================================================
+#  JEKYLL SITE CONFIG
+# =============================================================================
+#  Edit this file to customize site-wide settings without touching any HTML.
+#  After any change, commit and push — GitHub Actions will rebuild the site.
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# 1. SITE IDENTITY — the basics for your school
+# -----------------------------------------------------------------------------
+title: "North Hollywood Elementary Yearbook"
+description: "2025–2026 school year"
+school_year: "2025–2026"
+mascot: "The Krelboynes"
+
+# If your site is deployed at https://your-org.github.io (no subpath), leave
+# both of these empty. If it's at https://your-org.github.io/yearbook/, set
+# baseurl to "/yearbook".
+url: ""
+baseurl: ""
+
+
+# -----------------------------------------------------------------------------
+# 2. LABELS — all user-facing English strings in one place
+# -----------------------------------------------------------------------------
+# Change these if your school uses different terminology (e.g. "Section" vs.
+# "Class", "Pupils" vs. "Students"), or translate them for a non-English site.
+# The layouts all read from here, so one edit updates every page.
+#
+# To add more customizable strings: (a) add them here, (b) reference them in
+# the layout as {{ site.labels.your_new_key }}.
+# -----------------------------------------------------------------------------
+labels:
+  # Navigation bar (see _includes/header.html)
+  nav_classes:   "Classes"
+  nav_clubs:     "Clubs"
+  nav_sports:    "Sports"
+  nav_staff:     "Staff"
+  nav_help:      "Help"
+
+  # "Eyebrow" text — small all-caps label above page titles
+  eyebrow_class: "Class"
+  eyebrow_club:  "Club"
+  eyebrow_sport: "Team"
+  eyebrow_staff: "Staff"
+
+  # Roster section headings (singular used when only 1, plural for 2+)
+  teachers_one:  "Teacher"
+  teachers_many: "Teachers"
+  students:      "Students"
+  advisors_one:  "Advisor"
+  advisors_many: "Advisors"
+  members:       "Members"
+  coaches_one:   "Coach"
+  coaches_many:  "Coaches"
+  roster:        "Roster"
+
+  # Profile page: the "Appears in: Chess Club, Soccer Team" section
+  appears_in:    "Appears in"
+
+  # Home page section headings
+  section_classes: "Classes"
+  section_clubs:   "Clubs"
+  section_sports:  "Sports"
+
+  # Search box placeholder
+  search_placeholder: "Search a name…"
+
+
+# -----------------------------------------------------------------------------
+# 3. PHOTO CONVENTIONS
+# -----------------------------------------------------------------------------
+# Where photos live by convention. A student named jane-smith in
+# _data/people.yml will have her photo at /assets/images/people/jane-smith.jpg
+# by default. Override individual cases with a `photo:` field in people.yml.
+# -----------------------------------------------------------------------------
+photo_path_default: "/assets/images/people/{id}.jpg"
+photo_placeholder:  "/assets/images/site/placeholder.svg"
+
+
+# =============================================================================
+#  EVERYTHING BELOW IS JEKYLL MACHINERY — you probably don't need to edit it.
+# =============================================================================
+
+markdown: kramdown
+highlighter: rouge
+permalink: /:collection/:slug/
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections: each corresponds to a folder (_classes, _clubs, etc.) whose
+# Markdown files become pages. The `people` collection is populated by the
+# custom Ruby plugin in _plugins/people_generator.rb.
+collections:
+  classes:
+    output: true
+    permalink: /classes/:slug/
+  clubs:
+    output: true
+    permalink: /clubs/:slug/
+  sports:
+    output: true
+    permalink: /sports/:slug/
+  people:
+    output: true
+    permalink: /people/:slug/
+
+# Default layouts — saves us from writing `layout: class` in every class file.
+defaults:
+  - scope: { path: "", type: "classes" }
+    values: { layout: "class" }
+  - scope: { path: "", type: "clubs" }
+    values: { layout: "club" }
+  - scope: { path: "", type: "sports" }
+    values: { layout: "sport" }
+  - scope: { path: "", type: "people" }
+    values: { layout: "person" }
+
+# Files/folders excluded from the built site. `docs/` contains maintainer
+# documentation meant only for editors of the repo, not the public site.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - scripts
+  - tests
+  - docs
+  - README.md
+  - pytest.ini
+  - vendor

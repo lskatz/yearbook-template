@@ -1,0 +1,94 @@
+---
+layout: default
+---
+{%- comment -%}
+  =============================================================================
+  home.html — the landing page of the yearbook
+  =============================================================================
+  Used by index.md.
+
+  Structure:
+    1. Hero banner (school name + year)
+    2. "Classes" section, sorted by grade
+    3. "Clubs" section
+    4. "Sports" section
+    5. Any free-text content from index.md
+
+  To customize:
+    • Change hero text → edit the `title` / `school_year` / `mascot` fields
+      in _config.yml.
+    • Change section headings → edit `labels.section_*` in _config.yml.
+    • Reorder sections → drag the <section> blocks below into a new order.
+    • Hide a section → wrap it in {% comment %}...{% endcomment %} or delete it.
+    • Change how classes are sorted (e.g., alphabetically instead of by grade)
+      → change `sort: "grade"` below to `sort: "title"`.
+  =============================================================================
+{%- endcomment -%}
+
+<section class="hero">
+  <div class="wrap">
+    <p class="hero__eyebrow">{{ site.school_year }} · Yearbook</p>
+    <h1 class="hero__title">{{ site.title }}</h1>
+    <p class="hero__mascot">Home of {{ site.mascot }}</p>
+  </div>
+</section>
+
+<div class="wrap">
+
+  {%- comment -%} Classes, grouped and sorted by grade {%- endcomment -%}
+  <section id="classes" class="index-section">
+    <h2 class="index-section__heading">{{ site.labels.section_classes }}</h2>
+    {%- assign classes_by_grade = site.classes | sort: "grade" -%}
+    <ul class="index-list">
+      {%- for c in classes_by_grade %}
+        <li>
+          <a href="{{ c.url | relative_url }}">
+            <span class="index-list__eyebrow">
+              {%- if c.grade == 0 or c.grade == "K" -%}Kindergarten
+              {%- else -%}Grade {{ c.grade }}
+              {%- endif -%}
+            </span>
+            <span class="index-list__title">{{ c.title }}</span>
+          </a>
+        </li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  {%- comment -%} Clubs {%- endcomment -%}
+  <section id="clubs" class="index-section">
+    <h2 class="index-section__heading">{{ site.labels.section_clubs }}</h2>
+    <ul class="index-list">
+      {%- for c in site.clubs %}
+        <li>
+          <a href="{{ c.url | relative_url }}">
+            <span class="index-list__eyebrow">{{ site.labels.eyebrow_club }}</span>
+            <span class="index-list__title">{{ c.title }}</span>
+          </a>
+        </li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  {%- comment -%} Sports {%- endcomment -%}
+  <section id="sports" class="index-section">
+    <h2 class="index-section__heading">{{ site.labels.section_sports }}</h2>
+    <ul class="index-list">
+      {%- for s in site.sports %}
+        <li>
+          <a href="{{ s.url | relative_url }}">
+            <span class="index-list__eyebrow">{{ site.labels.eyebrow_sport }}</span>
+            <span class="index-list__title">{{ s.title }}</span>
+          </a>
+        </li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  {%- comment -%} Optional welcome note, pulled from body of index.md {%- endcomment -%}
+  {%- if content and content != "" %}
+  <section class="prose">
+    {{ content }}
+  </section>
+  {%- endif %}
+</div>

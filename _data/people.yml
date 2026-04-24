@@ -1,0 +1,128 @@
+# =============================================================================
+# PEOPLE DIRECTORY — the master list of everyone in the yearbook
+# =============================================================================
+#
+# This is the ONLY place a person's name and photo are defined. Classes, clubs,
+# sports, and staff pages all reference people by their `id` below.
+#
+# MINIMUM fields for each person:
+#   id:    kebab-case-unique-id  (also used as default photo filename)
+#   first: First name
+#   last:  Last name
+#
+# OPTIONAL:
+#   nickname: "Goes by..."
+#   pronouns: "she/her" | "he/him" | "they/them"
+#   role:     "student" | "teacher" | "staff"   (default: student)
+#   grade:    K | 1 | 2 | 3 | 4 | 5              (students only)
+#   title:    "Principal" | "School Nurse"       (staff only)
+#   quote:    "Something they said this year."   (nice for 5th graders)
+#   photo:    "/assets/images/people/custom.png" (override default path)
+#
+# PHOTO CONVENTION:
+#   Save as  assets/images/people/<id>.jpg
+#   e.g. id: malcolm-wilkerson  →  assets/images/people/malcolm-wilkerson.jpg
+#   If the file is missing, a placeholder with initials is shown automatically.
+# =============================================================================
+
+# ---------- STUDENTS ----------
+- id: malcolm-wilkerson
+  first: Malcolm
+  last: Wilkerson
+  grade: 4
+  quote: "I'm not a brain, okay? I'm just a kid."
+
+- id: reese-wilkerson
+  first: Reese
+  last: Wilkerson
+  grade: 5
+  quote: "I'm playing with my food. It's a known fact that food that's been played with tastes better."
+
+- id: dewey-wilkerson
+  first: Dewey
+  last: Wilkerson
+  grade: 2
+
+- id: francis-wilkerson
+  first: Francis
+  last: Wilkerson
+  grade: 5
+  nickname: "Frankie"
+
+- id: stevie-kenarban
+  first: Stevie
+  last: Kenarban
+  grade: 4
+  quote: "Malcolm... is... wrong."
+
+- id: cynthia-sanders
+  first: Cynthia
+  last: Sanders
+  grade: 4
+
+- id: dabney-hooper
+  first: Dabney
+  last: Hooper
+  grade: 4
+
+- id: lloyd
+  first: Lloyd
+  last: Cornwall
+  grade: 4
+
+- id: kevin
+  first: Kevin
+  last: Ainsley
+  grade: 4
+
+- id: julie-houlerman
+  first: Julie
+  last: Houlerman
+  grade: 4
+
+- id: jessica
+  first: Jessica
+  last: Barton
+  grade: 5
+
+# ---------- TEACHERS ----------
+- id: caroline-miller
+  first: Caroline
+  last: Miller
+  role: teacher
+
+- id: mr-herkabe
+  first: Lionel
+  last: Herkabe
+  role: teacher
+  nickname: "Mr. Herkabe"
+
+- id: mr-woodward
+  first: David
+  last: Woodward
+  role: teacher
+  nickname: "Mr. Woodward"
+
+- id: ms-old
+  first: Margaret
+  last: Old
+  role: teacher
+
+# ---------- STAFF ----------
+- id: principal-block
+  first: Alan
+  last: Block
+  role: staff
+  title: "Principal"
+
+- id: nurse-craig
+  first: Helen
+  last: Craig
+  role: staff
+  title: "School Nurse"
+
+- id: counselor-fenton
+  first: Richard
+  last: Fenton
+  role: staff
+  title: "School Counselor"

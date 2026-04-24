@@ -1,0 +1,51 @@
+{%- comment -%}
+  =============================================================================
+  person-card.html — a single photo-card for a person
+  =============================================================================
+  Used in class rosters, club/sport member grids, and the staff page.
+
+  USAGE:
+    {% include person-card.html id="malcolm-wilkerson" %}
+    {% include person-card.html id="mr-herkabe" size="lg" %}
+
+  Parameters:
+    id   — (required) the person's ID in _data/people.yml
+    size — (optional) "lg" for bigger cards (used for teachers/staff),
+           default is normal-sized student card
+
+  The `onerror` handler shows the person's initials if their photo file is
+  missing — so a new student can be added to the roster before their photo
+  is uploaded, and the card won't look broken.
+
+  If an ID doesn't match anyone in people.yml, a red debug card appears so
+  the mistake is obvious during local preview. The test suite also catches
+  this at CI time.
+  =============================================================================
+{%- endcomment -%}
+{%- assign p = site.data.people_by_id[include.id] -%}
+{%- if p -%}
+<a class="person-card person-card--{{ include.size | default: 'md' }}" href="{{ p.url | relative_url }}">
+  <figure class="person-card__frame">
+    <img
+      src="{{ p.photo | relative_url }}"
+      alt="{{ p.display_name }}"
+      loading="lazy"
+      onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'person-card__fallback',textContent:{{ p.initials | jsonify }}}))">
+  </figure>
+  <figcaption class="person-card__caption">
+    <span class="person-card__name">{{ p.display_name }}</span>
+
+    {%- comment -%} The little line under the name — context varies by role {%- endcomment -%}
+    {%- if p.role == 'student' and p.grade -%}
+      <span class="person-card__meta">Grade {{ p.grade }}</span>
+    {%- elsif p.title -%}
+      <span class="person-card__meta">{{ p.title }}</span>
+    {%- elsif p.role == 'teacher' -%}
+      <span class="person-card__meta">{{ site.labels.teachers_one }}</span>
+    {%- endif -%}
+  </figcaption>
+</a>
+{%- else -%}
+  {%- comment -%} Visible warning so bad IDs are caught in local preview {%- endcomment -%}
+<span class="person-card person-card--missing">Unknown: {{ include.id }}</span>
+{%- endif -%}

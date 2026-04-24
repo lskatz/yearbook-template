@@ -1,0 +1,62 @@
+---
+layout: default
+---
+{%- comment -%}
+  =============================================================================
+  club.html — renders a single club page (e.g. /clubs/chess-club/)
+  =============================================================================
+  Data source: any .md file in the _clubs/ folder.
+
+  Expected front-matter fields:
+    title    — "Chess Club" (required)
+    meets    — "Wednesdays after school" (optional, shown under title)
+    advisors — list of person IDs (optional)
+    members  — list of person IDs (optional)
+
+  Structurally this is nearly identical to class.html — if you change one,
+  consider whether the same change belongs here too.
+  =============================================================================
+{%- endcomment -%}
+<article class="page-club wrap">
+  <header class="page-header">
+    <p class="page-header__eyebrow">{{ site.labels.eyebrow_club }}</p>
+    <h1 class="page-header__title">{{ page.title }}</h1>
+    {%- if page.meets %}<p class="page-header__meta">Meets {{ page.meets }}</p>{%- endif %}
+  </header>
+
+  {%- comment -%} Advisors — typically teachers or parent volunteers {%- endcomment -%}
+  {%- if page.advisors and page.advisors.size > 0 %}
+  <section class="roster">
+    <h2 class="roster__heading">
+      {%- if page.advisors.size > 1 -%}
+        {{ site.labels.advisors_many }}
+      {%- else -%}
+        {{ site.labels.advisors_one }}
+      {%- endif -%}
+    </h2>
+    <div class="roster__grid roster__grid--lg">
+      {%- for aid in page.advisors %}
+        {% include person-card.html id=aid size="lg" %}
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
+
+  {%- comment -%} Members {%- endcomment -%}
+  {%- if page.members and page.members.size > 0 %}
+  <section class="roster">
+    <h2 class="roster__heading">{{ site.labels.members }}</h2>
+    <div class="roster__grid">
+      {%- for mid in page.members %}
+        {% include person-card.html id=mid %}
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
+
+  {%- if content and content != "" %}
+  <section class="prose">
+    {{ content }}
+  </section>
+  {%- endif %}
+</article>

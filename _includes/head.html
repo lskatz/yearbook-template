@@ -1,0 +1,31 @@
+{%- comment -%}
+  =============================================================================
+  head.html — contents of the <head> tag, included on every page
+  =============================================================================
+  To change fonts: update the Google Fonts <link> tag below AND the
+  --font-display / --font-body variables in assets/css/main.css to match.
+
+  The <meta name="robots" content="noindex, nofollow"> tag tells search
+  engines NOT to index this site. Important for a yearbook — we don't want
+  kids' photos showing up in Google image search. REMOVE this line only if
+  your site uses stock data or you have explicit consent from every family.
+  =============================================================================
+{%- endcomment -%}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {%- comment -%} ⚠️  Keep this line unless your site contains only public figures {%- endcomment -%}
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+
+  {%- comment -%} Fonts — Fraunces (display serif) + Instrument Sans (body) {%- endcomment -%}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/site/favicon.svg' | relative_url }}">
+</head>

@@ -1,0 +1,24 @@
+{%- comment -%}
+  =============================================================================
+  default.html — shared page chrome
+  =============================================================================
+  Every other layout (home, class, club, sport, person, staff) inherits from
+  this one. If you want to add something that appears on EVERY page (a banner,
+  a cookie notice, etc.), this is the place.
+
+  To change the nav bar specifically, edit _includes/header.html.
+  To change the footer, edit _includes/footer.html.
+  To change <head> (meta tags, fonts, CSS), edit _includes/head.html.
+  =============================================================================
+{%- endcomment -%}
+<!DOCTYPE html>
+<html lang="en">
+  {%- include head.html -%}
+  <body>
+    {%- include header.html -%}
+    <main class="page">
+      {{ content }}
+    </main>
+    {%- include footer.html -%}
+  </body>
+</html>

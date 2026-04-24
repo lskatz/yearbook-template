@@ -1,0 +1,42 @@
+{%- comment -%}
+  =============================================================================
+  header.html — sticky top nav bar with brand, links, and search
+  =============================================================================
+  To change:
+    • Brand text (site name, year) → _config.yml (title, school_year)
+    • Nav labels → _config.yml under `labels:` (nav_classes, nav_clubs, etc.)
+    • Nav order → drag the <a> tags below into a new order
+    • Add a link → copy an <a> line, change href and label
+    • Remove a link → delete its <a> line
+    • Search placeholder → _config.yml `labels.search_placeholder`
+  =============================================================================
+{%- endcomment -%}
+<header class="site-header">
+  <div class="wrap">
+
+    {%- comment -%} Brand — clickable school name that goes home {%- endcomment -%}
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <span class="brand__year">{{ site.school_year }}</span>
+      <span class="brand__name">{{ site.title }}</span>
+    </a>
+
+    {%- comment -%} Main nav. Anchor links (#) jump to sections on the home page {%- endcomment -%}
+    <nav class="site-nav" aria-label="Primary">
+      <a href="{{ '/' | relative_url }}#classes">{{ site.labels.nav_classes }}</a>
+      <a href="{{ '/' | relative_url }}#clubs">{{ site.labels.nav_clubs }}</a>
+      <a href="{{ '/' | relative_url }}#sports">{{ site.labels.nav_sports }}</a>
+      <a href="{{ '/staff/' | relative_url }}">{{ site.labels.nav_staff }}</a>
+      <a href="{{ '/help/' | relative_url }}">{{ site.labels.nav_help }}</a>
+    </nav>
+
+    {%- comment -%}
+      Search — the <input> is fed live results by assets/js/search.js, which
+      fetches /people.json (auto-generated from _data/people.yml at build time).
+    {%- endcomment -%}
+    <div class="site-search">
+      <label class="visually-hidden" for="q">Search people</label>
+      <input type="search" id="q" placeholder="{{ site.labels.search_placeholder }}" autocomplete="off">
+      <ul id="results" class="site-search__results" hidden></ul>
+    </div>
+  </div>
+</header>

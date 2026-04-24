@@ -1,0 +1,74 @@
+---
+layout: default
+---
+{%- comment -%}
+  =============================================================================
+  class.html — renders a single class page (e.g. /classes/4th-grade-krelboynes/)
+  =============================================================================
+  Data source: any .md file in the _classes/ folder.
+
+  Expected front-matter fields:
+    title    — "4th Grade — Krelboynes" (required)
+    grade    — 4 (required, used for sorting on the home page)
+    room     — "Room 11" (optional)
+    teachers — list of person IDs (optional)
+    students — list of person IDs (optional, but c'mon)
+
+  To customize:
+    • Section labels ("Teachers", "Students") → edit labels in _config.yml.
+    • Add a new optional field (e.g. "motto") → add it to the Markdown file's
+      front-matter, then reference it here as {{ page.motto }}.
+    • Reorder sections → drag the <section> blocks into a new order.
+    • Remove the teachers or students section → delete its block.
+  =============================================================================
+{%- endcomment -%}
+<article class="page-class wrap">
+
+  {%- comment -%} Page header: eyebrow + title + optional meta line {%- endcomment -%}
+  <header class="page-header">
+    <p class="page-header__eyebrow">{{ site.labels.eyebrow_class }}</p>
+    <h1 class="page-header__title">{{ page.title }}</h1>
+    {%- if page.room %}<p class="page-header__meta">{{ page.room }}</p>{%- endif %}
+  </header>
+
+  {%- comment -%}
+    Teachers section — only rendered if the page lists at least one teacher.
+    Header switches between singular ("Teacher") and plural ("Teachers") based
+    on count, so a single-teacher class doesn't read awkwardly.
+  {%- endcomment -%}
+  {%- if page.teachers and page.teachers.size > 0 %}
+  <section class="roster">
+    <h2 class="roster__heading">
+      {%- if page.teachers.size > 1 -%}
+        {{ site.labels.teachers_many }}
+      {%- else -%}
+        {{ site.labels.teachers_one }}
+      {%- endif -%}
+    </h2>
+    <div class="roster__grid roster__grid--lg">
+      {%- for tid in page.teachers %}
+        {% include person-card.html id=tid size="lg" %}
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
+
+  {%- comment -%} Students section — one card per person ID in the `students:` list {%- endcomment -%}
+  {%- if page.students and page.students.size > 0 %}
+  <section class="roster">
+    <h2 class="roster__heading">{{ site.labels.students }}</h2>
+    <div class="roster__grid">
+      {%- for sid in page.students %}
+        {% include person-card.html id=sid %}
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
+
+  {%- comment -%} Optional Markdown body — e.g. "Highlights of the year" prose {%- endcomment -%}
+  {%- if content and content != "" %}
+  <section class="prose">
+    {{ content }}
+  </section>
+  {%- endif %}
+</article>

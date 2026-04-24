@@ -1,0 +1,29 @@
+# Runs the data-integrity test suite on every push and PR.
+# These tests catch the most common volunteer editing mistakes — broken person
+# ID references, duplicate IDs, malformed YAML — BEFORE the site is built.
+# If these fail, the Jekyll build won't be triggered (good: it'd be broken anyway).
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install test dependencies
+        run: pip install -r tests/requirements.txt
+
+      - name: Run tests
+        run: pytest

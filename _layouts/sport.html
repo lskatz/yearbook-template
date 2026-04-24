@@ -1,0 +1,71 @@
+---
+layout: default
+---
+{%- comment -%}
+  =============================================================================
+  sport.html — renders a single sports team page (e.g. /sports/soccer/)
+  =============================================================================
+  Data source: any .md file in the _sports/ folder.
+
+  Expected front-matter fields:
+    title   — "Soccer" (required)
+    season  — "Fall" (optional)
+    record  — "8–2" (optional)
+    coaches — list of person IDs (optional)
+    members — list of person IDs (optional)
+
+  The "meta" line under the title combines season and record intelligently:
+    • both present:  "Fall · Record: 8–2"
+    • one present:   just that one
+    • neither:       the line is hidden entirely
+  =============================================================================
+{%- endcomment -%}
+<article class="page-sport wrap">
+  <header class="page-header">
+    <p class="page-header__eyebrow">{{ site.labels.eyebrow_sport }}</p>
+    <h1 class="page-header__title">{{ page.title }}</h1>
+    {%- if page.season or page.record %}
+      <p class="page-header__meta">
+        {%- if page.season %}{{ page.season }}{% endif %}
+        {%- if page.season and page.record %} · {% endif %}
+        {%- if page.record %}Record: {{ page.record }}{% endif %}
+      </p>
+    {%- endif %}
+  </header>
+
+  {%- comment -%} Coaches {%- endcomment -%}
+  {%- if page.coaches and page.coaches.size > 0 %}
+  <section class="roster">
+    <h2 class="roster__heading">
+      {%- if page.coaches.size > 1 -%}
+        {{ site.labels.coaches_many }}
+      {%- else -%}
+        {{ site.labels.coaches_one }}
+      {%- endif -%}
+    </h2>
+    <div class="roster__grid roster__grid--lg">
+      {%- for cid in page.coaches %}
+        {% include person-card.html id=cid size="lg" %}
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
+
+  {%- comment -%} Roster — heading is "Roster" rather than "Members" for teams {%- endcomment -%}
+  {%- if page.members and page.members.size > 0 %}
+  <section class="roster">
+    <h2 class="roster__heading">{{ site.labels.roster }}</h2>
+    <div class="roster__grid">
+      {%- for mid in page.members %}
+        {% include person-card.html id=mid %}
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
+
+  {%- if content and content != "" %}
+  <section class="prose">
+    {{ content }}
+  </section>
+  {%- endif %}
+</article>

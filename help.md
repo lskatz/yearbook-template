@@ -1,0 +1,62 @@
+---
+layout: default
+title: "Using this yearbook"
+permalink: /help/
+---
+
+<article class="wrap prose" style="padding-top:3rem;padding-bottom:4rem">
+
+<h1>Using this yearbook</h1>
+
+<p>Welcome! Here's a quick guide to getting around.</p>
+
+<h2>Finding someone</h2>
+<p>
+  The fastest way to find a specific person is the search box in the top-right
+  corner of every page. Start typing a first or last name — matches appear as
+  you type. Click any result to go straight to that person's profile.
+</p>
+
+<h2>Browsing by class</h2>
+<p>
+  Click <a href="{{ '/' | relative_url }}#classes">Classes</a> in the top
+  menu to see every class, grouped by grade. Each class page shows the teacher
+  (or co-teachers) at the top, followed by every student in the class.
+</p>
+
+<h2>Browsing by club or team</h2>
+<p>
+  <a href="{{ '/' | relative_url }}#clubs">Clubs</a> and
+  <a href="{{ '/' | relative_url }}#sports">Sports</a> work the same way:
+  the advisor or coach is listed first, then every member of the club or team.
+</p>
+
+<h2>A person's profile page</h2>
+<p>
+  Click anyone's photo — on a class page, a club page, or a team page — to
+  see their full profile. Each profile lists every class, club, and team
+  that person belongs to, so you can jump between groups easily.
+</p>
+
+<h2>Staff directory</h2>
+<p>
+  The <a href="{{ '/staff/' | relative_url }}">Staff</a> page lists everyone
+  who keeps the school running — the principal, school nurse, counselors, and
+  other staff members who aren't assigned to a single class.
+</p>
+
+<h2>Printing a page</h2>
+<p>
+  Every page is print-friendly. Use your browser's Print command (Ctrl+P or
+  ⌘P) and the navigation bar, search box, and footer will automatically be
+  hidden, leaving just the photos and names on the page.
+</p>
+
+<h2>Can't find someone?</h2>
+<p>
+  If you think someone's missing from the yearbook, or if a name or photo
+  needs to be corrected, reach out to your school's yearbook committee. This
+  site is maintained by volunteers and they're happy to fix things.
+</p>
+
+</article>

@@ -1,0 +1,42 @@
+---
+layout: default
+---
+{%- comment -%}
+  =============================================================================
+  staff.html — the Faculty & Staff directory page (/staff/)
+  =============================================================================
+  Data source: staff.md (for the title/intro) + automatic selection of every
+  person in _data/people.yml whose `role` is "staff".
+
+  Note: teachers are NOT shown here by default — they're already on their
+  class pages. If you want to include teachers on this page, change the
+  filter below from `where: "role", "staff"` to something that includes
+  both teachers and staff.
+  =============================================================================
+{%- endcomment -%}
+<article class="page-staff wrap">
+  <header class="page-header">
+    <p class="page-header__eyebrow">{{ site.labels.eyebrow_staff }}</p>
+    <h1 class="page-header__title">{{ page.title }}</h1>
+  </header>
+
+  {%- comment -%}
+    Automatically pull everyone with role=staff. No manual roster to maintain.
+    To include teachers too: replace the line below with
+    {% assign staff = site.data.people | where_exp: "p", "p.role != 'student'" %}
+  {%- endcomment -%}
+  {%- assign staff = site.data.people | where: "role", "staff" -%}
+  {%- if staff.size > 0 %}
+  <section class="roster">
+    <div class="roster__grid roster__grid--lg">
+      {%- for person in staff %}
+        {% include person-card.html id=person.id size="lg" %}
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
+
+  {%- if content and content != "" %}
+  <section class="prose">{{ content }}</section>
+  {%- endif %}
+</article>

@@ -1,0 +1,92 @@
+# =============================================================================
+# Decap CMS config
+# =============================================================================
+# This gives non-technical editors a form-based UI at /admin/ instead of forcing
+# them to edit raw YAML. It commits changes straight to your GitHub repo.
+#
+# SETUP (takes ~10 minutes, one time only):
+#   1. Fork this repo to your own (PRIVATE) GitHub org/account.
+#   2. Go to https://github.com/settings/developers → "OAuth Apps" → "New OAuth App".
+#        - Homepage URL:     your Pages URL (e.g. https://your-org.github.io)
+#        - Callback URL:     https://api.netlify.com/auth/done
+#      Take note of the Client ID and generate a Client Secret.
+#   3. Deploy a free Netlify OAuth proxy (one-click): https://github.com/vencax/netlify-cms-github-oauth-provider
+#      Set the env vars OAUTH_CLIENT_ID / OAUTH_CLIENT_SECRET from step 2.
+#   4. In the `backend:` block below, set `base_url:` to your Netlify proxy URL.
+#   5. Editors go to https://<your-site>/admin/ and log in with GitHub.
+#
+# If this is overkill for your committee, SKIP the admin UI entirely — editors
+# can still use the GitHub web UI (github.com/<repo>/edit/main/_data/people.yml).
+# =============================================================================
+
+backend:
+  name: github
+  repo: YOUR-ORG/YOUR-REPO       # <-- EDIT: e.g. "north-hollywood-elementary/yearbook-2025"
+  branch: main
+  base_url: https://YOUR-OAUTH-PROXY.netlify.app   # <-- EDIT
+
+media_folder: "assets/images/people"
+public_folder: "/assets/images/people"
+
+collections:
+  - name: "people"
+    label: "People (master list)"
+    files:
+      - file: "_data/people.yml"
+        label: "Everyone"
+        name: "everyone"
+        fields:
+          - label: "People"
+            name: "people"
+            widget: "list"
+            fields:
+              - { label: "ID (kebab-case, must match photo filename)", name: "id", widget: "string", hint: "e.g. malcolm-wilkerson" }
+              - { label: "First name", name: "first", widget: "string" }
+              - { label: "Last name",  name: "last",  widget: "string" }
+              - { label: "Nickname",   name: "nickname", widget: "string", required: false }
+              - { label: "Pronouns",   name: "pronouns", widget: "string", required: false }
+              - { label: "Role", name: "role", widget: "select",
+                  options: ["student", "teacher", "staff"], default: "student" }
+              - { label: "Grade (students only)", name: "grade", widget: "number", required: false, value_type: "int", min: 0, max: 8 }
+              - { label: "Title (staff only)", name: "title", widget: "string", required: false }
+              - { label: "Quote", name: "quote", widget: "text", required: false }
+              - { label: "Photo override", name: "photo", widget: "image", required: false,
+                  hint: "Optional. Default path is /assets/images/people/<id>.jpg" }
+
+  - name: "classes"
+    label: "Classes"
+    folder: "_classes"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Grade", name: "grade", widget: "number", value_type: "int", min: 0, max: 8 }
+      - { label: "Room",  name: "room",  widget: "string", required: false }
+      - { label: "Teachers (person IDs)", name: "teachers", widget: "list", field: { label: "ID", name: "id", widget: "string" } }
+      - { label: "Students (person IDs)", name: "students", widget: "list", field: { label: "ID", name: "id", widget: "string" } }
+      - { label: "Write-up", name: "body", widget: "markdown", required: false }
+
+  - name: "clubs"
+    label: "Clubs"
+    folder: "_clubs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Meets", name: "meets", widget: "string", required: false }
+      - { label: "Advisors (person IDs)", name: "advisors", widget: "list", field: { label: "ID", name: "id", widget: "string" } }
+      - { label: "Members (person IDs)",  name: "members",  widget: "list", field: { label: "ID", name: "id", widget: "string" } }
+      - { label: "Write-up", name: "body", widget: "markdown", required: false }
+
+  - name: "sports"
+    label: "Sports"
+    folder: "_sports"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title",  name: "title",  widget: "string" }
+      - { label: "Season", name: "season", widget: "string", required: false }
+      - { label: "Record", name: "record", widget: "string", required: false }
+      - { label: "Coaches (person IDs)", name: "coaches", widget: "list", field: { label: "ID", name: "id", widget: "string" } }
+      - { label: "Roster (person IDs)",  name: "members", widget: "list", field: { label: "ID", name: "id", widget: "string" } }
+      - { label: "Write-up", name: "body", widget: "markdown", required: false }
