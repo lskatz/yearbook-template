@@ -3,8 +3,15 @@
 // and re-encode as progressive JPEG at quality 85. Skips anything already small.
 // SVG files are rasterized to JPEG (requires sharp built with librsvg support).
 //
-// Run locally:  node scripts/optimize-photos.js
-// Runs in CI:   .github/workflows/optimize-images.yml
+// Usage:
+//   node scripts/optimize-photos.js          # optimize/convert all images in DIR
+//
+// Called from two places:
+//   - .github/workflows/build.yml            (converts SVGs to JPEGs at build time;
+//                                             nothing is committed back — the SVG
+//                                             source files stay in the repo)
+//   - .github/workflows/optimize-images.yml  (optimizes newly-pushed JPG/PNG/WebP
+//                                             photos and commits the result back)
 
 const fs   = require("fs");
 const path = require("path");
