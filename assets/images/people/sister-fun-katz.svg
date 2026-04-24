@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-label="Sister-Fun Katz">
+  <!-- background -->
+  <rect width="300" height="400" fill="#f2d6e0"/>
+
+  <!-- shirt / body -->
+  <path d="M 40,400 L 40,310 C 75,278 112,268 150,268 C 188,268 225,278 260,310 L 260,400 Z" fill="#9b2c6b"/>
+  <!-- shirt collar (round) -->
+  <ellipse cx="150" cy="280" rx="28" ry="14" fill="#7b1d52"/>
+
+  <!-- neck -->
+  <rect x="132" y="255" width="36" height="32" fill="#ffdab9"/>
+
+  <!-- head -->
+  <ellipse cx="150" cy="183" rx="75" ry="82" fill="#ffdab9"/>
+
+  <!-- ear left -->
+  <ellipse cx="74" cy="188" rx="12" ry="16" fill="#ffdab9"/>
+  <ellipse cx="74" cy="188" rx="6" ry="9" fill="#eec4a0"/>
+
+  <!-- ear right -->
+  <ellipse cx="226" cy="188" rx="12" ry="16" fill="#ffdab9"/>
+  <ellipse cx="226" cy="188" rx="6" ry="9" fill="#eec4a0"/>
+
+  <!-- hair — strawberry blond, longer with side tresses -->
+  <!-- left side tress -->
+  <path d="M 75,183 Q 55,220 62,275 Q 70,260 82,240 Q 82,210 82,183 Z" fill="#d4845a"/>
+  <!-- right side tress -->
+  <path d="M 225,183 Q 245,220 238,275 Q 230,260 218,240 Q 218,210 218,183 Z" fill="#d4845a"/>
+  <!-- top and back of hair -->
+  <path d="M 75,183
+           Q 75,88 150,88
+           Q 225,88 225,183
+           Q 225,153 208,145
+           Q 188,134 165,130
+           Q 150,128 135,130
+           Q 112,134 92,145
+           Q 75,153 75,183 Z"
+        fill="#d4845a"/>
+  <!-- hair highlights (lighter streaks) -->
+  <path d="M 115,100 Q 150,93 185,100" fill="none" stroke="#e8a882" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+  <path d="M 105,120 Q 150,112 195,120" fill="none" stroke="#e8a882" stroke-width="4" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- eyebrows (warm brown) -->
+  <path d="M 107,163 Q 123,157 139,163" fill="none" stroke="#a0582a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 161,163 Q 177,157 193,163" fill="none" stroke="#a0582a" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- left eye white -->
+  <ellipse cx="123" cy="180" rx="14" ry="12" fill="white"/>
+  <!-- left iris (hazel — warm brown-green) -->
+  <circle cx="123" cy="180" r="8" fill="#8b7040"/>
+  <!-- hazel green ring -->
+  <circle cx="123" cy="180" r="6" fill="#7a8040" opacity="0.5"/>
+  <!-- left pupil -->
+  <circle cx="123" cy="180" r="4" fill="#2d1c08"/>
+  <!-- left highlight -->
+  <circle cx="126" cy="177" r="2.5" fill="white"/>
+
+  <!-- right eye white -->
+  <ellipse cx="177" cy="180" rx="14" ry="12" fill="white"/>
+  <!-- right iris (hazel) -->
+  <circle cx="177" cy="180" r="8" fill="#8b7040"/>
+  <!-- hazel green ring -->
+  <circle cx="177" cy="180" r="6" fill="#7a8040" opacity="0.5"/>
+  <!-- right pupil -->
+  <circle cx="177" cy="180" r="4" fill="#2d1c08"/>
+  <!-- right highlight -->
+  <circle cx="180" cy="177" r="2.5" fill="white"/>
+
+  <!-- nose -->
+  <ellipse cx="150" cy="210" rx="6" ry="9" fill="#eec4a0"/>
+  <circle cx="144" cy="215" r="3" fill="#d4a882"/>
+  <circle cx="156" cy="215" r="3" fill="#d4a882"/>
+
+  <!-- mouth / big smile -->
+  <path d="M 125,237 Q 150,258 175,237" fill="none" stroke="#c07050" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- teeth -->
+  <path d="M 127,237 Q 150,249 173,237 L 173,242 Q 150,254 127,242 Z" fill="white"/>
+  <!-- lip line -->
+  <line x1="127" y1="242" x2="173" y2="242" stroke="#c07050" stroke-width="1.5"/>
+
+  <!-- small bow/barrette in hair -->
+  <ellipse cx="195" cy="130" rx="10" ry="6" fill="#e8558a" transform="rotate(-20,195,130)"/>
+  <ellipse cx="207" cy="125" rx="10" ry="6" fill="#e8558a" transform="rotate(20,207,125)"/>
+  <circle cx="201" cy="128" r="5" fill="#c0306a"/>
+</svg>

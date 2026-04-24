@@ -4,6 +4,7 @@ meets: "Mondays after school"
 advisors:
   - counselor-fenton
 members:
+  - sister-fun-katz
   - dewey-wilkerson
   - cynthia-sanders
   - aria-clark
@@ -15,6 +16,7 @@ members:
 group_photo: "/assets/images/groups/kindness-club.svg"
 photo_caption: "Kindness Club, left to right:"
 photo_annotation:
+  - sister-fun-katz
   - dewey-wilkerson
   - cynthia-sanders
   - aria-clark
