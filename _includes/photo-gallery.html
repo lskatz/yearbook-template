@@ -1,0 +1,67 @@
+{%- comment -%}
+  =============================================================================
+  photo-gallery.html — renders a list of photo entries as a gallery grid
+  =============================================================================
+  Used by _layouts/photo-page.html. Each entry in the `photos` list may have:
+
+    src         — (required) path to the image file
+    description — (optional) a free-text caption for the photo
+    labels      — (optional) list of person IDs who appear in the photo;
+                  their display names are looked up from _data/people.yml and
+                  each name links to that person's profile page.
+
+  USAGE:
+    {% include photo-gallery.html photos=page.photos %}
+
+  Parameters:
+    photos — (required) the list of photo objects from the page front-matter
+  =============================================================================
+{%- endcomment -%}
+{%- if include.photos and include.photos.size > 0 %}
+<div class="photo-gallery">
+  {%- for photo in include.photos %}
+  {%- comment -%}
+    Each photo entry is rendered as a <figure> card.
+    The image is shown first; description and labels follow inside <figcaption>.
+    Both description and labels are optional — the caption block is omitted
+    entirely when neither is present, keeping the markup clean.
+  {%- endcomment -%}
+  <figure class="photo-card">
+    <div class="photo-card__frame">
+      <img
+        src="{{ photo.src | relative_url }}"
+        alt="{{ photo.description | default: 'Photo' }}"
+        loading="lazy"
+        class="photo-card__img">
+    </div>
+    {%- if photo.description or photo.labels and photo.labels.size > 0 %}
+    <figcaption class="photo-card__caption">
+      {%- if photo.description %}
+      <p class="photo-card__description">{{ photo.description }}</p>
+      {%- endif %}
+      {%- if photo.labels and photo.labels.size > 0 %}
+      {%- comment -%}
+        Person labels: look up each ID in people_by_id (built by the Ruby
+        plugin). Resolved names are linked to the person's profile page.
+        IDs that don't resolve are silently skipped so a bad ID doesn't
+        crash the build — the test suite catches dangling IDs separately.
+      {%- endcomment -%}
+      <ul class="photo-card__labels">
+        {%- for pid in photo.labels -%}
+          {%- assign labeled_person = site.data.people_by_id[pid] -%}
+          {%- if labeled_person -%}
+          <li>
+            <a href="{{ labeled_person.url | relative_url }}" class="photo-card__label-link">
+              {{- labeled_person.display_name -}}
+            </a>
+          </li>
+          {%- endif -%}
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+    </figcaption>
+    {%- endif %}
+  </figure>
+  {%- endfor %}
+</div>
+{%- endif %}

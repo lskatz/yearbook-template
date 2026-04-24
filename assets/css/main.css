@@ -510,6 +510,105 @@ img { max-width: 100%; display: block; }
   color: var(--color-ink);
 }
 
+/* ---------------- Photo Gallery (photo-page layout) ---------------- */
+/*
+ * Used by _layouts/photo-page.html (the `_photos/` collection).
+ * The gallery is a responsive grid of photo cards. Each card contains:
+ *   - the photo itself (displayed at 3:2 landscape ratio)
+ *   - an optional text description
+ *   - an optional list of labeled people, each linked to their profile page
+ *
+ * To control the minimum card width (i.e., how many cards per row) tweak the
+ * `minmax()` argument below — e.g. `minmax(300px, 1fr)` for wider cards.
+ *
+ * CSS custom properties used here inherit from the :root block at the top of
+ * this file, so the gallery automatically picks up the site accent color,
+ * border style, font, and so on.
+ */
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: clamp(1.2rem, 3vw, 2rem);
+  margin: 2rem 0 3rem;
+}
+
+/* Individual photo card */
+.photo-card {
+  margin: 0;
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.photo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+}
+
+/* Photo wrapper — locks the image to a 3:2 ratio */
+.photo-card__frame {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--color-border-soft);
+}
+.photo-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Caption area (description + person labels) */
+.photo-card__caption {
+  padding: 0.8rem 1rem 1rem;
+}
+.photo-card__description {
+  margin: 0 0 0.6rem;
+  font-size: 0.9rem;
+  color: var(--color-ink);
+  line-height: 1.5;
+}
+.photo-card__description:last-child { margin-bottom: 0; }
+
+/* Person labels list */
+.photo-card__labels {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+.photo-card__label-link {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  background: var(--color-border-soft);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-card);
+  color: var(--color-ink-soft);
+  text-decoration: none;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+.photo-card__label-link:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+/* Small meta line (date) on the home page index cards */
+.index-list__meta {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--color-ink-soft);
+  letter-spacing: 0.06em;
+  margin-top: 0.2rem;
+}
+
 /* ---------------- Footer ---------------- */
 .site-footer {
   border-top: var(--border-width) solid var(--color-border);

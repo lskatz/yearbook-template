@@ -90,3 +90,34 @@ collections:
       - { label: "Coaches (person IDs)", name: "coaches", widget: "list", field: { label: "ID", name: "id", widget: "string" } }
       - { label: "Roster (person IDs)",  name: "members", widget: "list", field: { label: "ID", name: "id", widget: "string" } }
       - { label: "Write-up", name: "body", widget: "markdown", required: false }
+
+  - name: "photos"
+    label: "Photo Pages"
+    folder: "_photos"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string",
+          hint: "Page title shown in the header and on the home page card." }
+      - { label: "Date",  name: "date",  widget: "string", required: false,
+          hint: "Optional date string, e.g. 'May 15, 2026'." }
+      - { label: "Thumbnail", name: "thumbnail", widget: "image", required: false,
+          hint: "Image shown on the home page card. Leave blank to use the default placeholder." }
+      - label: "Photos"
+        name: "photos"
+        widget: "list"
+        required: false
+        hint: "Add one entry per photo. Only `src` is required; description and labels are optional."
+        fields:
+          - { label: "Image path (src)", name: "src", widget: "image",
+              hint: "Path to the image file, e.g. /assets/images/photos/field-day.jpg" }
+          - { label: "Description", name: "description", widget: "text", required: false,
+              hint: "Optional caption shown under the photo." }
+          - label: "Labels (person IDs)"
+            name: "labels"
+            widget: "list"
+            required: false
+            field: { label: "Person ID", name: "id", widget: "string",
+                     hint: "kebab-case ID from _data/people.yml, e.g. malcolm-wilkerson" }
+      - { label: "Intro text", name: "body", widget: "markdown", required: false,
+          hint: "Optional free-text shown above the photo grid." }

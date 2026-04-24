@@ -43,6 +43,7 @@ labels:
   nav_clubs:     "Clubs"
   nav_sports:    "Sports"
   nav_staff:     "Staff"
+  nav_photos:    "Photos"
   nav_help:      "Help"
 
   # "Eyebrow" text — small all-caps label above page titles
@@ -69,6 +70,7 @@ labels:
   section_classes: "Classes"
   section_clubs:   "Clubs"
   section_sports:  "Sports"
+  section_photos:  "Photos"
 
   # Search box placeholder
   search_placeholder: "Search a name…"
@@ -94,6 +96,11 @@ class_thumbnail_default: "/assets/images/site/class-thumbnail-default.svg"
 # the page's front-matter, or set to "" to suppress the thumbnail entirely.
 club_thumbnail_default:  "/assets/images/site/club-thumbnail-default.svg"
 sport_thumbnail_default: "/assets/images/site/sport-thumbnail-default.svg"
+
+# Default thumbnail shown on photo-page cards on the home page index.
+# Override per page with  thumbnail: "/path/to/photo.jpg"  in the page's
+# front-matter, or set to "" to suppress the thumbnail for a specific page.
+photo_thumbnail_default: "/assets/images/site/photo-thumbnail-default.svg"
 
 
 # =============================================================================
@@ -122,6 +129,9 @@ collections:
   sports:
     output: true
     permalink: /sports/:slug/
+  photos:
+    output: true
+    permalink: /photos/:slug/
   people:
     output: true
     permalink: /people/:slug/
@@ -134,6 +144,8 @@ defaults:
     values: { layout: "club" }
   - scope: { path: "", type: "sports" }
     values: { layout: "sport" }
+  - scope: { path: "", type: "photos" }
+    values: { layout: "photo-page" }
   - scope: { path: "", type: "people" }
     values: { layout: "person" }
 

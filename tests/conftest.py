@@ -54,3 +54,9 @@ def clubs(root) -> list[dict]:
 @pytest.fixture(scope="session")
 def sports(root) -> list[dict]:
     return [load_front_matter(p) for p in (root / "_sports").glob("*.md")]
+
+
+@pytest.fixture(scope="session")
+def photo_pages(root) -> list[dict]:
+    """Front-matter dicts for all pages in the _photos/ collection."""
+    return [load_front_matter(p) for p in (root / "_photos").glob("*.md")]

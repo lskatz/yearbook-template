@@ -114,6 +114,41 @@ layout: default
     </ul>
   </section>
 
+  {%- comment -%}
+    Photo pages — freeform scrapbook pages, one card per _photos/*.md file.
+    Each card links to that photo page. The thumbnail uses the `thumbnail:`
+    field from the page front-matter, falling back to `photo_thumbnail_default`
+    from _config.yml.
+    To hide this section, wrap it in {% comment %}...{% endcomment %}.
+    To reorder sections, drag this block relative to the others above.
+  {%- endcomment -%}
+  {%- if site.photos and site.photos.size > 0 %}
+  <section id="photos" class="index-section">
+    <h2 class="index-section__heading">{{ site.labels.section_photos }}</h2>
+    <ul class="index-list">
+      {%- for pp in site.photos %}
+        {%- assign home_thumb = pp.thumbnail | default: site.photo_thumbnail_default -%}
+        <li>
+          <a href="{{ pp.url | relative_url }}">
+            {%- if home_thumb and home_thumb != "" %}
+            <img
+              src="{{ home_thumb | relative_url }}"
+              alt="{{ pp.title }}"
+              class="index-list__thumbnail"
+              loading="lazy">
+            {%- endif %}
+            <span class="index-list__eyebrow">Photos</span>
+            <span class="index-list__title">{{ pp.title }}</span>
+            {%- if pp.date %}
+            <span class="index-list__meta">{{ pp.date }}</span>
+            {%- endif %}
+          </a>
+        </li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endif %}
+
   {%- comment -%} Optional welcome note, pulled from body of index.md {%- endcomment -%}
   {%- if content and content != "" %}
   <section class="prose">
