@@ -177,12 +177,71 @@ This is a bigger change but still straightforward:
 ## Changing what's on a class page
 
 The whole layout for class pages lives in `_layouts/class.html`, and it's
-heavily commented. The file is short — under 70 lines — and each section
-(teachers, students, prose) is a clearly labeled block you can reorder,
-remove, or duplicate.
+heavily commented. The file is short — under 100 lines — and each section
+(thumbnail, teachers, students, prose) is a clearly labeled block you can
+reorder, remove, or duplicate.
 
 Same pattern for `_layouts/club.html` (clubs), `_layouts/sport.html`
 (sports teams), and `_layouts/person.html` (profile pages).
+
+---
+
+## Changing the default class thumbnail
+
+Every class page displays a banner-style photo at the top. Each class can
+have its own photo (set via `thumbnail:` in the class's front-matter), and
+any class without one falls back to a site-wide default image.
+
+To change the default for **all** classes at once, update `_config.yml`:
+
+```yaml
+# Default thumbnail shown at the top of every class page.
+# Recommended size: 800 × 300 px (landscape).
+class_thumbnail_default: "/assets/images/site/class-thumbnail-default.svg"
+```
+
+Point it at any image file you like (JPEG, PNG, SVG). The template ships
+with a placeholder SVG at `assets/images/site/class-thumbnail-default.svg`
+— replace that file, or change the path to one of your own photos.
+
+To set a **per-class** thumbnail, add `thumbnail:` to that class's
+front-matter. See [Adding a class thumbnail](ADDING-PEOPLE.md#adding-a-thumbnail-photo-to-a-class)
+in ADDING-PEOPLE.md.
+
+---
+
+## Customizing group photos on club and sport pages
+
+Club and sports-team pages support an optional group photo section with
+auto-generated name annotations. The photo appears below the member roster.
+
+The relevant front-matter fields (add to any `_clubs/*.md` or `_sports/*.md`):
+
+```yaml
+group_photo: "/assets/images/groups/chess-club.jpg"
+photo_caption: "Chess Club, left to right:"
+photo_annotation:
+  - malcolm-wilkerson
+  - stevie-kenarban
+  - dabney-hooper
+```
+
+The template ships with placeholder SVG group photos in
+`assets/images/groups/` — one per built-in club and sport. To replace one,
+simply upload a real photo at the same path:
+
+```
+assets/images/groups/chess-club.jpg     ← replace the .svg with a real JPEG
+assets/images/groups/soccer.jpg
+# etc.
+```
+
+If you change the file extension, also update `group_photo:` in the
+matching `.md` file to point to the new path.
+
+To remove the group photo section from a page entirely, delete the
+`group_photo:`, `photo_caption:`, and `photo_annotation:` lines from its
+front-matter.
 
 ---
 

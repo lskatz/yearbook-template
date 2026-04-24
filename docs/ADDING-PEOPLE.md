@@ -54,6 +54,23 @@ Open `_data/people.yml` and add an entry under the "STUDENTS" section:
   grade: 3
 ```
 
+**Grade values:**
+
+| Value | Meaning |
+|-------|---------|
+| `PK`  | Pre-Kindergarten |
+| `K`   | Kindergarten |
+| `1` – `5` | 1st through 5th grade (use bare numbers, no quotes) |
+
+Note that `PK` and `K` are written as quoted strings, while numeric grades
+are plain integers:
+
+```yaml
+grade: PK   # Pre-K
+grade: K    # Kindergarten
+grade: 3    # 3rd grade
+```
+
 Optional fields you can add:
 
 ```yaml
@@ -140,8 +157,8 @@ The `title:` field is what appears on their card (e.g. "Principal",
 ## Creating a new class
 
 To add a class that doesn't exist yet, create a new file in `_classes/`.
-Name it however you like — `4th-grade-rodriguez.md`, `4a.md`, whatever —
-the filename becomes the URL slug.
+Name it however you like — `4th-grade-rodriguez.md`, `prek-rivera.md`,
+`k-lopez.md` — the filename becomes the URL slug.
 
 ```markdown
 ---
@@ -160,8 +177,48 @@ Optional write-up about the class year goes here. You can use
 **bold**, *italics*, and [links](https://example.com).
 ```
 
-**Required fields:** `title`, `grade`.
-**Optional:** `room`, `teachers`, `students`, and free-form Markdown body.
+**Required fields:** `title`, `grade`.  
+**Optional:** `room`, `teachers`, `students`, `thumbnail`, and free-form Markdown body.
+
+Pre-K and Kindergarten classes use the string grade values:
+
+```yaml
+grade: PK    # Pre-Kindergarten
+grade: K     # Kindergarten
+grade: 1     # 1st grade, and so on
+```
+
+### Adding a thumbnail photo to a class
+
+Each class page displays a banner-style photo between the title and the
+roster. By default every class shows a shared placeholder image. To use a
+real class photo, add a `thumbnail:` field to the class's front-matter:
+
+```yaml
+---
+title: "4th Grade — Ms. Rodriguez"
+grade: 4
+thumbnail: "/assets/images/classes/4th-grade-rodriguez.jpg"
+teachers:
+  - ms-rodriguez
+students:
+  - alice-johnson
+  - jane-smith
+---
+```
+
+Save the photo at the path you listed (`assets/images/classes/` is a good
+home for class photos). Recommended size: **800 × 300 px** landscape.
+
+To hide the thumbnail for a specific class altogether, set:
+
+```yaml
+thumbnail: ""
+```
+
+To change the default placeholder used by every class that doesn't set
+`thumbnail:`, see *[Changing the default class thumbnail](CUSTOMIZING.md#changing-the-default-class-thumbnail)*
+in CUSTOMIZING.md.
 
 ---
 
@@ -183,6 +240,46 @@ members:
 
 Optional description of the club and what they did this year.
 ```
+
+**Optional fields:** `meets`, `advisors`, `members`, `group_photo`,
+`photo_caption`, `photo_annotation`.
+
+### Adding a group photo to a club
+
+You can display an annotated group photo on any club page:
+
+```markdown
+---
+title: "Chess Club"
+meets: "Wednesdays after school"
+advisors:
+  - mr-herkabe
+members:
+  - malcolm-wilkerson
+  - stevie-kenarban
+  - dabney-hooper
+group_photo: "/assets/images/groups/chess-club.jpg"
+photo_caption: "Chess Club, left to right:"
+photo_annotation:
+  - malcolm-wilkerson
+  - stevie-kenarban
+  - dabney-hooper
+---
+```
+
+| Field | Purpose |
+|---|---|
+| `group_photo` | Path to the group photo image. Save the file there first. |
+| `photo_caption` | Short label shown before the list of names (optional). |
+| `photo_annotation` | Ordered list of person IDs matching left-to-right order in the photo. Names are looked up automatically from `people.yml`. |
+
+The template ships with placeholder SVG images in `assets/images/groups/`
+for each built-in club and sport. Replace any of these files with a real
+photo at the same path, or point `group_photo:` at a new path.
+
+To remove the group photo section from a club page, simply delete the
+`group_photo:`, `photo_caption:`, and `photo_annotation:` lines from its
+front-matter.
 
 ---
 
@@ -206,6 +303,34 @@ members:
 Optional recap of the season.
 ```
 
+**Optional fields:** `season`, `record`, `coaches`, `members`, `group_photo`,
+`photo_caption`, `photo_annotation`.
+
+### Adding a group photo to a sports team
+
+Group photos work exactly the same way for sports teams as for clubs:
+
+```markdown
+---
+title: "Soccer"
+season: "Fall"
+record: "8–2"
+coaches:
+  - mr-woodward
+members:
+  - reese-wilkerson
+  - julie-houlerman
+group_photo: "/assets/images/groups/soccer.jpg"
+photo_caption: "Soccer team, left to right:"
+photo_annotation:
+  - reese-wilkerson
+  - julie-houlerman
+---
+```
+
+See [Adding a group photo to a club](#adding-a-group-photo-to-a-club) above
+for a full description of each field.
+
 ---
 
 ## Common mistakes (and how you'll find out)
@@ -220,6 +345,7 @@ slip-ups and tells you exactly what's wrong:
 | Duplicate ID in people.yml | `Duplicate person IDs found: ['jane-smith']` |
 | A teacher accidentally in a student list | `Class '...' lists 'mrs-garcia' as a student, but that person's role is 'teacher'` |
 | An ID with capital letters or spaces | `Person ID 'Jane Smith' must be kebab-case` |
+| Invalid grade value | `grade must be a number or one of ['K', 'PK'], got 'Kindergarten'` |
 
 If the tests fail, check the **Actions** tab on GitHub — the failure message
 points at the exact file and bad value.
@@ -234,9 +360,12 @@ points at the exact file and bad value.
 - **EXIF metadata**: automatically stripped on upload. This removes GPS
   coordinates and camera info that modern phones embed in every photo —
   important for privacy.
-- **Aspect ratio**: portrait (3:4) looks best. Photos are cropped to fill
-  their card, so a tight head-and-shoulders crop works better than a full
-  body shot.
+- **Portrait photos**: portrait (3:4) ratio looks best for individual
+  student/teacher cards. Photos are cropped to fill their card, so a tight
+  head-and-shoulders crop works better than a full body shot.
+- **Class thumbnails**: landscape (8:3) ratio works best, around 800 × 300 px.
+- **Group photos**: landscape is recommended; width × height ratio is
+  flexible. Photos are displayed at full column width.
 - **Missing photos**: if a student is added before their photo is ready,
   their card will show their initials instead of a broken image. So you can
   add everyone to the roster first and fill in photos later.
