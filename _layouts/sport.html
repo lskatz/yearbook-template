@@ -13,6 +13,10 @@ layout: default
     record         — "8–2" (optional)
     coaches        — list of person IDs (optional)
     members        — list of person IDs (optional)
+    thumbnail      — path to a thumbnail shown at the top of this page (optional)
+                     e.g. "/assets/images/groups/soccer.jpg"
+                     Falls back to `sport_thumbnail_default` from _config.yml.
+                     Set `thumbnail: ""` to suppress the thumbnail for a specific sport.
     group_photo    — path to a group photo image (optional)
                      e.g. "/assets/images/groups/soccer.jpg"
                      Replace the placeholder SVG with an actual photo to
@@ -48,6 +52,22 @@ layout: default
       </p>
     {%- endif %}
   </header>
+
+  {%- comment -%}
+    Sport thumbnail — shown below the header. Supports a single path via
+    `thumbnail:` (falls back to `sport_thumbnail_default` from _config.yml).
+    To skip the thumbnail for a specific sport, set `thumbnail: ""` with no
+    value in the sport front-matter.
+  {%- endcomment -%}
+  {%- assign thumb_src = page.thumbnail | default: site.sport_thumbnail_default -%}
+  {%- if thumb_src and thumb_src != "" %}
+  <div class="page-thumbnail">
+    <img
+      src="{{ thumb_src | relative_url }}"
+      alt="{{ page.title }} photo"
+      class="page-thumbnail__img">
+  </div>
+  {%- endif %}
 
   {%- comment -%} Coaches {%- endcomment -%}
   {%- if page.coaches and page.coaches.size > 0 %}

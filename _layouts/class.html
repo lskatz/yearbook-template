@@ -53,21 +53,21 @@ layout: default
   {%- endcomment -%}
   {%- if page.thumbnails and page.thumbnails.size > 0 %}
     {%- for thumb_src in page.thumbnails %}
-    <div class="class-thumbnail">
+    <div class="page-thumbnail">
       <img
         src="{{ thumb_src | relative_url }}"
         alt="{{ page.title }} class photo"
-        class="class-thumbnail__img">
+        class="page-thumbnail__img">
     </div>
     {%- endfor %}
   {%- else %}
     {%- assign thumb_src = page.thumbnail | default: site.class_thumbnail_default -%}
     {%- if thumb_src and thumb_src != "" %}
-    <div class="class-thumbnail">
+    <div class="page-thumbnail">
       <img
         src="{{ thumb_src | relative_url }}"
         alt="{{ page.title }} class photo"
-        class="class-thumbnail__img">
+        class="page-thumbnail__img">
     </div>
     {%- endif %}
   {%- endif %}

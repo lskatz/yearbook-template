@@ -442,24 +442,26 @@ img { max-width: 100%; display: block; }
 }
 .prose p { margin: 0 0 1.2em; }
 
-/* ---------------- Class thumbnail ---------------- */
+/* ---------------- Page thumbnail (class, club, sport) ---------------- */
 /*
- * Shown at the top of every class page, between the page header and the
- * roster sections. Uses `thumbnail:` from the class front-matter when set,
- * otherwise falls back to the `class_thumbnail_default` path in _config.yml.
+ * Shown at the top of every class, club, and sport page, between the page
+ * header and the roster sections. Uses `thumbnail:` from the page front-matter
+ * when set, otherwise falls back to the appropriate `*_thumbnail_default`
+ * path in _config.yml (class_thumbnail_default, club_thumbnail_default,
+ * sport_thumbnail_default).
  *
- * To use a custom photo for a class, add to that class's .md:
- *   thumbnail: "/assets/images/classes/my-class.jpg"
+ * To use a custom photo, add to that page's .md:
+ *   thumbnail: "/assets/images/groups/my-group.jpg"
  *
- * To hide the thumbnail for a specific class, set:
+ * To hide the thumbnail for a specific page, set:
  *   thumbnail: ""
  *
  * Recommended image dimensions: 800 × 300 px (landscape, 8:3 ratio).
  */
-.class-thumbnail {
+.page-thumbnail {
   margin: 0 0 2.5rem;
 }
-.class-thumbnail__img {
+.page-thumbnail__img {
   width: 100%;
   max-height: 320px;
   object-fit: cover;
@@ -519,6 +521,17 @@ img { max-width: 100%; display: block; }
 .site-footer__mascot {
   font-family: var(--font-display); font-style: italic;
   margin-top: 0.3rem;
+}
+.site-footer__credit {
+  margin-top: 0.8rem;
+  font-size: 0.75rem;
+  color: var(--color-ink-soft);
+  opacity: 0.7;
+}
+.site-footer__credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 /* ---------------- Print ---------------- */
