@@ -1,6 +1,8 @@
 # Auto-optimize any new photos committed to assets/images/people/.
 # Resizes anything > 1200px wide, strips EXIF metadata (removes GPS etc.),
 # converts to progressive JPEG, and commits the result back.
+# SVG files are NOT processed here — they are converted to JPEG at build time
+# by the Build & Deploy workflow so they remain as source files in the repo.
 name: Optimize new photos
 
 on:

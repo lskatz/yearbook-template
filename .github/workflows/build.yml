@@ -35,12 +35,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+
+      - name: Convert SVG photos to JPEG for the built site
+        run: |
+          npm install --no-save sharp
+          node scripts/optimize-photos.js
+
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.2"
           bundler-cache: true
 
       - uses: actions/configure-pages@v5
+        id: pages
 
       - name: Build Jekyll site
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
