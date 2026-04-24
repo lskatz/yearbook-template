@@ -30,7 +30,7 @@
       src="{{ p.photo | relative_url }}"
       alt="{{ p.display_name }}"
       loading="lazy"
-      onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'person-card__fallback',textContent:{{ p.initials | jsonify }}}))">
+      onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'person-card__fallback',textContent:{{ p.initials | jsonify | escape }}}))">
   </figure>
   <figcaption class="person-card__caption">
     <span class="person-card__name">{{ p.display_name }}</span>

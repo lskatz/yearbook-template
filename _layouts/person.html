@@ -31,7 +31,7 @@ layout: default
       <img
         src="{{ p.photo | relative_url }}"
         alt="{{ p.display_name }}"
-        onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'person-hero__fallback',textContent:{{ p.initials | jsonify }}}))">
+        onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'person-hero__fallback',textContent:{{ p.initials | jsonify | escape }}}))">
     </figure>
 
     <div class="person-hero__info">
