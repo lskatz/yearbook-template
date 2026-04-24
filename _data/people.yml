@@ -30,7 +30,6 @@
   first: Sister-Fun
   last: Katz
   grade: PK
-  photo: "/assets/images/people/sister-fun-katz.svg"
 
 - id: emma-rodriguez
   first: Emma
@@ -159,7 +158,6 @@
   first: Mac
   last: Katz
   grade: 2
-  photo: "/assets/images/people/mac-katz.svg"
 
 - id: dewey-wilkerson
   first: Dewey
@@ -242,7 +240,6 @@
   first: Handsome
   last: Katz
   grade: 4
-  photo: "/assets/images/people/handsome-katz.svg"
 
 - id: malcolm-wilkerson
   first: Malcolm

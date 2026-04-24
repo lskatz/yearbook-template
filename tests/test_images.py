@@ -103,6 +103,10 @@ def test_every_person_has_a_photo_file(root, people, photo_path_default):
     """
     Every person in _data/people.yml must have a photo file on disk.
 
+    SVG files stored in the repo are converted to JPEG at build time, so an
+    SVG source file (e.g. ``mac-katz.svg``) is accepted as a valid stand-in for
+    the expected JPEG (``mac-katz.jpg``) when the JPEG is not yet present.
+
     If this test fails, either:
       • Add the missing photo file at the listed path, OR
       • Add a ``photo:`` override in people.yml pointing to an existing file.
@@ -110,7 +114,10 @@ def test_every_person_has_a_photo_file(root, people, photo_path_default):
     missing = []
     for person in people:
         photo_path = _expected_photo_path(root, person, photo_path_default)
-        if not photo_path.exists():
+        # Accept an SVG source file when the expected JPEG hasn't been
+        # generated yet (SVGs are rasterised to JPEG during the build).
+        svg_path = photo_path.with_suffix(".svg")
+        if not photo_path.exists() and not svg_path.exists():
             missing.append(
                 f"  {person['id']!r} → expected {photo_path.relative_to(root)}"
             )
