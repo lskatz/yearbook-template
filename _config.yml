@@ -18,7 +18,7 @@ mascot: "The Krelboynes"
 # both of these empty. If it's at https://your-org.github.io/yearbook/, set
 # baseurl to "/yearbook".
 url: "https://lskatz.github.io"
-baseurl: "/yearbook"
+baseurl: "/yearbook-template"
 
 
 # -----------------------------------------------------------------------------
