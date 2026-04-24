@@ -4,7 +4,7 @@ meets: "Thursdays"
 advisors:
   - caroline-miller
 members:
-  - mac-katz
+  - mak-katz
   - dewey-wilkerson
   - cynthia-sanders
   - jessica
@@ -12,7 +12,7 @@ members:
 group_photo: "/assets/images/groups/drama-club.svg"
 photo_caption: "Drama Club cast, left to right:"
 photo_annotation:
-  - mac-katz
+  - mak-katz
   - dewey-wilkerson
   - cynthia-sanders
   - jessica

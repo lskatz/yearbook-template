@@ -104,8 +104,8 @@ def test_every_person_has_a_photo_file(root, people, photo_path_default):
     Every person in _data/people.yml must have a photo file on disk.
 
     SVG files stored in the repo are converted to JPEG at build time, so an
-    SVG source file (e.g. ``mac-katz.svg``) is accepted as a valid stand-in for
-    the expected JPEG (``mac-katz.jpg``) when the JPEG is not yet present.
+    SVG source file (e.g. ``mak-katz.svg``) is accepted as a valid stand-in for
+    the expected JPEG (``mak-katz.jpg``) when the JPEG is not yet present.
 
     If this test fails, either:
       • Add the missing photo file at the listed path, OR
