@@ -8,6 +8,13 @@ members:
   - stevie-kenarban
   - dabney-hooper
   - julie-houlerman
+group_photo: "/assets/images/groups/chess-club.svg"
+photo_caption: "Chess Club, left to right:"
+photo_annotation:
+  - malcolm-wilkerson
+  - stevie-kenarban
+  - dabney-hooper
+  - julie-houlerman
 ---
 
 Chess Club met weekly in Room 11 and sent three players to the district

@@ -37,7 +37,13 @@
 
     {%- comment -%} The little line under the name — context varies by role {%- endcomment -%}
     {%- if p.role == 'student' and p.grade -%}
-      <span class="person-card__meta">Grade {{ p.grade }}</span>
+      {%- if p.grade == 'PK' -%}
+        <span class="person-card__meta">Pre-K</span>
+      {%- elsif p.grade == 'K' -%}
+        <span class="person-card__meta">Kindergarten</span>
+      {%- else -%}
+        <span class="person-card__meta">Grade {{ p.grade }}</span>
+      {%- endif -%}
     {%- elsif p.title -%}
       <span class="person-card__meta">{{ p.title }}</span>
     {%- elsif p.role == 'teacher' -%}

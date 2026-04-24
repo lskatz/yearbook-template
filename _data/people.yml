@@ -14,7 +14,7 @@
 #   nickname: "Goes by..."
 #   pronouns: "she/her" | "he/him" | "they/them"
 #   role:     "student" | "teacher" | "staff"   (default: student)
-#   grade:    K | 1 | 2 | 3 | 4 | 5              (students only)
+#   grade:    PK | K | 1 | 2 | 3 | 4 | 5        (students only)
 #   title:    "Principal" | "School Nurse"       (staff only)
 #   quote:    "Something they said this year."   (nice for 5th graders)
 #   photo:    "/assets/images/people/custom.png" (override default path)
@@ -25,40 +25,218 @@
 #   If the file is missing, a placeholder with initials is shown automatically.
 # =============================================================================
 
-# ---------- STUDENTS ----------
+# ---------- STUDENTS — Pre-K ----------
+- id: emma-rodriguez
+  first: Emma
+  last: Rodriguez
+  grade: PK
+
+- id: liam-oconnor
+  first: Liam
+  last: O'Connor
+  grade: PK
+
+- id: sofia-park
+  first: Sofia
+  last: Park
+  grade: PK
+
+- id: noah-hassan
+  first: Noah
+  last: Hassan
+  grade: PK
+
+- id: mia-johnson
+  first: Mia
+  last: Johnson
+  grade: PK
+
+- id: ethan-kim
+  first: Ethan
+  last: Kim
+  grade: PK
+
+- id: olivia-santos
+  first: Olivia
+  last: Santos
+  grade: PK
+
+- id: aiden-murphy
+  first: Aiden
+  last: Murphy
+  grade: PK
+
+# ---------- STUDENTS — Kindergarten ----------
+- id: ava-chen
+  first: Ava
+  last: Chen
+  grade: K
+
+- id: lucas-williams
+  first: Lucas
+  last: Williams
+  grade: K
+
+- id: isabella-torres
+  first: Isabella
+  last: Torres
+  grade: K
+
+- id: mason-lee
+  first: Mason
+  last: Lee
+  grade: K
+
+- id: charlotte-nguyen
+  first: Charlotte
+  last: Nguyen
+  grade: K
+
+- id: oliver-smith
+  first: Oliver
+  last: Smith
+  grade: K
+
+- id: amelia-brown
+  first: Amelia
+  last: Brown
+  grade: K
+
+- id: elijah-jones
+  first: Elijah
+  last: Jones
+  grade: K
+
+# ---------- STUDENTS — 1st Grade ----------
+- id: harper-davis
+  first: Harper
+  last: Davis
+  grade: 1
+
+- id: james-garcia
+  first: James
+  last: Garcia
+  grade: 1
+
+- id: evelyn-miller
+  first: Evelyn
+  last: Miller
+  grade: 1
+
+- id: alexander-white
+  first: Alexander
+  last: White
+  grade: 1
+
+- id: abigail-taylor
+  first: Abigail
+  last: Taylor
+  grade: 1
+
+- id: michael-anderson
+  first: Michael
+  last: Anderson
+  grade: 1
+
+- id: ella-thomas
+  first: Ella
+  last: Thomas
+  grade: 1
+
+- id: william-jackson
+  first: William
+  last: Jackson
+  grade: 1
+
+# ---------- STUDENTS — 2nd Grade ----------
+- id: dewey-wilkerson
+  first: Dewey
+  last: Wilkerson
+  grade: 2
+
+- id: julie-houlerman
+  first: Julie
+  last: Houlerman
+  grade: 2
+
+- id: cynthia-sanders
+  first: Cynthia
+  last: Sanders
+  grade: 2
+
+- id: sophia-harris
+  first: Sophia
+  last: Harris
+  grade: 2
+
+- id: henry-martin
+  first: Henry
+  last: Martin
+  grade: 2
+
+- id: luna-thompson
+  first: Luna
+  last: Thompson
+  grade: 2
+
+- id: jack-robinson
+  first: Jack
+  last: Robinson
+  grade: 2
+
+# ---------- STUDENTS — 3rd Grade ----------
+- id: aria-clark
+  first: Aria
+  last: Clark
+  grade: 3
+
+- id: daniel-rodriguez
+  first: Daniel
+  last: Rodriguez
+  grade: 3
+
+- id: scarlett-lewis
+  first: Scarlett
+  last: Lewis
+  grade: 3
+
+- id: matthew-walker
+  first: Matthew
+  last: Walker
+  grade: 3
+
+- id: grace-hall
+  first: Grace
+  last: Hall
+  grade: 3
+
+- id: owen-allen
+  first: Owen
+  last: Allen
+  grade: 3
+
+- id: chloe-young
+  first: Chloe
+  last: Young
+  grade: 3
+
+- id: sebastian-hernandez
+  first: Sebastian
+  last: Hernandez
+  grade: 3
+
+# ---------- STUDENTS — 4th Grade ----------
 - id: malcolm-wilkerson
   first: Malcolm
   last: Wilkerson
   grade: 4
   quote: "I'm not a brain, okay? I'm just a kid."
 
-- id: reese-wilkerson
-  first: Reese
-  last: Wilkerson
-  grade: 5
-  quote: "I'm playing with my food. It's a known fact that food that's been played with tastes better."
-
-- id: dewey-wilkerson
-  first: Dewey
-  last: Wilkerson
-  grade: 2
-
-- id: francis-wilkerson
-  first: Francis
-  last: Wilkerson
-  grade: 5
-  nickname: "Frankie"
-
 - id: stevie-kenarban
   first: Stevie
   last: Kenarban
   grade: 4
   quote: "Malcolm... is... wrong."
-
-- id: cynthia-sanders
-  first: Cynthia
-  last: Sanders
-  grade: 4
 
 - id: dabney-hooper
   first: Dabney
@@ -75,17 +253,133 @@
   last: Ainsley
   grade: 4
 
-- id: julie-houlerman
-  first: Julie
-  last: Houlerman
+- id: penelope-king
+  first: Penelope
+  last: King
   grade: 4
+
+- id: samuel-wright
+  first: Samuel
+  last: Wright
+  grade: 4
+
+- id: layla-scott
+  first: Layla
+  last: Scott
+  grade: 4
+
+- id: jackson-green
+  first: Jackson
+  last: Green
+  grade: 4
+
+# ---------- STUDENTS — 5th Grade ----------
+- id: reese-wilkerson
+  first: Reese
+  last: Wilkerson
+  grade: 5
+  quote: "I'm playing with my food. It's a known fact that food that's been played with tastes better."
+
+- id: francis-wilkerson
+  first: Francis
+  last: Wilkerson
+  grade: 5
+  nickname: "Frankie"
 
 - id: jessica
   first: Jessica
   last: Barton
   grade: 5
 
+- id: victoria-adams
+  first: Victoria
+  last: Adams
+  grade: 5
+  quote: "Every ending is just a new beginning."
+
+- id: benjamin-baker
+  first: Benjamin
+  last: Baker
+  grade: 5
+  nickname: "Ben"
+
+- id: nora-carter
+  first: Nora
+  last: Carter
+  grade: 5
+
+- id: elias-mitchell
+  first: Elias
+  last: Mitchell
+  grade: 5
+
 # ---------- TEACHERS ----------
+- id: ms-rivera
+  first: Maria
+  last: Rivera
+  role: teacher
+  nickname: "Ms. Rivera"
+
+- id: mr-chen
+  first: David
+  last: Chen
+  role: teacher
+  nickname: "Mr. Chen"
+
+- id: ms-lopez
+  first: Sofia
+  last: Lopez
+  role: teacher
+  nickname: "Ms. Lopez"
+
+- id: mr-davis
+  first: James
+  last: Davis
+  role: teacher
+  nickname: "Mr. Davis"
+
+- id: ms-nguyen
+  first: Linh
+  last: Nguyen
+  role: teacher
+  nickname: "Ms. Nguyen"
+
+- id: mr-patel
+  first: Raj
+  last: Patel
+  role: teacher
+  nickname: "Mr. Patel"
+
+- id: ms-thompson
+  first: Sarah
+  last: Thompson
+  role: teacher
+  nickname: "Ms. Thompson"
+
+- id: ms-johnson
+  first: Angela
+  last: Johnson
+  role: teacher
+  nickname: "Ms. Johnson"
+
+- id: mr-williams
+  first: Marcus
+  last: Williams
+  role: teacher
+  nickname: "Mr. Williams"
+
+- id: ms-garcia
+  first: Elena
+  last: Garcia
+  role: teacher
+  nickname: "Ms. Garcia"
+
+- id: ms-brown
+  first: Patricia
+  last: Brown
+  role: teacher
+  nickname: "Ms. Brown"
+
 - id: caroline-miller
   first: Caroline
   last: Miller
