@@ -299,7 +299,7 @@ permalink: /print/
     <li>
       Apply these settings for book-quality output:
       <ul>
-        <li><strong>Paper size:</strong> US Letter (8.5 × 11 in) — matches the standard yearbook format</li>
+        <li><strong>Paper size:</strong> US Letter (8.5 × 11 in) — commonly used for yearbooks and accepted by most print services</li>
         <li><strong>Scale:</strong> 100% (do <em>not</em> check "Fit to page")</li>
         <li><strong>Margins:</strong> None (margins are already built into this page)</li>
         <li><strong>Background graphics:</strong> ✅ Enabled — required so background colors print</li>
@@ -308,7 +308,7 @@ permalink: /print/
     </li>
     <li>Click <strong>Save</strong>. Your PDF will download.</li>
   </ol>
-  <p><em>For the sharpest portraits, make sure your original photos are at least 300 dpi (pixels per inch). Browser-printed PDFs embed images at screen resolution by default; high-resolution source files will look much better in print.</em></p>
+  <p><em>For the sharpest portraits, make sure your original photos are at least 300 dpi (pixels per inch). Print quality depends on the resolution of your source images — higher-resolution photos will reproduce much more clearly in the finished book.</em></p>
 
   <h3>Step 2 — Choose a book printing service</h3>
   <p>Several print-on-demand services accept uploaded PDFs with no minimum order:</p>
@@ -337,7 +337,7 @@ permalink: /print/
       Choose your specifications:
       <ul>
         <li>Size: <strong>8.5 × 11 in</strong></li>
-        <li>Binding: <strong>Perfect Bound</strong> (square spine, looks most like a real yearbook) or <strong>Coil Bound</strong> (lays flat when open)</li>
+        <li>Binding: <strong>Perfect Bound</strong> (square spine, looks most like a real yearbook) or <strong>Coil Bound</strong> (lies flat when open)</li>
         <li>Paper: <strong>Standard Color</strong> (60 lb) or <strong>Premium Color</strong> (70 lb) for richer photos</li>
         <li>Cover: <strong>Matte</strong> or <strong>Glossy</strong> — glossy is traditional for yearbooks</li>
       </ul>
