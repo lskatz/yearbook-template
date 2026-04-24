@@ -75,7 +75,7 @@ labels:
 # _data/people.yml will have her photo at /assets/images/people/jane-smith.jpg
 # by default. Override individual cases with a `photo:` field in people.yml.
 # -----------------------------------------------------------------------------
-photo_path_default: "/assets/images/people/{id}.jpg"
+photo_path_default: "/assets/images/people/{id}.svg"
 photo_placeholder:  "/assets/images/site/placeholder.svg"
 
 
