@@ -72,7 +72,7 @@ layout: default
     by the Ruby plugin so edits to rosters are reflected here with zero work.
   {%- endcomment -%}
   {%- assign m = page.memberships -%}
-  {%- if m.classes.size > 0 or m.clubs.size > 0 or m.sports.size > 0 %}
+  {%- if m.classes.size > 0 or m.clubs.size > 0 or m.sports.size > 0 or m.photos.size > 0 %}
   <section class="memberships">
     <h2 class="memberships__heading">{{ site.labels.appears_in }}</h2>
     <ul class="memberships__list">
@@ -84,6 +84,9 @@ layout: default
       {%- endfor %}
       {%- for group in m.sports %}
         <li><span class="memberships__tag">{{ site.labels.eyebrow_sport }}</span><a href="{{ group.url | relative_url }}">{{ group.title }}</a></li>
+      {%- endfor %}
+      {%- for group in m.photos %}
+        <li><span class="memberships__tag">{{ site.labels.eyebrow_photo_page }}</span><a href="{{ group.url | relative_url }}">{{ group.title }}</a></li>
       {%- endfor %}
     </ul>
   </section>
