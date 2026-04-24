@@ -112,6 +112,11 @@ markdown: kramdown
 highlighter: rouge
 permalink: /:collection/:slug/
 
+# Publish collection documents (e.g. photo pages) whose `date:` field is in
+# the future. Without this, Jekyll silently skips writing those pages at build
+# time, causing 404s for upcoming-event photo pages.
+future: true
+
 plugins:
   - jekyll-feed
   - jekyll-sitemap
