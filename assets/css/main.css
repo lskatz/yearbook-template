@@ -432,6 +432,72 @@ img { max-width: 100%; display: block; }
 }
 .prose p { margin: 0 0 1.2em; }
 
+/* ---------------- Class thumbnail ---------------- */
+/*
+ * Shown at the top of every class page, between the page header and the
+ * roster sections. Uses `thumbnail:` from the class front-matter when set,
+ * otherwise falls back to the `class_thumbnail_default` path in _config.yml.
+ *
+ * To use a custom photo for a class, add to that class's .md:
+ *   thumbnail: "/assets/images/classes/my-class.jpg"
+ *
+ * To hide the thumbnail for a specific class, set:
+ *   thumbnail: ""
+ *
+ * Recommended image dimensions: 800 × 300 px (landscape, 8:3 ratio).
+ */
+.class-thumbnail {
+  margin: 0 0 2.5rem;
+}
+.class-thumbnail__img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-photo);
+  box-shadow: var(--shadow-soft);
+  display: block;
+}
+
+/* ---------------- Group Photo ---------------- */
+/*
+ * Displayed on club and sport pages when `group_photo:` is set in the
+ * page's front-matter. Replace the placeholder SVG with a real photo at
+ * the same path to customise this page for your school.
+ *
+ * To hide this section entirely, remove `group_photo:` from the .md file.
+ */
+.group-photo {
+  border-top: var(--border-width) solid var(--color-border-soft);
+  padding: 2.5rem 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.group-photo__heading {
+  font-family: var(--font-body);
+  font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--color-ink-soft); font-weight: 600;
+  margin: 0 0 1.2rem;
+}
+.group-photo__figure { margin: 0; }
+.group-photo__img {
+  width: 100%;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-photo);
+  box-shadow: var(--shadow-soft);
+  display: block;
+}
+.group-photo__caption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--color-ink-soft);
+  line-height: 1.5;
+}
+.group-photo__label {
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
 /* ---------------- Footer ---------------- */
 .site-footer {
   border-top: var(--border-width) solid var(--color-border);

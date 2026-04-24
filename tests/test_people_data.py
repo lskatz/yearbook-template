@@ -53,16 +53,25 @@ def test_role_values_are_valid(people):
 
 
 def test_students_have_sensible_grades(people):
-    """If a person is a student and has a grade, it should be 0–8 (K–8)."""
+    """If a person is a student and has a grade, it should be PK, K, or 1–8."""
+    valid_string_grades = {"PK", "K"}
     for p in people:
         role = p.get("role", "student")
         if role == "student" and "grade" in p:
-            assert isinstance(p["grade"], int), (
-                f"{p['id']}: grade must be a number, got {p['grade']!r}"
-            )
-            assert 0 <= p["grade"] <= 8, (
-                f"{p['id']}: grade {p['grade']} is out of expected range (0–8)"
-            )
+            grade = p["grade"]
+            if isinstance(grade, str):
+                assert grade in valid_string_grades, (
+                    f"{p['id']}: string grade '{grade}' must be one of "
+                    f"{sorted(valid_string_grades)}"
+                )
+            else:
+                assert isinstance(grade, int), (
+                    f"{p['id']}: grade must be a number or one of "
+                    f"{sorted(valid_string_grades)}, got {grade!r}"
+                )
+                assert 1 <= grade <= 8, (
+                    f"{p['id']}: numeric grade {grade} is out of expected range (1–8)"
+                )
 
 
 def test_staff_have_titles_or_at_least_names(people):

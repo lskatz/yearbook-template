@@ -10,6 +10,14 @@ permalink: /help/
 
 <p>Welcome! Here's a quick guide to getting around.</p>
 
+<aside style="background:#f4efe5;border-left:4px solid #7b2d1e;padding:0.75rem 1rem;margin-bottom:1.5rem;border-radius:2px">
+  <strong>📺 Demo site — fictional characters only.</strong>
+  North Hollywood Elementary is a fictional school. All students, teachers,
+  and staff on this site are characters from the TV show
+  <em>Malcolm in the Middle</em> — Malcolm, Reese, Dewey, Stevie, Dabney, and
+  friends. No real students or personal data are represented here.
+</aside>
+
 <h2>Finding someone</h2>
 <p>
   The fastest way to find a specific person is the search box in the top-right
@@ -57,6 +65,39 @@ permalink: /help/
   If you think someone's missing from the yearbook, or if a name or photo
   needs to be corrected, reach out to your school's yearbook committee. This
   site is maintained by volunteers and they're happy to fix things.
+</p>
+
+<hr>
+
+<h2>Want to make a yearbook like this for your school?</h2>
+<p>
+  This site is built with a free, open-source yearbook template hosted on
+  GitHub. Anyone can use it to create an online yearbook for their own school
+  — no coding experience required.
+</p>
+<p>
+  <strong>To get started:</strong>
+</p>
+<ol>
+  <li>
+    Go to the template repository on GitHub:<br>
+    <a href="{{ site.github_repo }}" target="_blank" rel="noopener noreferrer">{{ site.github_repo }}</a>
+  </li>
+  <li>
+    Click <strong>"Use this template"</strong> → <strong>"Create a new
+    repository"</strong> to make your own private copy.
+  </li>
+  <li>
+    Follow the step-by-step instructions in the repository's
+    <code>docs/SETUP.md</code> file to configure your school name, add
+    students and teachers, and publish your site.
+  </li>
+</ol>
+<p>
+  The template includes full documentation for yearbook committee volunteers
+  covering how to add students, upload photos, create class pages, add clubs
+  and sports teams, and customize colors and fonts — all without needing to
+  know how to code.
 </p>
 
 </article>

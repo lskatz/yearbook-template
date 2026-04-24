@@ -36,33 +36,40 @@ commented.
 
 ```
 _config.yml              Site config. Labels, collections, identity.
+                         Also holds class_thumbnail_default path.
 _data/
   people.yml             THE master people list. Everything else references this.
+                         grade: accepts PK | K (strings) or 1–8 (integers).
 _classes/                One .md file per class. Minimal front-matter.
+                         Optional thumbnail: field for a per-class banner photo.
 _clubs/                  One .md file per club.
+                         Optional group_photo: / photo_annotation: for group shots.
 _sports/                 One .md file per team.
+                         Optional group_photo: / photo_annotation: for group shots.
 _layouts/
   default.html           Shared page chrome
   home.html              Landing page
-  class.html             Class page
-  club.html              Club page
-  sport.html             Sports team page
+  class.html             Class page (renders thumbnail + rosters)
+  club.html              Club page (renders member roster + optional group photo)
+  sport.html             Sports team page (renders roster + optional group photo)
   person.html            Individual profile (auto-generated from people.yml)
   staff.html             Staff directory
 _includes/
   head.html              <head> contents (fonts, CSS, meta tags)
   header.html            Top nav bar + search input
   footer.html            Footer + deferred script load
-  person-card.html       Reusable photo card for a person
+  person-card.html       Reusable photo card (handles PK/K grade labels)
 _plugins/
   people_generator.rb    Custom Jekyll plugin — creates /people/<id>/ pages +
                          builds the memberships reverse index
 assets/
   css/main.css           All styles. CSS variables at the top.
+                         .class-thumbnail and .group-photo blocks for new features.
   js/search.js           Client-side search (fetches /people.json)
   images/
     people/              Student/teacher/staff photos, named <id>.jpg
-    site/                Favicon, placeholder SVG
+    groups/              Group photos for clubs and sports, named <slug>.svg|jpg
+    site/                Favicon, placeholder SVG, class-thumbnail-default.svg
 admin/                   Decap CMS (optional form-based editor)
 tests/                   pytest suite — validates data and structure
 docs/                    Maintainer docs (this folder). Excluded from the build.

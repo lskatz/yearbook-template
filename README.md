@@ -6,9 +6,16 @@ profile pages, and client-side name search. Designed so non-technical
 volunteers can add a student by editing **one line of YAML** and dropping a
 photo in a folder.
 
-> ⚠️ **Privacy first.** This repo is a *template* using public-figure names
-> (the cast of *Malcolm in the Middle*) as example data. Before adding any
-> real students, **fork this repo to a private repository**. See
+> 🎬 **About the demo data.** The live demo site is a fictional elementary
+> school — **North Hollywood Elementary, home of the Krelboynes** — populated
+> with characters from the TV show *Malcolm in the Middle* (Malcolm, Reese,
+> Dewey, Stevie, Dabney, and friends). No real students or staff are included.
+> The school, its mascot, its teachers, and all student data are entirely made
+> up for demonstration purposes.
+
+> ⚠️ **Privacy first.** This repo is a *template* using those fictional names
+> as safe, public-domain-like example data. Before adding any real students,
+> **fork this repo to a private repository**. See
 > [`docs/SETUP.md`](docs/SETUP.md) for details on hosting options and the
 > tradeoffs between a public site and a private one.
 
