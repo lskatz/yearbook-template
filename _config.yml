@@ -78,6 +78,11 @@ labels:
 photo_path_default: "/assets/images/people/{id}.jpg"
 photo_placeholder:  "/assets/images/site/placeholder.svg"
 
+# Default thumbnail shown at the top of every class page.
+# Override for a specific class by adding  thumbnail: "/path/to/photo.jpg"
+# to that class's front-matter. Recommended size: 800 × 300 px.
+class_thumbnail_default: "/assets/images/site/class-thumbnail-default.svg"
+
 
 # =============================================================================
 #  EVERYTHING BELOW IS JEKYLL MACHINERY — you probably don't need to edit it.

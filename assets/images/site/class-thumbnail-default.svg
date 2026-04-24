@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Default class thumbnail — shown on every class page that does NOT set a
+  `thumbnail:` field in its front-matter.
+
+  To use a custom photo for a specific class, add to that class's .md file:
+
+    thumbnail: "/assets/images/classes/4th-grade-krelboynes.jpg"
+
+  To change the default for ALL classes at once, update `class_thumbnail_default`
+  in _config.yml to point to your preferred image file.
+
+  Recommended image size: 800 × 300 px (landscape, 8:3 ratio).
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 800 300" width="800" height="300"
+     role="img" aria-label="Class photo placeholder">
+  <title>Class Photo Placeholder</title>
+
+  <!-- Background — cream paper -->
+  <rect width="800" height="300" fill="#f4efe5"/>
+  <rect x="2" y="2" width="796" height="296" rx="2"
+        fill="none" stroke="#cdbfa5" stroke-width="2"/>
+
+  <!-- Subtle inner fill -->
+  <rect x="12" y="12" width="776" height="276" rx="2" fill="#ebe4d3"/>
+
+  <!-- Classroom silhouette: rows of seated figures -->
+  <!-- Back row (6 figures) -->
+  <g fill="#9b8050" opacity="0.30">
+    <ellipse cx="100" cy="148" rx="22" ry="22"/>
+    <rect x="78"  y="168" width="44" height="44" rx="22"/>
+    <ellipse cx="200" cy="148" rx="22" ry="22"/>
+    <rect x="178" y="168" width="44" height="44" rx="22"/>
+    <ellipse cx="300" cy="148" rx="22" ry="22"/>
+    <rect x="278" y="168" width="44" height="44" rx="22"/>
+    <ellipse cx="400" cy="148" rx="22" ry="22"/>
+    <rect x="378" y="168" width="44" height="44" rx="22"/>
+    <ellipse cx="500" cy="148" rx="22" ry="22"/>
+    <rect x="478" y="168" width="44" height="44" rx="22"/>
+    <ellipse cx="600" cy="148" rx="22" ry="22"/>
+    <rect x="578" y="168" width="44" height="44" rx="22"/>
+    <ellipse cx="700" cy="148" rx="22" ry="22"/>
+    <rect x="678" y="168" width="44" height="44" rx="22"/>
+  </g>
+
+  <!-- Front row (5 figures, slightly larger) -->
+  <g fill="#7b2d1e" opacity="0.18">
+    <ellipse cx="150" cy="196" rx="26" ry="26"/>
+    <rect x="124"  y="220" width="52" height="52" rx="26"/>
+    <ellipse cx="280" cy="196" rx="26" ry="26"/>
+    <rect x="254"  y="220" width="52" height="52" rx="26"/>
+    <ellipse cx="400" cy="196" rx="26" ry="26"/>
+    <rect x="374"  y="220" width="52" height="52" rx="26"/>
+    <ellipse cx="520" cy="196" rx="26" ry="26"/>
+    <rect x="494"  y="220" width="52" height="52" rx="26"/>
+    <ellipse cx="650" cy="196" rx="26" ry="26"/>
+    <rect x="624"  y="220" width="52" height="52" rx="26"/>
+  </g>
+
+  <!-- Label -->
+  <text x="400" y="58"
+        font-family="Georgia, serif"
+        font-size="20"
+        font-weight="bold"
+        fill="#1c1a17"
+        text-anchor="middle">Class Photo</text>
+
+  <!-- Replacement hint -->
+  <text x="400" y="84"
+        font-family="sans-serif"
+        font-size="12"
+        fill="#5b544a"
+        text-anchor="middle">Add  thumbnail: "/assets/images/classes/my-class.jpg"  to the class front-matter</text>
+  <text x="400" y="102"
+        font-family="sans-serif"
+        font-size="11"
+        fill="#9b8050"
+        text-anchor="middle">or update class_thumbnail_default in _config.yml to change the default for all classes</text>
+</svg>

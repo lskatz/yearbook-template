@@ -8,11 +8,17 @@ layout: default
   Data source: any .md file in the _classes/ folder.
 
   Expected front-matter fields:
-    title    — "4th Grade — Krelboynes" (required)
-    grade    — 4 (required, used for sorting on the home page)
-    room     — "Room 11" (optional)
-    teachers — list of person IDs (optional)
-    students — list of person IDs (optional, but c'mon)
+    title     — "4th Grade — Krelboynes" (required)
+    grade     — 4 (required, used for sorting on the home page)
+    room      — "Room 11" (optional)
+    teachers  — list of person IDs (optional)
+    students  — list of person IDs (optional, but c'mon)
+    thumbnail — path to a class photo shown at the top of this page (optional)
+                e.g. "/assets/images/classes/4th-grade-krelboynes.jpg"
+                Falls back to `class_thumbnail_default` from _config.yml when
+                not set, so every class page always has an image. Set
+                `class_thumbnail_default` in _config.yml to change the
+                fallback for every class at once.
 
   To customize:
     • Section labels ("Teachers", "Students") → edit labels in _config.yml.
@@ -30,6 +36,21 @@ layout: default
     <h1 class="page-header__title">{{ page.title }}</h1>
     {%- if page.room %}<p class="page-header__meta">{{ page.room }}</p>{%- endif %}
   </header>
+
+  {%- comment -%}
+    Class thumbnail — shown below the header. Uses `page.thumbnail` if set in the
+    class's front-matter; otherwise falls back to `site.class_thumbnail_default`.
+    To skip the image entirely, set `thumbnail: ""` in the class front-matter.
+  {%- endcomment -%}
+  {%- assign thumb_src = page.thumbnail | default: site.class_thumbnail_default -%}
+  {%- if thumb_src and thumb_src != "" %}
+  <div class="class-thumbnail">
+    <img
+      src="{{ thumb_src | relative_url }}"
+      alt="{{ page.title }} class photo"
+      class="class-thumbnail__img">
+  </div>
+  {%- endif %}
 
   {%- comment -%}
     Teachers section — only rendered if the page lists at least one teacher.
