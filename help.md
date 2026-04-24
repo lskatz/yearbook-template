@@ -10,6 +10,14 @@ permalink: /help/
 
 <p>Welcome! Here's a quick guide to getting around.</p>
 
+<aside style="background:#f4efe5;border-left:4px solid #7b2d1e;padding:0.75rem 1rem;margin-bottom:1.5rem;border-radius:2px">
+  <strong>📺 Demo site — fictional characters only.</strong>
+  North Hollywood Elementary is a fictional school. All students, teachers,
+  and staff on this site are characters from the TV show
+  <em>Malcolm in the Middle</em> — Malcolm, Reese, Dewey, Stevie, Dabney, and
+  friends. No real students or personal data are represented here.
+</aside>
+
 <h2>Finding someone</h2>
 <p>
   The fastest way to find a specific person is the search box in the top-right
