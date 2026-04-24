@@ -92,6 +92,20 @@ module Yearbook
       people.each do |person|
         site.pages << PersonPage.new(site, site.source, person, memberships[person['id']])
       end
+
+      # --- Step 4: Add grade_sort to class documents ----------------------
+      # Maps grade values to integers for correct ordering:
+      #   PK → -2, K → -1, 1 → 1, 2 → 2, … so PK and K sort first.
+      # Classes with no grade field default to 0 (between K and 1st grade).
+      (site.collections['classes']&.docs || []).each do |doc|
+        grade = doc.data['grade']
+        doc.data['grade_sort'] = case grade.to_s.upcase
+          when 'PK' then -2
+          when 'K'  then -1
+          when ''   then 0   # grade not set — place after K, before 1st
+          else grade.to_i
+        end
+      end
     end
 
     private

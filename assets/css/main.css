@@ -240,6 +240,16 @@ img { max-width: 100%; display: block; }
   font-size: 1.2rem;
   font-variation-settings: "SOFT" 50;
 }
+.index-list__thumbnail {
+  display: block;
+  /* Extends the image to the card edges, overcoming the link's padding */
+  width: calc(100% + 2.8rem);
+  margin: -1.2rem -1.4rem 0.8rem;
+  height: 120px;
+  object-fit: cover;
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+  border-bottom: var(--border-width) solid var(--color-border);
+}
 
 /* ---------------- Page header (class/club/sport/person) ---------------- */
 .page-header {
