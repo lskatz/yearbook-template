@@ -20,6 +20,15 @@ layout: default
     photo_caption  — short label before the annotation list, e.g. "Left to right:"
     photo_annotation — ordered list of person IDs pictured in group_photo;
                      their names are looked up automatically from people.yml.
+    group_photos   — list of group photo objects for multiple photos (optional)
+                     Each item may have: src, caption, annotation.
+                     When set, overrides group_photo.
+                     e.g.:
+                       group_photos:
+                         - src: "/assets/images/groups/soccer-fall.jpg"
+                           caption: "Left to right:"
+                           annotation: [person1-id, person2-id]
+                         - src: "/assets/images/groups/soccer-spring.jpg"
 
   The "meta" line under the title combines season and record intelligently:
     • both present:  "Fall · Record: 8–2"
@@ -71,13 +80,39 @@ layout: default
   {%- endif %}
 
   {%- comment -%}
-    Group photo — optional. Add `group_photo: /assets/images/groups/my-team.jpg`
-    to the page's front-matter to display a group photo here. Use
-    `photo_annotation` (a list of person IDs) to auto-generate the caption.
+    Group photo(s) — optional. Add `group_photos:` (a list of objects with
+    `src`, optional `caption`, and optional `annotation` keys) for multiple
+    photos, or the simpler `group_photo:` for a single photo. When
+    `group_photos` is present it takes precedence over `group_photo`.
+    Use `annotation` (a list of person IDs) to auto-generate the caption.
     Replace the placeholder SVG with an actual photo file at the same path
     to customise for your school.
   {%- endcomment -%}
-  {%- if page.group_photo %}
+  {%- if page.group_photos and page.group_photos.size > 0 %}
+    {%- for gp in page.group_photos %}
+  <section class="group-photo">
+    <h2 class="group-photo__heading">Group Photo</h2>
+    <figure class="group-photo__figure">
+      <img
+        src="{{ gp.src | relative_url }}"
+        alt="{{ page.title }} group photo"
+        class="group-photo__img">
+      {%- if gp.annotation and gp.annotation.size > 0 %}
+      <figcaption class="group-photo__caption">
+        {%- if gp.caption %}<span class="group-photo__label">{{ gp.caption }}</span> {%- endif -%}
+        {%- for pid in gp.annotation -%}
+          {%- assign gpperson = site.data.people_by_id[pid] -%}
+          {%- if gpperson -%}
+            {{- gpperson.display_name -}}
+            {%- unless forloop.last %}, {% endunless -%}
+          {%- endif -%}
+        {%- endfor %}
+      </figcaption>
+      {%- endif %}
+    </figure>
+  </section>
+    {%- endfor %}
+  {%- elsif page.group_photo %}
   <section class="group-photo">
     <h2 class="group-photo__heading">Group Photo</h2>
     <figure class="group-photo__figure">

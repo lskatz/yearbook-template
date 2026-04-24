@@ -38,13 +38,26 @@ layout: default
   {%- comment -%} Classes, grouped and sorted by grade {%- endcomment -%}
   <section id="classes" class="index-section">
     <h2 class="index-section__heading">{{ site.labels.section_classes }}</h2>
-    {%- assign classes_by_grade = site.classes | sort: "grade" -%}
+    {%- assign classes_by_grade = site.classes | sort: "grade_sort" -%}
     <ul class="index-list">
       {%- for c in classes_by_grade %}
+        {%- if c.thumbnails and c.thumbnails.size > 0 -%}
+          {%- assign home_thumb = c.thumbnails[0] -%}
+        {%- else -%}
+          {%- assign home_thumb = c.thumbnail | default: site.class_thumbnail_default -%}
+        {%- endif -%}
         <li>
           <a href="{{ c.url | relative_url }}">
+            {%- if home_thumb and home_thumb != "" %}
+            <img
+              src="{{ home_thumb | relative_url }}"
+              alt="{{ c.title }}"
+              class="index-list__thumbnail"
+              loading="lazy">
+            {%- endif %}
             <span class="index-list__eyebrow">
-              {%- if c.grade == 0 or c.grade == "K" -%}Kindergarten
+              {%- if c.grade == "PK" -%}Pre-K
+              {%- elsif c.grade == 0 or c.grade == "K" -%}Kindergarten
               {%- else -%}Grade {{ c.grade }}
               {%- endif -%}
             </span>

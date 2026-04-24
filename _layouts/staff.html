@@ -6,12 +6,11 @@ layout: default
   staff.html — the Faculty & Staff directory page (/staff/)
   =============================================================================
   Data source: staff.md (for the title/intro) + automatic selection of every
-  person in _data/people.yml whose `role` is "staff".
+  person in _data/people.yml whose `role` is "staff" or "teacher".
 
-  Note: teachers are NOT shown here by default — they're already on their
-  class pages. If you want to include teachers on this page, change the
-  filter below from `where: "role", "staff"` to something that includes
-  both teachers and staff.
+  Teachers are shown here as well as on their individual class pages.
+  To limit this page to non-teaching staff only, see the comment near the
+  `assign staff_only` line below.
   =============================================================================
 {%- endcomment -%}
 <article class="page-staff wrap">
@@ -21,11 +20,15 @@ layout: default
   </header>
 
   {%- comment -%}
-    Automatically pull everyone with role=staff. No manual roster to maintain.
-    To include teachers too: replace the line below with
-    {% assign staff = site.data.people | where_exp: "p", "p.role != 'student'" %}
+    Pull everyone with role=staff or role=teacher. Staff appear first,
+    followed by teachers.
+    To limit this page to non-teaching staff only, change the two lines
+    below to just:
+      {% assign staff = site.data.people | where: "role", "staff" %}
   {%- endcomment -%}
-  {%- assign staff = site.data.people | where: "role", "staff" -%}
+  {%- assign staff_only = site.data.people | where: "role", "staff" -%}
+  {%- assign teachers = site.data.people | where: "role", "teacher" -%}
+  {%- assign staff = staff_only | concat: teachers -%}
   {%- if staff.size > 0 %}
   <section class="roster">
     <div class="roster__grid roster__grid--lg">
