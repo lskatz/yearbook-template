@@ -78,13 +78,14 @@ module Yearbook
       site.data['people_by_id'] = by_id
 
       # --- Step 2: Build reverse index of memberships ---------------------
-      # For each person, collect every class/club/sport that references them.
-      # Structure: { "malcolm-wilkerson" => { classes: [...], clubs: [...], sports: [...] } }
-      memberships = Hash.new { |h, k| h[k] = { 'classes' => [], 'clubs' => [], 'sports' => [] } }
+      # For each person, collect every class/club/sport/photo-page that references them.
+      # Structure: { "malcolm-wilkerson" => { classes: [...], clubs: [...], sports: [...], photos: [...] } }
+      memberships = Hash.new { |h, k| h[k] = { 'classes' => [], 'clubs' => [], 'sports' => [], 'photos' => [] } }
 
       index_collection(site, 'classes', %w[students teachers], memberships)
       index_collection(site, 'clubs',   %w[members advisors],  memberships)
       index_collection(site, 'sports',  %w[members coaches],   memberships)
+      index_photos(site, memberships)
 
       site.data['memberships'] = memberships
 
@@ -130,6 +131,21 @@ module Yearbook
             bucket = memberships[pid][coll_name]
             bucket << { 'title' => doc.data['title'], 'url' => doc.url, 'role' => field }
           end
+        end
+      end
+    end
+
+    # Walk every photo page and record each person who is labeled in at least
+    # one photo on that page. Each photo page appears at most once per person,
+    # even if the same person is labeled in multiple photos on the same page.
+    def index_photos(site, memberships)
+      (site.collections['photos']&.docs || []).each do |doc|
+        title = doc.data['title']
+        url   = doc.url
+        # Collect unique person IDs labeled anywhere on this photo page.
+        person_ids = (doc.data['photos'] || []).flat_map { |photo| photo['labels'] || [] }.uniq
+        person_ids.each do |pid|
+          memberships[pid]['photos'] << { 'title' => title, 'url' => url }
         end
       end
     end

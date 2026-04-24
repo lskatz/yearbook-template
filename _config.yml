@@ -51,6 +51,7 @@ labels:
   eyebrow_club:  "Club"
   eyebrow_sport: "Team"
   eyebrow_staff: "Staff"
+  eyebrow_photo_page: "Photos"
 
   # Roster section headings (singular used when only 1, plural for 2+)
   teachers_one:  "Teacher"

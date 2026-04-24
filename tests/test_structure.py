@@ -75,6 +75,7 @@ def test_config_has_labels_block(root):
         "nav_classes", "nav_clubs", "nav_sports", "nav_staff", "nav_help",
         "nav_photos",
         "eyebrow_class", "eyebrow_club", "eyebrow_sport", "eyebrow_staff",
+        "eyebrow_photo_page",
         "teachers_one", "teachers_many", "students",
         "advisors_one", "advisors_many", "members",
         "coaches_one", "coaches_many", "roster",
