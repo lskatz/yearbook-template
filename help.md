@@ -60,6 +60,23 @@ permalink: /help/
   hidden, leaving just the photos and names on the page.
 </p>
 
+<h2>Printing the entire yearbook as a PDF</h2>
+<p>
+  The <a href="{{ '/print/' | relative_url }}">Print PDF</a> page compiles the
+  whole yearbook — all classes, clubs, sports teams, staff, and photo pages —
+  into one continuous document formatted for 8.5 × 11 in (US Letter) paper,
+  the standard size used by book printing services.
+</p>
+<p>
+  Click the <strong>Print / Save as PDF</strong> button at the top of that
+  page (or press Ctrl+P / ⌘P) and set your browser's destination to
+  <em>"Save as PDF"</em> to download the file. That page also includes
+  step-by-step instructions for submitting the PDF to a print-on-demand
+  service such as <a href="https://www.lulu.com" target="_blank" rel="noopener noreferrer">Lulu.com</a>
+  or <a href="https://www.blurb.com" target="_blank" rel="noopener noreferrer">Blurb</a>
+  so you can order physical copies with no minimum order.
+</p>
+
 <h2>Can't find someone?</h2>
 <p>
   If you think someone's missing from the yearbook, or if a name or photo

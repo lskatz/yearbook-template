@@ -1,0 +1,44 @@
+{%- comment -%}
+  =============================================================================
+  person-card-print.html — a compact person card suitable for PDF printing
+  =============================================================================
+  Like person-card.html but:
+    • No <a> link wrapper (links are meaningless in print)
+    • Uses <div> instead so hover/focus styles are not needed
+    • Otherwise identical markup/classes so the same CSS applies
+
+  USAGE:
+    {% include person-card-print.html id="malcolm-wilkerson" %}
+    {% include person-card-print.html id="mr-herkabe" size="lg" %}
+  =============================================================================
+{%- endcomment -%}
+{%- assign p = site.data.people_by_id[include.id] -%}
+{%- if p -%}
+<div class="person-card person-card--{{ include.size | default: 'md' }}">
+  <figure class="person-card__frame">
+    <img
+      src="{{ p.photo | relative_url }}"
+      alt="{{ p.display_name }}"
+      onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'person-card__fallback',textContent:{{ p.initials | jsonify | escape }}}))">
+  </figure>
+  <figcaption class="person-card__caption">
+    <span class="person-card__name">{{ p.display_name }}</span>
+
+    {%- if p.role == 'student' and p.grade -%}
+      {%- if p.grade == 'PK' -%}
+        <span class="person-card__meta">Pre-K</span>
+      {%- elsif p.grade == 'K' -%}
+        <span class="person-card__meta">Kindergarten</span>
+      {%- else -%}
+        <span class="person-card__meta">Grade {{ p.grade }}</span>
+      {%- endif -%}
+    {%- elsif p.title -%}
+      <span class="person-card__meta">{{ p.title }}</span>
+    {%- elsif p.role == 'teacher' -%}
+      <span class="person-card__meta">{{ site.labels.teachers_one }}</span>
+    {%- endif -%}
+  </figcaption>
+</div>
+{%- else -%}
+<span class="person-card person-card--missing">Unknown: {{ include.id }}</span>
+{%- endif -%}

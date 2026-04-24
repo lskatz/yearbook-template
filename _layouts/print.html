@@ -1,0 +1,54 @@
+{%- comment -%}
+  =============================================================================
+  print.html — a stripped-down layout for the full-yearbook print/PDF view
+  =============================================================================
+  Used by print.md (/print/).
+
+  This layout intentionally omits the sticky site header, the search box, and
+  the footer so that the printed/exported PDF contains only yearbook content.
+
+  A floating "Print / Save as PDF" button is shown on screen but is hidden
+  when the browser's print dialog is open (via @media print in main.css).
+
+  Book-printing specifications met by this layout + its companion CSS:
+    • Page size  : US Letter  (8.5 × 11 in)
+    • Margins    : 0.75 in all sides (safe zone for most print services)
+    • Gutter     : additional 0.25 in on the binding side (inner margin = 1 in)
+    • Color mode : RGB (sRGB) — accepted by Lulu, Blurb, and most print-on-
+                   demand services; you can convert to CMYK in Acrobat if
+                   required by your chosen service
+    • Resolution : images are printed at whatever resolution they are stored;
+                   use 300 dpi photos for best results
+    • Font embed : browsers embed font outlines when printing to PDF, so all
+                   text is preserved faithfully even if the reader's device
+                   does not have the web fonts installed
+  =============================================================================
+{%- endcomment -%}
+<!DOCTYPE html>
+<html lang="en">
+  {%- include head.html -%}
+  <body class="print-layout">
+
+    {%- comment -%} On-screen only: floating action bar with print button {%- endcomment -%}
+    <div class="print-bar no-print" aria-hidden="true">
+      <div class="print-bar__inner">
+        <div class="print-bar__info">
+          <strong>{{ site.title }}</strong>
+          <span class="print-bar__year">{{ site.school_year }}</span>
+        </div>
+        <div class="print-bar__actions">
+          <a class="print-bar__help-link" href="{{ '/print/#print-instructions' | relative_url }}">How to submit to a print service ↓</a>
+          <button class="print-bar__btn" onclick="window.print()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print / Save as PDF
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <main class="print-main">
+      {{ content }}
+    </main>
+
+  </body>
+</html>
