@@ -5,6 +5,7 @@ room: "Room 12"
 teachers:
   - ms-garcia
 students:
+  - handsome-katz
   - penelope-king
   - samuel-wright
   - layla-scott

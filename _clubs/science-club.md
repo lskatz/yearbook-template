@@ -4,6 +4,7 @@ meets: "Tuesdays after school"
 advisors:
   - mr-herkabe
 members:
+  - handsome-katz
   - malcolm-wilkerson
   - stevie-kenarban
   - daniel-rodriguez
@@ -15,6 +16,7 @@ members:
 group_photo: "/assets/images/groups/science-club.svg"
 photo_caption: "Science Club, left to right:"
 photo_annotation:
+  - handsome-katz
   - malcolm-wilkerson
   - stevie-kenarban
   - daniel-rodriguez

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-label="Mac Katz">
+  <!-- background -->
+  <rect width="300" height="400" fill="#d0ecd4"/>
+
+  <!-- shirt / body -->
+  <path d="M 40,400 L 40,310 C 75,278 112,268 150,268 C 188,268 225,278 260,310 L 260,400 Z" fill="#276749"/>
+  <!-- shirt collar V -->
+  <path d="M 125,278 L 150,300 L 175,278" fill="none" stroke="#1a4731" stroke-width="2.5"/>
+
+  <!-- neck -->
+  <rect x="132" y="255" width="36" height="32" fill="#ffdab9"/>
+
+  <!-- head -->
+  <ellipse cx="150" cy="183" rx="75" ry="82" fill="#ffdab9"/>
+
+  <!-- ear left -->
+  <ellipse cx="74" cy="188" rx="12" ry="16" fill="#ffdab9"/>
+  <ellipse cx="74" cy="188" rx="6" ry="9" fill="#eec4a0"/>
+
+  <!-- ear right -->
+  <ellipse cx="226" cy="188" rx="12" ry="16" fill="#ffdab9"/>
+  <ellipse cx="226" cy="188" rx="6" ry="9" fill="#eec4a0"/>
+
+  <!-- hair — short blond -->
+  <path d="M 75,183
+           Q 75,88 150,88
+           Q 225,88 225,183
+           Q 225,153 208,145
+           Q 188,134 165,130
+           Q 150,128 135,130
+           Q 112,134 92,145
+           Q 75,153 75,183 Z"
+        fill="#f0c040"/>
+  <!-- blond highlight streak -->
+  <path d="M 120,100 Q 150,94 180,100" fill="none" stroke="#f7dc8a" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- eyebrows (blond, slightly darker) -->
+  <path d="M 107,163 Q 123,157 139,163" fill="none" stroke="#c8982a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 161,163 Q 177,157 193,163" fill="none" stroke="#c8982a" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- left eye white -->
+  <ellipse cx="123" cy="180" rx="14" ry="12" fill="white"/>
+  <!-- left iris (blue) -->
+  <circle cx="123" cy="180" r="8" fill="#4a90d9"/>
+  <!-- left pupil -->
+  <circle cx="123" cy="180" r="4" fill="#1a3a6b"/>
+  <!-- left highlight -->
+  <circle cx="126" cy="177" r="2.5" fill="white"/>
+
+  <!-- right eye white -->
+  <ellipse cx="177" cy="180" rx="14" ry="12" fill="white"/>
+  <!-- right iris (blue) -->
+  <circle cx="177" cy="180" r="8" fill="#4a90d9"/>
+  <!-- right pupil -->
+  <circle cx="177" cy="180" r="4" fill="#1a3a6b"/>
+  <!-- right highlight -->
+  <circle cx="180" cy="177" r="2.5" fill="white"/>
+
+  <!-- nose -->
+  <ellipse cx="150" cy="210" rx="6" ry="9" fill="#eec4a0"/>
+  <circle cx="144" cy="215" r="3" fill="#d4a882"/>
+  <circle cx="156" cy="215" r="3" fill="#d4a882"/>
+
+  <!-- mouth / smile -->
+  <path d="M 128,237 Q 150,255 172,237" fill="none" stroke="#c07050" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- teeth -->
+  <path d="M 130,237 Q 150,247 170,237 L 170,241 Q 150,251 130,241 Z" fill="white"/>
+  <!-- lip line -->
+  <line x1="130" y1="241" x2="170" y2="241" stroke="#c07050" stroke-width="1.5"/>
+</svg>

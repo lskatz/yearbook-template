@@ -26,6 +26,12 @@
 # =============================================================================
 
 # ---------- STUDENTS — Pre-K ----------
+- id: sister-fun-katz
+  first: Sister-Fun
+  last: Katz
+  grade: PK
+  photo: "/assets/images/people/sister-fun-katz.svg"
+
 - id: emma-rodriguez
   first: Emma
   last: Rodriguez
@@ -149,6 +155,12 @@
   grade: 1
 
 # ---------- STUDENTS — 2nd Grade ----------
+- id: mac-katz
+  first: Mac
+  last: Katz
+  grade: 2
+  photo: "/assets/images/people/mac-katz.svg"
+
 - id: dewey-wilkerson
   first: Dewey
   last: Wilkerson
@@ -226,6 +238,12 @@
   grade: 3
 
 # ---------- STUDENTS — 4th Grade ----------
+- id: handsome-katz
+  first: Handsome
+  last: Katz
+  grade: 4
+  photo: "/assets/images/people/handsome-katz.svg"
+
 - id: malcolm-wilkerson
   first: Malcolm
   last: Wilkerson

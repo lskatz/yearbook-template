@@ -5,6 +5,7 @@ room: "Room 8"
 teachers:
   - ms-thompson
 students:
+  - mac-katz
   - sophia-harris
   - henry-martin
   - luna-thompson

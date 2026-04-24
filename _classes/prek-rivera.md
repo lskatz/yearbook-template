@@ -5,6 +5,7 @@ room: "Room 1"
 teachers:
   - ms-rivera
 students:
+  - sister-fun-katz
   - emma-rodriguez
   - liam-oconnor
   - sofia-park
