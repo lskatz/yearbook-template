@@ -18,6 +18,7 @@ mascot: "The Krelboynes"
 # page so visitors who want to create their own yearbook can find the template.
 # Update this to your own fork's URL after you use the template.
 github_repo: "https://github.com/lskatz/yearbook-template"
+template_version: "0.01"
 
 # If your site is deployed at https://your-org.github.io (no subpath), leave
 # both of these empty. If it's at https://your-org.github.io/yearbook/, set
