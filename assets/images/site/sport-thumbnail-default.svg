@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Default sport thumbnail — shown on every sport page that does NOT set a
+  `thumbnail:` field in its front-matter.
+
+  To use a custom photo for a specific sport, add to that sport's .md file:
+
+    thumbnail: "/assets/images/groups/soccer.jpg"
+
+  To change the default for ALL sports at once, update `sport_thumbnail_default`
+  in _config.yml to point to your preferred image file.
+
+  Recommended image size: 800 × 300 px (landscape, 8:3 ratio).
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 800 300" width="800" height="300"
+     role="img" aria-label="Team photo placeholder">
+  <title>Team Photo Placeholder</title>
+
+  <!-- Background — sky blue tint -->
+  <rect width="800" height="300" fill="#eaf2fb"/>
+  <rect x="2" y="2" width="796" height="296" rx="2"
+        fill="none" stroke="#a0bfd8" stroke-width="2"/>
+
+  <!-- Subtle inner fill -->
+  <rect x="12" y="12" width="776" height="276" rx="2" fill="#d8eaf6"/>
+
+  <!-- Team rows: back row standing, front row kneeling -->
+  <!-- Back row (7 figures, standing) -->
+  <g fill="#1a5a9a" opacity="0.22">
+    <ellipse cx="100" cy="148" rx="22" ry="22"/>
+    <rect x="78"  y="168" width="44" height="44" rx="22"/>
+    <ellipse cx="200" cy="148" rx="22" ry="22"/>
+    <rect x="178" y="168" width="44" height="44" rx="22"/>
+    <ellipse cx="300" cy="148" rx="22" ry="22"/>
+    <rect x="278" y="168" width="44" height="44" rx="22"/>
+    <ellipse cx="400" cy="148" rx="22" ry="22"/>
+    <rect x="378" y="168" width="44" height="44" rx="22"/>
+    <ellipse cx="500" cy="148" rx="22" ry="22"/>
+    <rect x="478" y="168" width="44" height="44" rx="22"/>
+    <ellipse cx="600" cy="148" rx="22" ry="22"/>
+    <rect x="578" y="168" width="44" height="44" rx="22"/>
+    <ellipse cx="700" cy="148" rx="22" ry="22"/>
+    <rect x="678" y="168" width="44" height="44" rx="22"/>
+  </g>
+
+  <!-- Front row (5 figures, slightly larger / kneeling) -->
+  <g fill="#1a3a6a" opacity="0.15">
+    <ellipse cx="150" cy="202" rx="24" ry="20"/>
+    <rect x="126"  y="220" width="48" height="40" rx="20"/>
+    <ellipse cx="280" cy="202" rx="24" ry="20"/>
+    <rect x="256"  y="220" width="48" height="40" rx="20"/>
+    <ellipse cx="400" cy="202" rx="24" ry="20"/>
+    <rect x="376"  y="220" width="48" height="40" rx="20"/>
+    <ellipse cx="520" cy="202" rx="24" ry="20"/>
+    <rect x="496"  y="220" width="48" height="40" rx="20"/>
+    <ellipse cx="650" cy="202" rx="24" ry="20"/>
+    <rect x="626"  y="220" width="48" height="40" rx="20"/>
+  </g>
+
+  <!-- Label -->
+  <text x="400" y="58"
+        font-family="Georgia, serif"
+        font-size="20"
+        font-weight="bold"
+        fill="#0f1e2e"
+        text-anchor="middle">Team Photo</text>
+
+  <!-- Replacement hint -->
+  <text x="400" y="84"
+        font-family="sans-serif"
+        font-size="12"
+        fill="#2a5a8a"
+        text-anchor="middle">Add  thumbnail: "/assets/images/groups/my-sport.jpg"  to the sport front-matter</text>
+  <text x="400" y="102"
+        font-family="sans-serif"
+        font-size="11"
+        fill="#5a8ab0"
+        text-anchor="middle">or update sport_thumbnail_default in _config.yml to change the default for all sports</text>
+</svg>

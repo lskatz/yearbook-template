@@ -73,8 +73,16 @@ layout: default
     <h2 class="index-section__heading">{{ site.labels.section_clubs }}</h2>
     <ul class="index-list">
       {%- for c in site.clubs %}
+        {%- assign home_thumb = c.thumbnail | default: site.club_thumbnail_default -%}
         <li>
           <a href="{{ c.url | relative_url }}">
+            {%- if home_thumb and home_thumb != "" %}
+            <img
+              src="{{ home_thumb | relative_url }}"
+              alt="{{ c.title }}"
+              class="index-list__thumbnail"
+              loading="lazy">
+            {%- endif %}
             <span class="index-list__eyebrow">{{ site.labels.eyebrow_club }}</span>
             <span class="index-list__title">{{ c.title }}</span>
           </a>
@@ -88,8 +96,16 @@ layout: default
     <h2 class="index-section__heading">{{ site.labels.section_sports }}</h2>
     <ul class="index-list">
       {%- for s in site.sports %}
+        {%- assign home_thumb = s.thumbnail | default: site.sport_thumbnail_default -%}
         <li>
           <a href="{{ s.url | relative_url }}">
+            {%- if home_thumb and home_thumb != "" %}
+            <img
+              src="{{ home_thumb | relative_url }}"
+              alt="{{ s.title }}"
+              class="index-list__thumbnail"
+              loading="lazy">
+            {%- endif %}
             <span class="index-list__eyebrow">{{ site.labels.eyebrow_sport }}</span>
             <span class="index-list__title">{{ s.title }}</span>
           </a>

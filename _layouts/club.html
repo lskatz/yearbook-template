@@ -12,6 +12,10 @@ layout: default
     meets          — "Wednesdays after school" (optional, shown under title)
     advisors       — list of person IDs (optional)
     members        — list of person IDs (optional)
+    thumbnail      — path to a thumbnail shown at the top of this page (optional)
+                     e.g. "/assets/images/groups/chess-club.jpg"
+                     Falls back to `club_thumbnail_default` from _config.yml.
+                     Set `thumbnail: ""` to suppress the thumbnail for a specific club.
     group_photo    — path to a group photo image (optional)
                      e.g. "/assets/images/groups/chess-club.jpg"
                      Replace the placeholder SVG with an actual photo to
@@ -39,6 +43,22 @@ layout: default
     <h1 class="page-header__title">{{ page.title }}</h1>
     {%- if page.meets %}<p class="page-header__meta">Meets {{ page.meets }}</p>{%- endif %}
   </header>
+
+  {%- comment -%}
+    Club thumbnail — shown below the header. Supports a single path via
+    `thumbnail:` (falls back to `club_thumbnail_default` from _config.yml).
+    To skip the thumbnail for a specific club, set `thumbnail: ""` with no
+    value in the club front-matter.
+  {%- endcomment -%}
+  {%- assign thumb_src = page.thumbnail | default: site.club_thumbnail_default -%}
+  {%- if thumb_src and thumb_src != "" %}
+  <div class="page-thumbnail">
+    <img
+      src="{{ thumb_src | relative_url }}"
+      alt="{{ page.title }} photo"
+      class="page-thumbnail__img">
+  </div>
+  {%- endif %}
 
   {%- comment -%} Advisors — typically teachers or parent volunteers {%- endcomment -%}
   {%- if page.advisors and page.advisors.size > 0 %}

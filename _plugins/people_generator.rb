@@ -80,7 +80,7 @@ module Yearbook
       # --- Step 2: Build reverse index of memberships ---------------------
       # For each person, collect every class/club/sport that references them.
       # Structure: { "malcolm-wilkerson" => { classes: [...], clubs: [...], sports: [...] } }
-      memberships = Hash.new { |h, k| h[k] = { classes: [], clubs: [], sports: [] } }
+      memberships = Hash.new { |h, k| h[k] = { 'classes' => [], 'clubs' => [], 'sports' => [] } }
 
       index_collection(site, 'classes', %w[students teachers], memberships)
       index_collection(site, 'clubs',   %w[members advisors],  memberships)
@@ -127,7 +127,7 @@ module Yearbook
       (site.collections[coll_name]&.docs || []).each do |doc|
         id_fields.each do |field|
           (doc.data[field] || []).each do |pid|
-            bucket = memberships[pid][coll_name.to_sym]
+            bucket = memberships[pid][coll_name]
             bucket << { 'title' => doc.data['title'], 'url' => doc.url, 'role' => field }
           end
         end

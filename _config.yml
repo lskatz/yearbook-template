@@ -88,6 +88,12 @@ photo_placeholder:  "/assets/images/site/placeholder.svg"
 # to that class's front-matter. Recommended size: 800 × 300 px.
 class_thumbnail_default: "/assets/images/site/class-thumbnail-default.svg"
 
+# Default thumbnails shown at the top of club and sport pages (and on the home
+# page index). Override per page with  thumbnail: "/path/to/photo.jpg"  in
+# the page's front-matter, or set to "" to suppress the thumbnail entirely.
+club_thumbnail_default:  "/assets/images/site/club-thumbnail-default.svg"
+sport_thumbnail_default: "/assets/images/site/sport-thumbnail-default.svg"
+
 
 # =============================================================================
 #  EVERYTHING BELOW IS JEKYLL MACHINERY — you probably don't need to edit it.
