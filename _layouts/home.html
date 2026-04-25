@@ -26,7 +26,118 @@ layout: default
 {%- endcomment -%}
 
 <section class="hero">
-  <div class="wrap">
+  {%- comment -%}
+    ═══════════════════════════════════════════════════════════════
+    Hero cover art — inline SVG decorative layer
+    ═══════════════════════════════════════════════════════════════
+    This SVG sits behind the hero text and creates a classic
+    yearbook-cover feel: diagonal hatch texture, double ruled
+    border lines, corner bracket ornaments, and a central divider.
+
+    All colours are read directly from the CSS custom properties
+    (--color-accent, --color-border, etc.), so changing your
+    school colour in _config.yml / main.css automatically updates
+    this art — no extra edits needed.
+
+    To tweak individual elements:
+      • Corner brackets : edit the four <path d="M …"> elements
+                          inside the "Corner brackets" group
+      • Opacity / weight: change the `opacity` attributes
+      • Remove entirely : delete this whole <svg> block
+    ═══════════════════════════════════════════════════════════════
+  {%- endcomment -%}
+  <svg class="hero__art"
+       xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 1200 380"
+       preserveAspectRatio="xMidYMid slice"
+       aria-hidden="true"
+       focusable="false">
+    <defs>
+      <!-- Subtle diagonal cross-hatch tile — the base texture -->
+      <pattern id="hero-hatch" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 0 20 L 20 0" style="stroke:var(--color-border);stroke-width:0.35;fill:none"/>
+        <path d="M -5 5 L 5 -5" style="stroke:var(--color-border);stroke-width:0.35;fill:none"/>
+        <path d="M 15 25 L 25 15" style="stroke:var(--color-border);stroke-width:0.35;fill:none"/>
+      </pattern>
+    </defs>
+
+    <!-- Cross-hatch background texture -->
+    <rect width="1200" height="380" fill="url(#hero-hatch)" opacity="0.38"/>
+
+    <!-- ── Top double ruled border ── -->
+    <line x1="0" y1="28" x2="1200" y2="28" style="stroke:var(--color-border);stroke-width:1.2"/>
+    <line x1="0" y1="33" x2="1200" y2="33" style="stroke:var(--color-accent);stroke-width:0.6;opacity:0.38"/>
+
+    <!-- ── Bottom double ruled border ── -->
+    <line x1="0" y1="347" x2="1200" y2="347" style="stroke:var(--color-accent);stroke-width:0.6;opacity:0.38"/>
+    <line x1="0" y1="352" x2="1200" y2="352" style="stroke:var(--color-border);stroke-width:1.2"/>
+
+    <!-- ── Accent stripe at very top and bottom edges ── -->
+    <rect x="0" y="0"   width="1200" height="6" style="fill:var(--color-accent);opacity:0.55"/>
+    <rect x="0" y="374" width="1200" height="6" style="fill:var(--color-accent);opacity:0.55"/>
+
+    <!-- ── Corner bracket ornaments ── -->
+    <g style="stroke:var(--color-accent);fill:none;stroke-width:2;stroke-linecap:square;opacity:0.45">
+      <!-- Top-left -->
+      <path d="M 42 95 L 42 42 L 95 42"/>
+      <!-- Top-right -->
+      <path d="M 1158 95 L 1158 42 L 1105 42"/>
+      <!-- Bottom-left -->
+      <path d="M 42 285 L 42 338 L 95 338"/>
+      <!-- Bottom-right -->
+      <path d="M 1158 285 L 1158 338 L 1105 338"/>
+    </g>
+
+    <!-- ── Diamond ornaments at bracket inner corners ── -->
+    <g style="fill:var(--color-accent);opacity:0.38">
+      <!-- Top-left diamond -->
+      <path d="M42 42 L50 54 L42 66 L34 54 Z"/>
+      <!-- Top-right diamond -->
+      <path d="M1158 42 L1166 54 L1158 66 L1150 54 Z"/>
+      <!-- Bottom-left diamond -->
+      <path d="M42 314 L50 326 L42 338 L34 326 Z"/>
+      <!-- Bottom-right diamond -->
+      <path d="M1158 314 L1166 326 L1158 338 L1150 326 Z"/>
+    </g>
+
+    <!-- ── Small 4-pointed star at top-centre of border rule ── -->
+    <path d="M600 21 L603 26 L610 28 L603 30 L600 35 L597 30 L590 28 L597 26 Z"
+          style="fill:var(--color-accent);opacity:0.4"/>
+    <!-- ── Small 4-pointed star at bottom-centre ── -->
+    <path d="M600 345 L603 350 L610 352 L603 354 L600 359 L597 354 L590 352 L597 350 Z"
+          style="fill:var(--color-accent);opacity:0.4"/>
+
+    <!-- ── Evenly spaced accent dots along both border rules ── -->
+    <g style="fill:var(--color-accent);opacity:0.28">
+      <circle cx="200"  cy="30.5" r="2.5"/>
+      <circle cx="400"  cy="30.5" r="2.5"/>
+      <circle cx="800"  cy="30.5" r="2.5"/>
+      <circle cx="1000" cy="30.5" r="2.5"/>
+      <circle cx="200"  cy="349.5" r="2.5"/>
+      <circle cx="400"  cy="349.5" r="2.5"/>
+      <circle cx="800"  cy="349.5" r="2.5"/>
+      <circle cx="1000" cy="349.5" r="2.5"/>
+    </g>
+
+    <!-- ── Central horizontal divider with diamond centrepiece ── -->
+    <!-- Left arm -->
+    <line x1="115" y1="190" x2="566" y2="190"
+          style="stroke:var(--color-border);stroke-width:0.9;opacity:0.55"/>
+    <!-- Centre diamond -->
+    <path d="M600 179 L613 190 L600 201 L587 190 Z"
+          style="fill:var(--color-accent);opacity:0.28"/>
+    <!-- Right arm -->
+    <line x1="634" y1="190" x2="1085" y2="190"
+          style="stroke:var(--color-border);stroke-width:0.9;opacity:0.55"/>
+
+    <!-- Thin secondary lines flanking the central divider -->
+    <line x1="115" y1="195" x2="566" y2="195"
+          style="stroke:var(--color-border);stroke-width:0.4;opacity:0.3"/>
+    <line x1="634" y1="195" x2="1085" y2="195"
+          style="stroke:var(--color-border);stroke-width:0.4;opacity:0.3"/>
+  </svg>
+
+  <div class="wrap hero__content">
     <p class="hero__eyebrow">{{ site.school_year }} · Yearbook</p>
     <h1 class="hero__title">{{ site.title }}</h1>
     <p class="hero__mascot">Home of {{ site.mascot }}</p>

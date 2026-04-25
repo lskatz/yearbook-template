@@ -271,3 +271,169 @@ set `--radius-photo: 8px`, `--photo-border: 0`, and remove the paper-grain
 background effect in the `body` selector.
 
 All of this is reachable from `:root` + a couple lines in the `body` rule.
+
+---
+
+## Custom theme graphics
+
+The yearbook template ships with a set of SVG graphics that give the site a
+classic yearbook feel. Every piece is designed to be replaced or tweaked with
+minimal effort.
+
+---
+
+### Hero cover art
+
+The home page hero is decorated by an **inline SVG layer** embedded in
+`_layouts/home.html`, immediately before the text `<div class="wrap ...">`.
+
+The SVG creates:
+- A subtle diagonal cross-hatch background texture
+- Thin accent-colour stripes at the very top and bottom of the hero
+- A pair of ruled border lines (double-rule, top and bottom)
+- Decorative L-shaped corner bracket ornaments
+- Diamond ornaments at the inner corner of each bracket
+- Evenly-spaced accent dots along the top and bottom rules
+- A central horizontal divider line with a diamond centrepiece
+- 4-pointed star ornaments at the exact centre of the top/bottom rules
+
+**Colours are inherited automatically.** All elements inside the SVG use
+`style="... var(--color-accent) ..."` and similar CSS custom properties, so
+changing `--color-accent` in `_config.yml` / `main.css` updates the hero art
+with no extra steps.
+
+**To tweak the art intensity** — find any SVG group or element and adjust its
+`opacity` attribute:
+
+```xml
+<!-- make corner brackets bolder -->
+<g style="stroke:var(--color-accent);…;opacity:0.7">
+```
+
+**To remove the hero art entirely** — delete the whole `<svg class="hero__art"…>`
+block from `_layouts/home.html`.
+
+---
+
+### Favicon / site icon
+
+The browser-tab icon lives at `assets/images/site/favicon.svg`. It's a
+heraldic shield design containing a school initial.
+
+To customise it:
+1. Open `assets/images/site/favicon.svg`
+2. Change the `fill` on the first `<path>` (shield body) to your school colour
+3. Change the character inside `<text>` to your school's initial letter
+
+```xml
+<!-- change shield colour -->
+<path d="M16 2 …" fill="#1f3a5f"/>   <!-- navy instead of burgundy -->
+
+<!-- change initial -->
+<text …>W</text>                      <!-- "W" for your school name -->
+```
+
+---
+
+### Default thumbnail graphics
+
+All placeholder images are SVG files in `assets/images/site/`. Each has:
+- A coloured accent band at the top and bottom (branded to the content type)
+- A content-type illustration (class rows, club circle, team rows, camera lens)
+- L-shaped corner accent marks framing the content area
+- A label in the top band and a hint in the bottom band
+
+| Content type | SVG file | `_config.yml` key |
+|---|---|---|
+| Class pages | `class-thumbnail-default.svg` | `class_thumbnail_default` |
+| Club pages  | `club-thumbnail-default.svg`  | `club_thumbnail_default`  |
+| Sport pages | `sport-thumbnail-default.svg` | `sport_thumbnail_default` |
+| Photo pages | `photo-thumbnail-default.svg` | `photo_thumbnail_default` |
+
+To swap the placeholder for a real photo across all pages of one type:
+
+```yaml
+# _config.yml
+class_thumbnail_default: "/assets/images/my-school-banner.jpg"
+```
+
+To override the image for just one page, add `thumbnail:` to that page's
+front-matter (see [Changing the default class thumbnail](#changing-the-default-class-thumbnail)).
+
+To customise the placeholder SVG colours, open the file and edit the `fill`
+values on the top/bottom `<rect>` elements (the accent bands) and the `stroke`
+values on the corner marks.
+
+---
+
+### Corner tick marks on index cards
+
+Home-page index cards display subtle **L-shaped corner tick marks** on hover,
+evoking classic photo-album corner tabs. They are purely CSS and cost nothing
+in terms of HTML or JavaScript.
+
+```css
+/* assets/css/main.css — "Corner tick marks on index cards" section */
+.index-list a::before { … }   /* top-left bracket */
+.index-list a::after  { … }   /* bottom-right bracket */
+```
+
+- **Show at all times** (not just hover): remove `opacity: 0` from the default
+  rule and delete the `.index-list a:hover::before / ::after` block.
+- **Remove entirely**: delete the two `.index-list a::before / ::after` blocks.
+- **Change colour**: the marks inherit `border-color: var(--color-accent)`, so
+  changing your accent colour automatically updates them.
+- **Change size**: edit the `width` / `height` values (default: 9px × 9px).
+
+---
+
+### Ornamental section dividers
+
+Home-page sections (Classes, Clubs, Sports …) are separated by a centred ✦
+ornament sitting on a hairline rule, instead of a plain dashed border.
+
+This is a CSS `::after` pseudo-element on `.index-section`:
+
+```css
+/* assets/css/main.css */
+.index-section:not(:last-child)::after {
+  content: '✦';
+  …
+}
+```
+
+- **Change the ornament**: replace `'✦'` with any character (`◆`, `·`, `❖`, `★`)
+- **Increase line width**: change `background-size: 75% 1px` to `90% 1px`
+- **Revert to a simple dashed line**: remove the `::after` rule and add
+  `border-bottom: 1px dashed var(--color-border-soft);` back to `.index-section`
+
+---
+
+### Autograph page decorative frame
+
+Each autograph page has a **double-border frame** with accent-colour corner
+marks — perfect for print.
+
+- Outer border: `1.5px solid var(--color-border)`
+- Inner second border: `inset box-shadow` using `--color-border-soft`
+- Corner marks: `::before` (top-left) and `::after` (bottom-right)
+
+To remove the frame, find the `.autograph-page` rule block in `main.css` and
+delete the `border`, `box-shadow`, and `::before / ::after` declarations.
+
+---
+
+### Background texture
+
+The page background combines two effects — both are CSS `background-image`
+layers on the `body` rule in `main.css`:
+
+| Layer | What it does |
+|---|---|
+| Two offset dot patterns | Fine grain (simulates paper texture) |
+| Horizontal + vertical linear gradients | Subtle large-scale grid overlay |
+
+To **increase the texture** intensity, raise the `rgba(…)` opacity values
+(e.g. `0.06` → `0.10`). To **disable** the texture, remove the
+`background-image` declaration from `body` entirely.
+

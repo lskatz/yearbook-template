@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Default class thumbnail — shown on every class page that does NOT set a
+  class-thumbnail-default.svg — Default class-page banner image
+  ==============================================================
+  Shown at the top of every class page that does NOT set a
   `thumbnail:` field in its front-matter.
 
-  To use a custom photo for a specific class, add to that class's .md file:
+  To use a real photo for one class, add to that class's .md file:
+    thumbnail: "/assets/images/classes/my-class.jpg"
 
-    thumbnail: "/assets/images/classes/4th-grade-krelboynes.jpg"
+  To change the default for ALL classes at once, update _config.yml:
+    class_thumbnail_default: "/assets/images/site/class-thumbnail-default.svg"
 
-  To change the default for ALL classes at once, update `class_thumbnail_default`
-  in _config.yml to point to your preferred image file.
+  To change the accent colour of this placeholder, edit the `fill`
+  and `stroke` values that reference "#7b2d1e" below.
 
   Recommended image size: 800 × 300 px (landscape, 8:3 ratio).
 -->
@@ -17,64 +21,72 @@
      role="img" aria-label="Class photo placeholder">
   <title>Class Photo Placeholder</title>
 
-  <!-- Background — cream paper -->
+  <!-- ── Background — cream paper ── -->
   <rect width="800" height="300" fill="#f4efe5"/>
-  <rect x="2" y="2" width="796" height="296" rx="2"
-        fill="none" stroke="#cdbfa5" stroke-width="2"/>
 
-  <!-- Subtle inner fill -->
-  <rect x="12" y="12" width="776" height="276" rx="2" fill="#ebe4d3"/>
+  <!-- ── Top accent band ── -->
+  <rect x="0" y="0" width="800" height="44" fill="#7b2d1e"/>
+  <!-- ── Bottom accent band ── -->
+  <rect x="0" y="256" width="800" height="44" fill="#7b2d1e"/>
 
-  <!-- Classroom silhouette: rows of seated figures -->
-  <!-- Back row (6 figures) -->
-  <g fill="#9b8050" opacity="0.30">
-    <ellipse cx="100" cy="148" rx="22" ry="22"/>
-    <rect x="78"  y="168" width="44" height="44" rx="22"/>
-    <ellipse cx="200" cy="148" rx="22" ry="22"/>
-    <rect x="178" y="168" width="44" height="44" rx="22"/>
-    <ellipse cx="300" cy="148" rx="22" ry="22"/>
-    <rect x="278" y="168" width="44" height="44" rx="22"/>
-    <ellipse cx="400" cy="148" rx="22" ry="22"/>
-    <rect x="378" y="168" width="44" height="44" rx="22"/>
-    <ellipse cx="500" cy="148" rx="22" ry="22"/>
-    <rect x="478" y="168" width="44" height="44" rx="22"/>
-    <ellipse cx="600" cy="148" rx="22" ry="22"/>
-    <rect x="578" y="168" width="44" height="44" rx="22"/>
-    <ellipse cx="700" cy="148" rx="22" ry="22"/>
-    <rect x="678" y="168" width="44" height="44" rx="22"/>
+  <!-- ── Thin rule lines inside accent bands ── -->
+  <line x1="0" y1="40" x2="800" y2="40" stroke="#f4efe5" stroke-width="0.8" opacity="0.35"/>
+  <line x1="0" y1="260" x2="800" y2="260" stroke="#f4efe5" stroke-width="0.8" opacity="0.35"/>
+
+  <!-- ── Dashed inner content border ── -->
+  <rect x="16" y="52" width="768" height="196" rx="2"
+        fill="none" stroke="#cdbfa5" stroke-width="1" stroke-dasharray="7 4"/>
+
+  <!-- ── Corner accent marks on inner border ── -->
+  <g stroke="#7b2d1e" stroke-width="2" fill="none" opacity="0.55">
+    <path d="M16 72 L16 52 L36 52"/>
+    <path d="M784 72 L784 52 L764 52"/>
+    <path d="M16 228 L16 248 L36 248"/>
+    <path d="M784 228 L784 248 L764 248"/>
   </g>
 
-  <!-- Front row (5 figures, slightly larger) -->
-  <g fill="#7b2d1e" opacity="0.18">
-    <ellipse cx="150" cy="196" rx="26" ry="26"/>
-    <rect x="124"  y="220" width="52" height="52" rx="26"/>
-    <ellipse cx="280" cy="196" rx="26" ry="26"/>
-    <rect x="254"  y="220" width="52" height="52" rx="26"/>
-    <ellipse cx="400" cy="196" rx="26" ry="26"/>
-    <rect x="374"  y="220" width="52" height="52" rx="26"/>
-    <ellipse cx="520" cy="196" rx="26" ry="26"/>
-    <rect x="494"  y="220" width="52" height="52" rx="26"/>
-    <ellipse cx="650" cy="196" rx="26" ry="26"/>
-    <rect x="624"  y="220" width="52" height="52" rx="26"/>
+  <!-- ── Classroom silhouette — back row (7 figures, lighter) ── -->
+  <g fill="#9b8050" opacity="0.28">
+    <ellipse cx="90"  cy="148" rx="18" ry="18"/>
+    <rect    x="72"  y="164" width="36" height="42" rx="18"/>
+    <ellipse cx="190" cy="148" rx="18" ry="18"/>
+    <rect    x="172" y="164" width="36" height="42" rx="18"/>
+    <ellipse cx="290" cy="148" rx="18" ry="18"/>
+    <rect    x="272" y="164" width="36" height="42" rx="18"/>
+    <ellipse cx="400" cy="148" rx="18" ry="18"/>
+    <rect    x="382" y="164" width="36" height="42" rx="18"/>
+    <ellipse cx="510" cy="148" rx="18" ry="18"/>
+    <rect    x="492" y="164" width="36" height="42" rx="18"/>
+    <ellipse cx="610" cy="148" rx="18" ry="18"/>
+    <rect    x="592" y="164" width="36" height="42" rx="18"/>
+    <ellipse cx="710" cy="148" rx="18" ry="18"/>
+    <rect    x="692" y="164" width="36" height="42" rx="18"/>
   </g>
 
-  <!-- Label -->
-  <text x="400" y="58"
-        font-family="Georgia, serif"
-        font-size="20"
-        font-weight="bold"
-        fill="#1c1a17"
-        text-anchor="middle">Class Photo</text>
+  <!-- ── Front row (5 figures, slightly larger and darker) ── -->
+  <g fill="#7b2d1e" opacity="0.20">
+    <ellipse cx="145" cy="190" rx="22" ry="22"/>
+    <rect    x="123"  y="210" width="44" height="44" rx="22"/>
+    <ellipse cx="275" cy="190" rx="22" ry="22"/>
+    <rect    x="253"  y="210" width="44" height="44" rx="22"/>
+    <ellipse cx="400" cy="190" rx="22" ry="22"/>
+    <rect    x="378"  y="210" width="44" height="44" rx="22"/>
+    <ellipse cx="525" cy="190" rx="22" ry="22"/>
+    <rect    x="503"  y="210" width="44" height="44" rx="22"/>
+    <ellipse cx="655" cy="190" rx="22" ry="22"/>
+    <rect    x="633"  y="210" width="44" height="44" rx="22"/>
+  </g>
 
-  <!-- Replacement hint -->
-  <text x="400" y="84"
-        font-family="sans-serif"
-        font-size="12"
-        fill="#5b544a"
-        text-anchor="middle">Add  thumbnail: "/assets/images/classes/my-class.jpg"  to the class front-matter</text>
-  <text x="400" y="102"
-        font-family="sans-serif"
-        font-size="11"
-        fill="#9b8050"
-        text-anchor="middle">or update class_thumbnail_default in _config.yml to change the default for all classes</text>
+  <!-- ── Label in top accent band ── -->
+  <text x="400" y="27"
+        font-family="Georgia, serif" font-size="17" font-weight="bold"
+        fill="#f4efe5" text-anchor="middle" dominant-baseline="middle">Class Photo</text>
+
+  <!-- ── Replacement hint in bottom accent band ── -->
+  <text x="400" y="271"
+        font-family="sans-serif" font-size="10.5" fill="#f4efe5"
+        text-anchor="middle" dominant-baseline="middle" opacity="0.85">
+    Add  thumbnail: "/assets/images/classes/my-class.jpg"  in the class front-matter
+  </text>
 </svg>
+

@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Default sport thumbnail — shown on every sport page that does NOT set a
+  sport-thumbnail-default.svg — Default sport-page banner image
+  =============================================================
+  Shown at the top of every sport page that does NOT set a
   `thumbnail:` field in its front-matter.
 
-  To use a custom photo for a specific sport, add to that sport's .md file:
+  To use a real photo for one sport, add to that sport's .md file:
+    thumbnail: "/assets/images/groups/my-sport.jpg"
 
-    thumbnail: "/assets/images/groups/soccer.jpg"
+  To change the default for ALL sports at once, update _config.yml:
+    sport_thumbnail_default: "/assets/images/site/sport-thumbnail-default.svg"
 
-  To change the default for ALL sports at once, update `sport_thumbnail_default`
-  in _config.yml to point to your preferred image file.
+  To change the accent colour, edit the values that reference "#1a3a6a" below.
 
   Recommended image size: 800 × 300 px (landscape, 8:3 ratio).
 -->
@@ -17,64 +20,91 @@
      role="img" aria-label="Team photo placeholder">
   <title>Team Photo Placeholder</title>
 
-  <!-- Background — sky blue tint -->
+  <!-- ── Background — sky blue ── -->
   <rect width="800" height="300" fill="#eaf2fb"/>
-  <rect x="2" y="2" width="796" height="296" rx="2"
-        fill="none" stroke="#a0bfd8" stroke-width="2"/>
 
-  <!-- Subtle inner fill -->
-  <rect x="12" y="12" width="776" height="276" rx="2" fill="#d8eaf6"/>
+  <!-- ── Top accent band ── -->
+  <rect x="0" y="0" width="800" height="44" fill="#1a3a6a"/>
+  <!-- ── Bottom accent band ── -->
+  <rect x="0" y="256" width="800" height="44" fill="#1a3a6a"/>
 
-  <!-- Team rows: back row standing, front row kneeling -->
-  <!-- Back row (7 figures, standing) -->
-  <g fill="#1a5a9a" opacity="0.22">
-    <ellipse cx="100" cy="148" rx="22" ry="22"/>
-    <rect x="78"  y="168" width="44" height="44" rx="22"/>
-    <ellipse cx="200" cy="148" rx="22" ry="22"/>
-    <rect x="178" y="168" width="44" height="44" rx="22"/>
-    <ellipse cx="300" cy="148" rx="22" ry="22"/>
-    <rect x="278" y="168" width="44" height="44" rx="22"/>
-    <ellipse cx="400" cy="148" rx="22" ry="22"/>
-    <rect x="378" y="168" width="44" height="44" rx="22"/>
-    <ellipse cx="500" cy="148" rx="22" ry="22"/>
-    <rect x="478" y="168" width="44" height="44" rx="22"/>
-    <ellipse cx="600" cy="148" rx="22" ry="22"/>
-    <rect x="578" y="168" width="44" height="44" rx="22"/>
-    <ellipse cx="700" cy="148" rx="22" ry="22"/>
-    <rect x="678" y="168" width="44" height="44" rx="22"/>
+  <!-- ── Thin rule lines inside accent bands ── -->
+  <line x1="0" y1="40" x2="800" y2="40" stroke="#eaf2fb" stroke-width="0.8" opacity="0.35"/>
+  <line x1="0" y1="260" x2="800" y2="260" stroke="#eaf2fb" stroke-width="0.8" opacity="0.35"/>
+
+  <!-- ── Dashed inner content border ── -->
+  <rect x="16" y="52" width="768" height="196" rx="2"
+        fill="none" stroke="#a0bfd8" stroke-width="1" stroke-dasharray="7 4"/>
+
+  <!-- ── Corner accent marks ── -->
+  <g stroke="#1a3a6a" stroke-width="2" fill="none" opacity="0.55">
+    <path d="M16 72 L16 52 L36 52"/>
+    <path d="M784 72 L784 52 L764 52"/>
+    <path d="M16 228 L16 248 L36 248"/>
+    <path d="M784 228 L784 248 L764 248"/>
   </g>
 
-  <!-- Front row (5 figures, slightly larger / kneeling) -->
-  <g fill="#1a3a6a" opacity="0.15">
-    <ellipse cx="150" cy="202" rx="24" ry="20"/>
-    <rect x="126"  y="220" width="48" height="40" rx="20"/>
-    <ellipse cx="280" cy="202" rx="24" ry="20"/>
-    <rect x="256"  y="220" width="48" height="40" rx="20"/>
-    <ellipse cx="400" cy="202" rx="24" ry="20"/>
-    <rect x="376"  y="220" width="48" height="40" rx="20"/>
-    <ellipse cx="520" cy="202" rx="24" ry="20"/>
-    <rect x="496"  y="220" width="48" height="40" rx="20"/>
-    <ellipse cx="650" cy="202" rx="24" ry="20"/>
-    <rect x="626"  y="220" width="48" height="40" rx="20"/>
+  <!-- ── Team photo silhouette: back row standing, front row kneeling ── -->
+  <!-- Back row (7 figures) -->
+  <g fill="#1a3a6a" opacity="0.20">
+    <ellipse cx="90"  cy="146" rx="17" ry="17"/>
+    <rect    x="73"  y="161" width="34" height="40" rx="17"/>
+    <ellipse cx="190" cy="146" rx="17" ry="17"/>
+    <rect    x="173" y="161" width="34" height="40" rx="17"/>
+    <ellipse cx="290" cy="146" rx="17" ry="17"/>
+    <rect    x="273" y="161" width="34" height="40" rx="17"/>
+    <ellipse cx="400" cy="146" rx="17" ry="17"/>
+    <rect    x="383" y="161" width="34" height="40" rx="17"/>
+    <ellipse cx="510" cy="146" rx="17" ry="17"/>
+    <rect    x="493" y="161" width="34" height="40" rx="17"/>
+    <ellipse cx="610" cy="146" rx="17" ry="17"/>
+    <rect    x="593" y="161" width="34" height="40" rx="17"/>
+    <ellipse cx="710" cy="146" rx="17" ry="17"/>
+    <rect    x="693" y="161" width="34" height="40" rx="17"/>
   </g>
 
-  <!-- Label -->
-  <text x="400" y="58"
-        font-family="Georgia, serif"
-        font-size="20"
-        font-weight="bold"
-        fill="#0f1e2e"
-        text-anchor="middle">Team Photo</text>
+  <!-- Front row kneeling (5 figures, squatter shape) -->
+  <g fill="#0d1f40" opacity="0.16">
+    <ellipse cx="145" cy="200" rx="20" ry="16"/>
+    <rect    x="125" y="214" width="40" height="30" rx="16"/>
+    <ellipse cx="275" cy="200" rx="20" ry="16"/>
+    <rect    x="255" y="214" width="40" height="30" rx="16"/>
+    <ellipse cx="400" cy="200" rx="20" ry="16"/>
+    <rect    x="380" y="214" width="40" height="30" rx="16"/>
+    <ellipse cx="525" cy="200" rx="20" ry="16"/>
+    <rect    x="505" y="214" width="40" height="30" rx="16"/>
+    <ellipse cx="655" cy="200" rx="20" ry="16"/>
+    <rect    x="635" y="214" width="40" height="30" rx="16"/>
+  </g>
 
-  <!-- Replacement hint -->
-  <text x="400" y="84"
-        font-family="sans-serif"
-        font-size="12"
-        fill="#2a5a8a"
-        text-anchor="middle">Add  thumbnail: "/assets/images/groups/my-sport.jpg"  to the sport front-matter</text>
-  <text x="400" y="102"
-        font-family="sans-serif"
-        font-size="11"
-        fill="#5a8ab0"
-        text-anchor="middle">or update sport_thumbnail_default in _config.yml to change the default for all sports</text>
+  <!-- ── Laurel wreath framing the centre of the image ── -->
+  <!-- Left branch arc (simplified as repeated leaf ovals) -->
+  <g fill="#1a3a6a" opacity="0.14" transform="translate(305,148)">
+    <ellipse cx="-18" cy="-38" rx="7" ry="12" transform="rotate(-55,-18,-38)"/>
+    <ellipse cx="-28" cy="-18" rx="7" ry="12" transform="rotate(-80,-28,-18)"/>
+    <ellipse cx="-30" cy="4"   rx="7" ry="12" transform="rotate(-100,-30,4)"/>
+    <ellipse cx="-24" cy="26"  rx="7" ry="12" transform="rotate(-125,-24,26)"/>
+    <ellipse cx="-10" cy="44"  rx="7" ry="12" transform="rotate(-150,-10,44)"/>
+  </g>
+  <!-- Right branch arc -->
+  <g fill="#1a3a6a" opacity="0.14" transform="translate(495,148)">
+    <ellipse cx="18"  cy="-38" rx="7" ry="12" transform="rotate(55,18,-38)"/>
+    <ellipse cx="28"  cy="-18" rx="7" ry="12" transform="rotate(80,28,-18)"/>
+    <ellipse cx="30"  cy="4"   rx="7" ry="12" transform="rotate(100,30,4)"/>
+    <ellipse cx="24"  cy="26"  rx="7" ry="12" transform="rotate(125,24,26)"/>
+    <ellipse cx="10"  cy="44"  rx="7" ry="12" transform="rotate(150,10,44)"/>
+  </g>
+
+  <!-- ── Label in top accent band ── -->
+  <text x="400" y="27"
+        font-family="Georgia, serif" font-size="17" font-weight="bold"
+        fill="#eaf2fb" text-anchor="middle" dominant-baseline="middle">Team Photo</text>
+
+  <!-- ── Replacement hint in bottom accent band ── -->
+  <text x="400" y="271"
+        font-family="sans-serif" font-size="10.5" fill="#eaf2fb"
+        text-anchor="middle" dominant-baseline="middle" opacity="0.85">
+    Add  thumbnail: "/assets/images/groups/my-sport.jpg"  in the sport front-matter
+  </text>
 </svg>
+
