@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Default photo-page thumbnail — shown on the home page index card for every
-  photo page that does NOT set a `thumbnail:` field in its front-matter.
+  photo-thumbnail-default.svg — Default photo-page banner image
+  =============================================================
+  Shown on the home page index card for every _photos/ page that does
+  NOT set a `thumbnail:` field in its front-matter.
 
-  To use a custom thumbnail for a specific photo page, add to that page's
-  .md file:
-
+  To use a real thumbnail for one photo page, add to that page's .md:
     thumbnail: "/assets/images/photos/my-event-thumb.jpg"
 
-  To change the default for ALL photo pages at once, update
-  `photo_thumbnail_default` in _config.yml to point to your preferred image.
+  To change the default for ALL photo pages at once, update _config.yml:
+    photo_thumbnail_default: "/assets/images/site/photo-thumbnail-default.svg"
+
+  To change the accent colour, edit the values that reference "#7b5c1e" below.
 
   Recommended image size: 800 × 300 px (landscape, 8:3 ratio).
 -->
@@ -18,50 +20,86 @@
      role="img" aria-label="Photo page placeholder">
   <title>Photo Page Placeholder</title>
 
-  <!-- Background — warm amber tint to evoke a photo album -->
+  <!-- ── Background — warm amber parchment ── -->
   <rect width="800" height="300" fill="#f5eedc"/>
-  <rect x="2" y="2" width="796" height="296" rx="2"
-        fill="none" stroke="#c9ae7a" stroke-width="2"/>
 
-  <!-- Subtle inner fill -->
-  <rect x="12" y="12" width="776" height="276" rx="2" fill="#ecdfc0"/>
+  <!-- ── Top accent band ── -->
+  <rect x="0" y="0" width="800" height="44" fill="#7b5c1e"/>
+  <!-- ── Bottom accent band ── -->
+  <rect x="0" y="256" width="800" height="44" fill="#7b5c1e"/>
 
-  <!-- Stylised overlapping photo-frame silhouettes -->
-  <g opacity="0.25">
-    <!-- large frame centre -->
-    <rect x="300" y="80" width="200" height="150" rx="4" fill="#7b5c1e"/>
-    <!-- small frame top-left -->
-    <rect x="210" y="110" width="130" height="98" rx="4" fill="#7b5c1e"/>
-    <!-- small frame top-right -->
-    <rect x="460" y="100" width="130" height="98" rx="4" fill="#7b5c1e"/>
-    <!-- mount lines on large frame -->
-    <rect x="308" y="88"  width="184" height="134" rx="2" fill="none"
-          stroke="#7b5c1e" stroke-width="2" opacity="0.5"/>
+  <!-- ── Thin rule lines inside accent bands ── -->
+  <line x1="0" y1="40" x2="800" y2="40" stroke="#f5eedc" stroke-width="0.8" opacity="0.35"/>
+  <line x1="0" y1="260" x2="800" y2="260" stroke="#f5eedc" stroke-width="0.8" opacity="0.35"/>
+
+  <!-- ── Dashed inner content border ── -->
+  <rect x="16" y="52" width="768" height="196" rx="2"
+        fill="none" stroke="#c9ae7a" stroke-width="1" stroke-dasharray="7 4"/>
+
+  <!-- ── Corner accent marks ── -->
+  <g stroke="#7b5c1e" stroke-width="2" fill="none" opacity="0.55">
+    <path d="M16 72 L16 52 L36 52"/>
+    <path d="M784 72 L784 52 L764 52"/>
+    <path d="M16 228 L16 248 L36 248"/>
+    <path d="M784 228 L784 248 L764 248"/>
   </g>
 
-  <!-- Camera lens icon (circle + inner ring) -->
-  <g fill="none" stroke="#7b5c1e" stroke-width="3" opacity="0.3">
-    <circle cx="400" cy="155" r="28"/>
-    <circle cx="400" cy="155" r="14"/>
+  <!-- ── Overlapping polaroid / photo-frame silhouettes ── -->
+  <g opacity="0.20">
+    <!-- Centre-left frame (rotated slightly) -->
+    <rect x="220" y="80" width="150" height="120" rx="3" fill="#7b5c1e"
+          transform="rotate(-4 295 140)"/>
+    <rect x="228" y="88" width="134" height="96" rx="2" fill="none"
+          stroke="#f5eedc" stroke-width="1.5" opacity="0.6"
+          transform="rotate(-4 295 140)"/>
+    <!-- Centre frame (straight) -->
+    <rect x="325" y="72" width="150" height="120" rx="3" fill="#5c3c10"/>
+    <rect x="333" y="80" width="134" height="96" rx="2" fill="none"
+          stroke="#f5eedc" stroke-width="1.5" opacity="0.6"/>
+    <!-- Centre-right frame (rotated other way) -->
+    <rect x="430" y="80" width="150" height="120" rx="3" fill="#7b5c1e"
+          transform="rotate(4 505 140)"/>
+    <rect x="438" y="88" width="134" height="96" rx="2" fill="none"
+          stroke="#f5eedc" stroke-width="1.5" opacity="0.6"
+          transform="rotate(4 505 140)"/>
   </g>
 
-  <!-- Label -->
-  <text x="400" y="58"
-        font-family="Georgia, serif"
-        font-size="20"
-        font-weight="bold"
-        fill="#3d2a00"
-        text-anchor="middle">Photo Page</text>
+  <!-- ── Camera lens icon (centred, above the frames) ── -->
+  <g fill="none" stroke="#7b5c1e" opacity="0.28" transform="translate(400,155)">
+    <!-- Outer lens ring -->
+    <circle cx="0" cy="0" r="30" stroke-width="3"/>
+    <!-- Inner lens ring -->
+    <circle cx="0" cy="0" r="18" stroke-width="2"/>
+    <!-- Lens catch-light highlight -->
+    <circle cx="-9" cy="-9" r="5" stroke-width="1.5"/>
+  </g>
 
-  <!-- Replacement hint -->
-  <text x="400" y="84"
-        font-family="sans-serif"
-        font-size="12"
-        fill="#6b4e1a"
-        text-anchor="middle">Add  thumbnail: "/assets/images/photos/my-event.jpg"  to the page front-matter</text>
-  <text x="400" y="102"
-        font-family="sans-serif"
-        font-size="11"
-        fill="#8a6a30"
-        text-anchor="middle">or update photo_thumbnail_default in _config.yml to change the default for all photo pages</text>
+  <!-- ── Film-strip notch marks on left and right edges ── -->
+  <g fill="#7b5c1e" opacity="0.14">
+    <rect x="60"  y="90"  width="14" height="10" rx="2"/>
+    <rect x="60"  y="114" width="14" height="10" rx="2"/>
+    <rect x="60"  y="138" width="14" height="10" rx="2"/>
+    <rect x="60"  y="162" width="14" height="10" rx="2"/>
+    <rect x="60"  y="186" width="14" height="10" rx="2"/>
+    <rect x="60"  y="210" width="14" height="10" rx="2"/>
+    <rect x="726" y="90"  width="14" height="10" rx="2"/>
+    <rect x="726" y="114" width="14" height="10" rx="2"/>
+    <rect x="726" y="138" width="14" height="10" rx="2"/>
+    <rect x="726" y="162" width="14" height="10" rx="2"/>
+    <rect x="726" y="186" width="14" height="10" rx="2"/>
+    <rect x="726" y="210" width="14" height="10" rx="2"/>
+  </g>
+
+  <!-- ── Label in top accent band ── -->
+  <text x="400" y="27"
+        font-family="Georgia, serif" font-size="17" font-weight="bold"
+        fill="#f5eedc" text-anchor="middle" dominant-baseline="middle">Photo Page</text>
+
+  <!-- ── Replacement hint in bottom accent band ── -->
+  <text x="400" y="271"
+        font-family="sans-serif" font-size="10.5" fill="#f5eedc"
+        text-anchor="middle" dominant-baseline="middle" opacity="0.85">
+    Add  thumbnail: "/assets/images/photos/my-event.jpg"  in the page front-matter
+  </text>
 </svg>
+

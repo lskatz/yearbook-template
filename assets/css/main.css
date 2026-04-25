@@ -83,12 +83,14 @@ body {
   line-height: 1.55;
   color: var(--color-ink);
   background: var(--color-bg);
-  /* subtle paper grain */
+  /* Paper grain (dots) + subtle large-grid lines */
   background-image:
-    radial-gradient(rgba(155, 128, 80, 0.05) 1px, transparent 1px),
-    radial-gradient(rgba(155, 128, 80, 0.04) 1px, transparent 1px);
-  background-size: 3px 3px, 7px 7px;
-  background-position: 0 0, 1px 2px;
+    radial-gradient(rgba(155, 128, 80, 0.06) 1px, transparent 1px),
+    radial-gradient(rgba(155, 128, 80, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(155, 128, 80, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(155, 128, 80, 0.025) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px, 60px 60px, 60px 60px;
+  background-position: 0 0, 1px 2px, 0 0, 0 0;
 }
 
 a { color: var(--color-accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
@@ -178,10 +180,35 @@ img { max-width: 100%; display: block; }
 .site-search__results .r-meta { color: var(--color-ink-soft); font-size: 0.8rem; }
 
 /* ---------------- Home hero ---------------- */
+/*
+ * The hero section combines plain HTML text with a decorative inline SVG layer
+ * (`.hero__art`) defined in `_layouts/home.html`.  The SVG automatically picks
+ * up your accent colour because it uses CSS custom properties.
+ *
+ * To increase or decrease the intensity of the decorative art, change the
+ * `opacity` attributes directly on the SVG elements in home.html.
+ * To remove the art entirely, delete the <svg class="hero__art"> block.
+ */
 .hero {
+  position: relative;
+  overflow: hidden;
   text-align: center;
   padding: clamp(3rem, 8vw, 6rem) 0 clamp(2rem, 5vw, 3.5rem);
   border-bottom: var(--border-width) solid var(--color-border);
+}
+/* The SVG decorative layer sits behind all hero text */
+.hero__art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+/* The text container sits above the SVG layer */
+.hero__content {
+  position: relative;
+  z-index: 1;
 }
 .hero__eyebrow {
   font-size: 0.8rem; letter-spacing: 0.22em; text-transform: uppercase;
@@ -202,9 +229,74 @@ img { max-width: 100%; display: block; }
   margin: 1rem 0 0;
 }
 
-/* ---------------- Index sections (home) ---------------- */
-.index-section { padding: 3rem 0; border-bottom: var(--border-width) dashed var(--color-border-soft); }
-.index-section:last-child { border-bottom: none; }
+/* ---------------- Ornamental section dividers (home) ----------------
+ *
+ * Each index section gets a centred ornament (✦) on a hairline rule
+ * instead of a plain dashed border. Uses ::after on every section
+ * except the last one.
+ *
+ * To revert to a simple dashed line, remove the .index-section::after
+ * rule and restore:
+ *   .index-section { border-bottom: 1px dashed var(--color-border-soft); }
+ */
+.index-section { padding: 3rem 0; }
+.index-section:not(:last-child)::after {
+  content: '✦';
+  display: block;
+  text-align: center;
+  color: var(--color-accent);
+  opacity: 0.38;
+  font-size: 0.95rem;
+  padding: 1.25rem 0;
+  /* Hairline rule drawn through the ornament via background gradient */
+  background:
+    linear-gradient(var(--color-border-soft), var(--color-border-soft))
+    no-repeat center / 75% 1px;
+}
+
+/* ---------------- Corner tick marks on index cards ----------------
+ *
+ * Small L-shaped corner marks appear on the top-left and bottom-right
+ * corners of each home-page card when hovered. They evoke classic
+ * photo-album corner tabs without obscuring content.
+ *
+ * To show the marks at all times (not just on hover), remove the
+ * `opacity: 0` default and the :hover override below.
+ * To disable them entirely, remove this whole block.
+ */
+.index-list a {
+  position: relative;
+}
+.index-list a::before,
+.index-list a::after {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-color: var(--color-accent);
+  border-style: solid;
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+/* Top-left bracket */
+.index-list a::before {
+  top: 5px;
+  left: 5px;
+  border-width: 1.5px 0 0 1.5px;
+}
+/* Bottom-right bracket */
+.index-list a::after {
+  bottom: 5px;
+  right: 5px;
+  border-width: 0 1.5px 1.5px 0;
+}
+.index-list a:hover::before,
+.index-list a:hover::after {
+  opacity: 0.55;
+}
+
+
 .index-section__heading {
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 3vw, 2rem);
@@ -1180,7 +1272,17 @@ img { max-width: 100%; display: block; }
 }
 .favorites-card__list dd { margin: 0; color: var(--color-ink); }
 
-/* ---------------- Autographs page ---------------- */
+/* ---------------- Autographs page ----------------
+ *
+ * Each autograph page gets a double-border frame with corner accent marks
+ * — a classic scrapbook / yearbook look that looks great when printed.
+ *
+ * The outer border + inner shadow create a double-rule effect.
+ * The ::before / ::after pseudo-elements add L-shaped corner accents.
+ *
+ * To remove the frame: delete the .autograph-page border, box-shadow,
+ * and ::before/::after rules below.
+ */
 
 .autograph-screen-note {
   text-align: center;
@@ -1191,7 +1293,38 @@ img { max-width: 100%; display: block; }
   border-radius: var(--radius-card);
   margin: 2rem 0;
 }
-.autograph-page { margin: 2rem 0; }
+.autograph-page {
+  margin: 2rem 0;
+  position: relative;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 1.5rem 2rem;
+  /* Inner second border via inset box-shadow */
+  box-shadow: inset 0 0 0 4px var(--color-bg),
+              inset 0 0 0 6px var(--color-border-soft);
+}
+/* Corner accent marks — top-left and bottom-right */
+.autograph-page::before,
+.autograph-page::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: var(--color-accent);
+  border-style: solid;
+  opacity: 0.45;
+  pointer-events: none;
+}
+.autograph-page::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2.5px 0 0 2.5px;
+}
+.autograph-page::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2.5px 2.5px 0;
+}
 .autograph-lines { margin-top: 1.5rem; }
 .autograph-line {
   border-bottom: 1px solid var(--color-border);
