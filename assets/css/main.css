@@ -966,8 +966,9 @@ img { max-width: 100%; display: block; }
   padding: 1.25rem 1rem 1rem;
 }
 .superlative-card__category {
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--color-accent);
   font-weight: 600;
@@ -1017,10 +1018,45 @@ img { max-width: 100%; display: block; }
   font-variation-settings: "SOFT" 40;
 }
 .superlative-card__runner-up {
-  font-size: 0.7rem;
+  margin-top: 0.6rem;
+}
+.superlative-card__runner-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-ink-soft);
+}
+.superlative-card__runner-link:hover .superlative-card__runner-frame {
+  box-shadow: var(--shadow-lift);
+}
+.superlative-card__runner-frame {
+  width: 60px;
+  height: 80px;
+  border-radius: var(--radius-photo);
+  overflow: hidden;
+  border: var(--border-width) solid var(--color-border);
+  background: var(--color-border-soft);
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow 180ms ease;
+  margin-bottom: 0.25rem;
+}
+.superlative-card__runner-frame img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.superlative-card__runner-fallback {
+  width: 100%; height: 100%;
+  display: grid; place-items: center;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--color-accent);
+  background: var(--color-border-soft);
+}
+.superlative-card__runner-name {
+  font-size: 0.65rem;
   color: var(--color-ink-soft);
   display: block;
-  margin-top: 0.45rem;
+  text-align: center;
 }
 .superlative-card__missing {
   font-size: 0.75rem;
@@ -1063,6 +1099,14 @@ img { max-width: 100%; display: block; }
   font-size: 0.9rem;
   line-height: 1.45;
   color: var(--color-ink);
+}
+.yir-card__attribution {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-style: italic;
+}
+.yir-card__attribution:hover {
+  text-decoration: underline;
 }
 
 /* ---------------- Student Favorites page ---------------- */
@@ -1213,6 +1257,11 @@ img { max-width: 100%; display: block; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-ink-soft);
+  text-decoration: none;
+}
+.dedication-card__honoree-name:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
 }
 .dedication-card__content { flex: 1; min-width: 0; }
 .dedication-card__message {
@@ -1339,10 +1388,13 @@ img { max-width: 100%; display: block; }
   .superlative-grid { grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
   .superlative-card { padding: 0.4rem 0.25rem; }
   .superlative-card__frame { width: 0.65in; height: 0.87in; margin-bottom: 0.2rem; }
-  .superlative-card__category { font-size: 0.5rem; margin-bottom: 0.35rem; }
+  .superlative-card__category { font-size: 0.55rem; margin-bottom: 0.35rem; }
   .superlative-card__name { font-size: 0.58rem; }
-  .superlative-card__runner-up { font-size: 0.5rem; }
+  .superlative-card__runner-up { margin-top: 0.25rem; }
+  .superlative-card__runner-frame { width: 0.42in; height: 0.56in; }
+  .superlative-card__runner-name { font-size: 0.45rem; }
   .superlative-card__link { color: var(--color-ink); }
+  .superlative-card__runner-link { color: var(--color-ink-soft); }
 
   /* ── Year in Review in print ─────────────────────────────────────────────── */
   .yir-grid { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }

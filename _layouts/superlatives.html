@@ -39,7 +39,7 @@ layout: default
     {%- assign winner = site.data.people_by_id[s.winner] -%}
     {%- assign runner = site.data.people_by_id[s.runner_up] -%}
     <div class="superlative-card">
-      <p class="superlative-card__category">{{ s.category }}</p>
+      <h3 class="superlative-card__category">{{ s.category }}</h3>
       {%- if winner %}
       <div class="superlative-card__winner">
         <a href="{{ winner.url | relative_url }}" class="superlative-card__link">
@@ -52,7 +52,17 @@ layout: default
           <span class="superlative-card__name">{{ winner.display_name }}</span>
         </a>
         {%- if runner %}
-        <span class="superlative-card__runner-up">Runner-up: {{ runner.display_name }}</span>
+        <div class="superlative-card__runner-up">
+          <a href="{{ runner.url | relative_url }}" class="superlative-card__runner-link">
+            <figure class="superlative-card__runner-frame">
+              <img
+                src="{{ runner.photo | relative_url }}"
+                alt="{{ runner.display_name }}"
+                onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'superlative-card__runner-fallback',textContent:{{ runner.initials | jsonify | escape }}}))">
+            </figure>
+            <span class="superlative-card__runner-name">Runner-up: {{ runner.display_name }}</span>
+          </a>
+        </div>
         {%- endif %}
       </div>
       {%- else %}

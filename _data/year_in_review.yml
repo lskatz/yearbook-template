@@ -35,11 +35,17 @@ sections:
   - title: "Things People Actually Said"
     icon: "💬"
     items:
-      - "\"That's not right, Mr. Herkabe.\" — Malcolm Wilkerson, repeatedly"
-      - "\"Malcolm... is... wrong.\" — Stevie Kenarban, the one time it counted"
+      - text: '"That\'s not right, Mr. Herkabe."'
+        by: "Malcolm Wilkerson, repeatedly"
+        person: malcolm-wilkerson
+      - text: '"Malcolm... is... wrong."'
+        by: "Stevie Kenarban, the one time it counted"
+        person: stevie-kenarban
       - "\"I don't have to listen to you!\" — heard daily near the 4th-grade tables"
       - "\"We'll discuss this at home.\" — Lois Wilkerson, via the front office intercom"
-      - "\"My mother will be calling about this.\" — Dabney Hooper"
+      - text: '"My mother will be calling about this."'
+        by: "Dabney Hooper"
+        person: dabney-hooper
 
   - title: "In the News"
     icon: "📰"
