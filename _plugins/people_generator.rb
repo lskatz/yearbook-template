@@ -78,14 +78,28 @@ module Yearbook
       site.data['people_by_id'] = by_id
 
       # --- Step 2: Build reverse index of memberships ---------------------
-      # For each person, collect every class/club/sport/photo-page that references them.
-      # Structure: { "malcolm-wilkerson" => { classes: [...], clubs: [...], sports: [...], photos: [...] } }
-      memberships = Hash.new { |h, k| h[k] = { 'classes' => [], 'clubs' => [], 'sports' => [], 'photos' => [] } }
+      # For each person, collect every class/club/sport/photo-page/superlative/
+      # dedication that references them.
+      # Structure: { "malcolm-wilkerson" => { classes: [...], clubs: [...], ... } }
+      memberships = Hash.new do |h, k|
+        h[k] = {
+          'classes'     => [],
+          'clubs'       => [],
+          'sports'      => [],
+          'photos'      => [],
+          'superlatives' => [],
+          'dedications' => [],
+          'staff'       => []
+        }
+      end
 
       index_collection(site, 'classes', %w[students teachers], memberships)
       index_collection(site, 'clubs',   %w[members advisors],  memberships)
       index_collection(site, 'sports',  %w[members coaches],   memberships)
       index_photos(site, memberships)
+      index_superlatives(site, memberships)
+      index_dedications(site, memberships)
+      index_staff(site, memberships)
 
       site.data['memberships'] = memberships
 
@@ -152,12 +166,17 @@ module Yearbook
 
     # For a given collection, walk every doc and record membership in each
     # listed ID field. `id_fields` is e.g. %w[students teachers].
+    # A `print_id` is also stored so the print index can anchor-link to sections.
     def index_collection(site, coll_name, id_fields, memberships)
+      prefix_map = { 'classes' => 'class', 'clubs' => 'club', 'sports' => 'sport', 'photos' => 'photo' }
+      prefix = prefix_map.fetch(coll_name, coll_name)
       (site.collections[coll_name]&.docs || []).each do |doc|
+        slug = doc.url.split('/').reject(&:empty?).last
+        print_id = "print-section-#{prefix}-#{slug}"
         id_fields.each do |field|
           (doc.data[field] || []).each do |pid|
             bucket = memberships[pid][coll_name]
-            bucket << { 'title' => doc.data['title'], 'url' => doc.url, 'role' => field }
+            bucket << { 'title' => doc.data['title'], 'url' => doc.url, 'role' => field, 'print_id' => print_id }
           end
         end
       end
@@ -170,11 +189,56 @@ module Yearbook
       (site.collections['photos']&.docs || []).each do |doc|
         title = doc.data['title']
         url   = doc.url
+        slug  = doc.url.split('/').reject(&:empty?).last
+        print_id = "print-section-photo-#{slug}"
         # Collect unique person IDs labeled anywhere on this photo page.
         person_ids = (doc.data['photos'] || []).flat_map { |photo| photo['labels'] || [] }.uniq
         person_ids.each do |pid|
-          memberships[pid]['photos'] << { 'title' => title, 'url' => url }
+          memberships[pid]['photos'] << { 'title' => title, 'url' => url, 'print_id' => print_id }
         end
+      end
+    end
+
+    # Walk the superlatives data and record each winner/runner-up so their
+    # profile page can link back to the superlatives page.
+    def index_superlatives(site, memberships)
+      (site.data['superlatives'] || []).each do |s|
+        [s['winner'], s['runner_up']].compact.each do |pid|
+          memberships[pid]['superlatives'] << {
+            'title'    => s['category'],
+            'url'      => '/superlatives/',
+            'print_id' => 'print-section-superlatives'
+          }
+        end
+      end
+    end
+
+    # Walk the dedications data and record each honoree (`for:` field) so
+    # their profile page can link back to the dedications page.
+    def index_dedications(site, memberships)
+      (site.data['dedications'] || []).each do |d|
+        pid = d['for']
+        next unless pid
+        from = d['from'] || 'Dedication'
+        memberships[pid]['dedications'] << {
+          'title'    => "From #{from}",
+          'url'      => '/dedications/',
+          'print_id' => 'print-section-dedications'
+        }
+      end
+    end
+
+    # Add every teacher and staff member to the staff memberships bucket so
+    # their profile page links back to /staff/ and the print index lists them
+    # in the Faculty & Staff section.
+    def index_staff(site, memberships)
+      (site.data['people'] || []).each do |p|
+        next unless %w[teacher staff].include?(p['role'])
+        memberships[p['id']]['staff'] << {
+          'title'    => 'Faculty & Staff',
+          'url'      => '/staff/',
+          'print_id' => 'print-section-staff'
+        }
       end
     end
   end

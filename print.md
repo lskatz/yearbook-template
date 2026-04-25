@@ -106,12 +106,17 @@ permalink: /print/
       <span class="print-toc__label">{{ site.labels.eyebrow_autographs | default: "Autographs" }}</span>
       <span class="print-toc__name">Autograph Pages</span>
     </li>
+    <li class="print-toc__item">
+      <span class="print-toc__label">Index</span>
+      <span class="print-toc__name">Index</span>
+    </li>
   </ol>
 </section>
 
 {%- comment -%} ═══ 3. CLASSES ═══ {%- endcomment -%}
 {%- for c in classes_sorted %}
-<article class="print-section print-page-break">
+{%- assign class_slug = c.url | remove_first: '/classes/' | remove: '/' -%}
+<article class="print-section print-page-break" id="print-section-class-{{ class_slug }}">
 
   <header class="print-section__header">
     <p class="print-section__eyebrow">
@@ -169,7 +174,8 @@ permalink: /print/
 
 {%- comment -%} ═══ 4. CLUBS ═══ {%- endcomment -%}
 {%- for club in site.clubs %}
-<article class="print-section print-page-break">
+{%- assign club_slug = club.url | remove_first: '/clubs/' | remove: '/' -%}
+<article class="print-section print-page-break" id="print-section-club-{{ club_slug }}">
 
   <header class="print-section__header">
     <p class="print-section__eyebrow">{{ site.labels.eyebrow_club }}</p>
@@ -249,7 +255,8 @@ permalink: /print/
 
 {%- comment -%} ═══ 5. SPORTS ═══ {%- endcomment -%}
 {%- for team in site.sports %}
-<article class="print-section print-page-break">
+{%- assign team_slug = team.url | remove_first: '/sports/' | remove: '/' -%}
+<article class="print-section print-page-break" id="print-section-sport-{{ team_slug }}">
 
   <header class="print-section__header">
     <p class="print-section__eyebrow">{{ site.labels.eyebrow_sport }}</p>
@@ -338,7 +345,7 @@ permalink: /print/
 {%- assign teachers   = site.data.people | where: "role", "teacher" -%}
 {%- assign all_staff  = staff_only | concat: teachers -%}
 {%- if all_staff.size > 0 %}
-<article class="print-section print-page-break">
+<article class="print-section print-page-break" id="print-section-staff">
   <header class="print-section__header">
     <p class="print-section__eyebrow">{{ site.labels.eyebrow_staff }}</p>
     <h2 class="print-section__title">Faculty &amp; Staff</h2>
@@ -356,7 +363,8 @@ permalink: /print/
 {%- comment -%} ═══ 7. PHOTO PAGES ═══ {%- endcomment -%}
 {%- if site.photos and site.photos.size > 0 %}
 {%- for pp in site.photos %}
-<article class="print-section print-page-break">
+{%- assign photo_slug = pp.url | remove_first: '/photos/' | remove: '/' -%}
+<article class="print-section print-page-break" id="print-section-photo-{{ photo_slug }}">
   <header class="print-section__header">
     <p class="print-section__eyebrow">Photos</p>
     <h2 class="print-section__title">{{ pp.title }}</h2>
@@ -370,7 +378,7 @@ permalink: /print/
 {%- comment -%} ═══ 8. SUPERLATIVES ═══ {%- endcomment -%}
 {%- assign superlatives = site.data.superlatives -%}
 {%- if superlatives and superlatives.size > 0 %}
-<article class="print-section print-page-break">
+<article class="print-section print-page-break" id="print-section-superlatives">
   <header class="print-section__header">
     <p class="print-section__eyebrow">{{ site.labels.eyebrow_superlatives | default: "Superlatives" }}</p>
     <h2 class="print-section__title">Class Superlatives</h2>
@@ -404,7 +412,7 @@ permalink: /print/
 {%- comment -%} ═══ 9. YEAR IN REVIEW ═══ {%- endcomment -%}
 {%- assign yir = site.data.year_in_review -%}
 {%- if yir and yir.sections and yir.sections.size > 0 %}
-<article class="print-section print-page-break">
+<article class="print-section print-page-break" id="print-section-yir">
   <header class="print-section__header">
     <p class="print-section__eyebrow">{{ site.labels.eyebrow_yir | default: "Year in Review" }}</p>
     <h2 class="print-section__title">{{ yir.school_year | default: "The Year" }} in Review</h2>
@@ -432,7 +440,7 @@ permalink: /print/
 {%- comment -%} ═══ 10. STUDENT FAVORITES ═══ {%- endcomment -%}
 {%- assign favorites = site.data.favorites -%}
 {%- if favorites and favorites.size > 0 %}
-<article class="print-section print-page-break">
+<article class="print-section print-page-break" id="print-section-favorites">
   <header class="print-section__header">
     <p class="print-section__eyebrow">{{ site.labels.eyebrow_favorites | default: "Favorites" }}</p>
     <h2 class="print-section__title">Student Favorites</h2>
@@ -467,7 +475,7 @@ permalink: /print/
 {%- comment -%} ═══ 11. DEDICATIONS & ADS ═══ {%- endcomment -%}
 {%- assign dedications = site.data.dedications -%}
 {%- if dedications and dedications.size > 0 %}
-<article class="print-section print-page-break">
+<article class="print-section print-page-break" id="print-section-dedications">
   <header class="print-section__header">
     <p class="print-section__eyebrow">{{ site.labels.eyebrow_dedications | default: "Dedications &amp; Ads" }}</p>
     <h2 class="print-section__title">Dedications &amp; Ads</h2>
@@ -516,7 +524,49 @@ permalink: /print/
 </article>
 {%- endfor %}
 
-{%- comment -%} ═══ 13. BACK COVER ═══ {%- endcomment -%}
+{%- comment -%} ═══ 13. INDEX ═══ {%- endcomment -%}
+{%- assign index_people = site.data.people | sort: "last" -%}
+{%- if index_people and index_people.size > 0 %}
+<article class="print-section print-page-break" id="print-section-index">
+  <header class="print-section__header">
+    <p class="print-section__eyebrow">Index</p>
+    <h2 class="print-section__title">Index</h2>
+  </header>
+  <ul class="print-index">
+    {%- for person in index_people %}
+    {%- assign m = site.data.memberships[person.id] -%}
+    <li class="print-index__entry">
+      <span class="print-index__name">{{ person.last }}, {{ person.display_name }}</span>
+      <span class="print-index__refs">
+        {%- for group in m.staff -%}
+          <a class="print-index__ref" href="#{{ group.print_id }}">Faculty &amp; Staff</a>
+        {%- endfor -%}
+        {%- for group in m.classes -%}
+          <a class="print-index__ref" href="#{{ group.print_id }}">{{ group.title }}</a>
+        {%- endfor -%}
+        {%- for group in m.clubs -%}
+          <a class="print-index__ref" href="#{{ group.print_id }}">{{ group.title }}</a>
+        {%- endfor -%}
+        {%- for group in m.sports -%}
+          <a class="print-index__ref" href="#{{ group.print_id }}">{{ group.title }}</a>
+        {%- endfor -%}
+        {%- for group in m.photos -%}
+          <a class="print-index__ref" href="#{{ group.print_id }}">{{ group.title }}</a>
+        {%- endfor -%}
+        {%- for group in m.superlatives -%}
+          <a class="print-index__ref" href="#print-section-superlatives">{{ group.title }}</a>
+        {%- endfor -%}
+        {%- for group in m.dedications -%}
+          <a class="print-index__ref" href="#print-section-dedications">Dedication</a>
+        {%- endfor -%}
+      </span>
+    </li>
+    {%- endfor %}
+  </ul>
+</article>
+{%- endif %}
+
+{%- comment -%} ═══ 14. BACK COVER ═══ {%- endcomment -%}
 <section class="print-back-cover print-page-break">
   <div class="print-back-cover__accent-bar"></div>
   <div class="print-back-cover__body">
@@ -526,7 +576,7 @@ permalink: /print/
   <div class="print-back-cover__accent-bar"></div>
 </section>
 
-{%- comment -%} ═══ 14. PRINT INSTRUCTIONS (screen only) ═══ {%- endcomment -%}
+{%- comment -%} ═══ 15. PRINT INSTRUCTIONS (screen only) ═══ {%- endcomment -%}
 <section class="print-instructions no-print" id="print-instructions">
   <h2 class="print-instructions__heading">How to save and submit your yearbook to a book printing service</h2>
 

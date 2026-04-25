@@ -870,7 +870,7 @@ img { max-width: 100%; display: block; }
 .print-thumbnail__img {
   width: 100%;
   max-height: 400px;
-  object-fit: cover;
+  object-fit: contain;
   border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius-photo);
   display: block;
@@ -1281,6 +1281,29 @@ img { max-width: 100%; display: block; }
   margin: 0;
 }
 
+/* ---------------- Print Index ---------------- */
+.print-index { list-style: none; margin: 0; padding: 0; }
+.print-index__entry {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  gap: 0.5rem;
+  align-items: baseline;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+.print-index__name {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--color-ink);
+}
+.print-index__refs {
+  font-size: 0.82rem;
+  color: var(--color-ink-soft);
+}
+.print-index__refs a { color: var(--color-ink-soft); text-decoration: none; }
+.print-index__refs a:hover { color: var(--color-accent); text-decoration: underline; }
+.print-index__ref + .print-index__ref::before { content: " · "; color: var(--color-border); }
+
 /* ---------------- Print media queries ---------------- */
 
 /* @page: book-printing specifications
@@ -1379,7 +1402,7 @@ img { max-width: 100%; display: block; }
   .person-card__quote { font-size: 0.6rem; }
 
   /* Thumbnail: small banner in print — 0.8 in tall leaves room for the roster */
-  .print-thumbnail__img { max-height: 0.8in; }
+  .print-thumbnail__img { max-height: 0.8in; object-fit: contain; }
 
   /* Remove sticky positioning for the print bar (it hides anyway) */
   .print-bar { position: static; }
@@ -1426,4 +1449,17 @@ img { max-width: 100%; display: block; }
   .autograph-screen-note { display: none !important; }
   .autograph-page--break { break-before: page; }
   .autograph-line { height: 0.45in; border-bottom: 1px solid #ccc; }
+
+  /* ── Print Index ─────────────────────────────────────────────────────────── */
+  .print-index { columns: 2; column-gap: 0.4in; }
+  .print-index__entry {
+    grid-template-columns: 1.1in 1fr;
+    gap: 0.2rem;
+    padding: 0.12rem 0;
+    break-inside: avoid;
+    font-size: 0.6rem;
+  }
+  .print-index__name { font-size: 0.6rem; }
+  .print-index__refs { font-size: 0.55rem; }
+  .print-index__refs a { color: var(--color-ink-soft); }
 }
