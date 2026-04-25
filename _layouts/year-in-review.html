@@ -49,7 +49,15 @@ layout: default
       {%- if section.items and section.items.size > 0 %}
       <ul class="yir-card__list">
         {%- for item in section.items %}
+        {%- if item.text %}
+          {%- assign attributed = site.data.people_by_id[item.person] -%}
+          <li class="yir-card__item">
+            {{- item.text -}}
+            {%- if item.by %} — {%- if attributed %}<a href="{{ attributed.url | relative_url }}" class="yir-card__attribution">{{ item.by }}</a>{%- else %}{{ item.by }}{%- endif %}{%- endif %}
+          </li>
+        {%- else %}
         <li class="yir-card__item">{{ item }}</li>
+        {%- endif %}
         {%- endfor %}
       </ul>
       {%- endif %}

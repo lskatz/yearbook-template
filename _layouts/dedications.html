@@ -53,7 +53,7 @@ layout: default
               onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'dedication-card__fallback',textContent:{{ honoree.initials | jsonify | escape }}}))">
           </figure>
         </a>
-        <span class="dedication-card__honoree-name">{{ honoree.display_name }}</span>
+        <a href="{{ honoree.url | relative_url }}" class="dedication-card__honoree-name">{{ honoree.display_name }}</a>
       </div>
       {%- endif %}
       <div class="dedication-card__content">
