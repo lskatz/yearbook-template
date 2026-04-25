@@ -39,7 +39,8 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Ensure Gemfile.lock exists
-        run: test -f Gemfile.lock || { echo "ERROR: Gemfile.lock is missing. Run 'bundle lock' locally and commit the result."; exit 1; }
+        run: |
+          test -f Gemfile.lock || { echo "ERROR: Gemfile.lock is missing. Run 'bundle lock' locally and commit the result."; exit 1; }
 
       - uses: actions/setup-node@v4
         with: { node-version: "20" }
