@@ -1,0 +1,92 @@
+# =============================================================================
+# STUDENT FAVORITES SURVEY — one entry per student
+# =============================================================================
+#
+# id      — must match a person ID in _data/people.yml (required)
+# subject — favorite school subject (optional)
+# book    — favorite book this year (optional)
+# lunch   — favorite lunch from the cafeteria (optional)
+# memory  — favorite memory from the school year (optional)
+#
+# To add a student: copy any block below and change `id` to their person ID.
+# To add a new question: add a new field (e.g. `sport:`) to each entry here,
+#   then add a matching <dt>/<dd> pair in _layouts/favorites.html.
+# =============================================================================
+
+- id: malcolm-wilkerson
+  subject: "Math"
+  book: "The Code Book"
+  lunch: "Pizza Friday"
+  memory: "Science fair — even second place was worth it"
+
+- id: reese-wilkerson
+  subject: "PE"
+  book: "Guinness World Records"
+  lunch: "Cheeseburger day"
+  memory: "Winning the field day relay race"
+
+- id: dewey-wilkerson
+  subject: "Art"
+  book: "The Phantom Tollbooth"
+  lunch: "Mac and cheese"
+  memory: "Painting the hallway mural"
+
+- id: stevie-kenarban
+  subject: "Science"
+  book: "A Brief History of Time"
+  lunch: "Grilled cheese"
+  memory: "Beating Malcolm at chess three times"
+
+- id: dabney-hooper
+  subject: "History"
+  book: "The Hobbit"
+  lunch: "Salad bar"
+  memory: "Quiz bowl semifinals"
+
+- id: lloyd
+  subject: "Latin"
+  book: "Harry Potter and the Goblet of Fire"
+  lunch: "Tacos"
+  memory: "Mr. Herkabe's surprise pizza party"
+
+- id: kevin
+  subject: "Music"
+  book: "Diary of a Wimpy Kid"
+  lunch: "Chicken nuggets"
+  memory: "The talent show"
+
+- id: victoria-adams
+  subject: "English"
+  book: "Little Women"
+  lunch: "Yogurt parfait"
+  memory: "5th grade graduation rehearsal"
+
+- id: benjamin-baker
+  subject: "Science"
+  book: "Percy Jackson"
+  lunch: "Breakfast for lunch day"
+  memory: "The overnight field trip"
+
+- id: nora-carter
+  subject: "Reading"
+  book: "Charlotte's Web"
+  lunch: "Soup day"
+  memory: "Reading Buddy program with Pre-K"
+
+- id: elias-mitchell
+  subject: "PE"
+  book: "Dog Man"
+  lunch: "Pizza Friday"
+  memory: "Winning the spelling bee"
+
+- id: francis-wilkerson
+  subject: "Drama"
+  book: "The Outsiders"
+  lunch: "Pasta bar"
+  memory: "The spring play — I only forgot one line"
+
+- id: jessica
+  subject: "Art"
+  book: "Matilda"
+  lunch: "Grilled cheese"
+  memory: "The science museum field trip"

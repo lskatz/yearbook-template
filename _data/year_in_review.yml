@@ -1,0 +1,55 @@
+# =============================================================================
+# YEAR IN REVIEW — edit to match your school year
+# =============================================================================
+#
+# school_year — shown as the subtitle on the page, e.g. "2025–2026"
+# sections    — list of themed boxes, each with:
+#     title   — box heading
+#     icon    — any emoji (displayed before the title)
+#     items   — bullet list of things to remember from the year
+#
+# To add a section: add a new `- title:` block under `sections:`.
+# To remove a section: delete its block.
+# To reorder: drag the blocks into a new order.
+# =============================================================================
+
+school_year: "2025–2026"
+
+sections:
+  - title: "Top Songs"
+    icon: "🎵"
+    items:
+      - "\"Espresso\" — the cafeteria anthem all year long"
+      - "\"Birds of a Feather\" — every graduation slideshow pick"
+      - "\"Die With a Smile\" — the talent show finale song"
+
+  - title: "Top Movies & Shows"
+    icon: "🎬"
+    items:
+      - "Moana 2 — field-trip movie night winner"
+      - "Inside Out 2 — still making teachers cry"
+      - "The Wild Robot — read the book, saw the film"
+
+  - title: "What Everyone Said"
+    icon: "💬"
+    items:
+      - "\"It's giving…\""
+      - "\"No cap\""
+      - "\"Understood the assignment\""
+      - "\"Rizz\" (Mr. Herkabe still doesn't know what it means)"
+
+  - title: "In the News"
+    icon: "📰"
+    items:
+      - "Solar eclipse — we watched it through cardboard glasses"
+      - "Olympic Games — we tracked medal counts in math class"
+      - "New AI tools debuted — promptly banned on tests"
+
+  - title: "School Highlights"
+    icon: "⭐"
+    items:
+      - "Science Fair — three blue ribbons for North Hollywood!"
+      - "Regional Quiz Bowl — 3rd place finish"
+      - "Field Day relay race — the stuff of legend"
+      - "New playground equipment installed in October"
+      - "Book Fair raised $1,200 for the school library"

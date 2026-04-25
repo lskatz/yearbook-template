@@ -1,0 +1,68 @@
+---
+layout: default
+---
+{%- comment -%}
+  =============================================================================
+  dedications.html — renders the Family Dedications & Ads page (/dedications/)
+  =============================================================================
+  Data source: _data/dedications.yml
+
+  Each entry in dedications.yml supports:
+    message — dedication text (required; use `>` for multi-line YAML)
+    from    — who it's from, e.g. "The Smith Family" (required)
+    for     — person ID to display a small portrait next to the message (optional)
+    size    — layout size (optional, default: "quarter")
+                "half"    → spans the full row width (good for longer messages)
+                "quarter" → single column (two fit side-by-side)
+
+  To customize:
+    • Add a dedication → add a new entry in _data/dedications.yml.
+    • Remove one → delete its entry.
+    • Show a portrait → set `for:` to any person ID in _data/people.yml.
+    • Change column layout → update the `size:` field.
+    • Change labels → edit `labels.eyebrow_dedications` in _config.yml.
+  =============================================================================
+{%- endcomment -%}
+<article class="page-dedications wrap">
+
+  <header class="page-header">
+    <p class="page-header__eyebrow">{{ site.labels.eyebrow_dedications | default: "Dedications &amp; Ads" }}</p>
+    <h1 class="page-header__title">{{ page.title }}</h1>
+    {%- if page.subtitle %}<p class="page-header__meta">{{ page.subtitle }}</p>{%- endif %}
+  </header>
+
+  {%- if content and content != "" %}
+  <section class="prose">
+    {{ content }}
+  </section>
+  {%- endif %}
+
+  {%- assign dedications = site.data.dedications -%}
+  {%- if dedications and dedications.size > 0 %}
+  <div class="dedications-grid">
+    {%- for d in dedications %}
+    {%- assign honoree = site.data.people_by_id[d.for] -%}
+    <div class="dedication-card{% if d.size == 'half' %} dedication-card--half{% endif %}">
+      {%- if honoree %}
+      <div class="dedication-card__portrait">
+        <a href="{{ honoree.url | relative_url }}" aria-label="{{ honoree.display_name }}">
+          <figure class="dedication-card__frame">
+            <img
+              src="{{ honoree.photo | relative_url }}"
+              alt="{{ honoree.display_name }}"
+              onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'dedication-card__fallback',textContent:{{ honoree.initials | jsonify | escape }}}))">
+          </figure>
+        </a>
+        <span class="dedication-card__honoree-name">{{ honoree.display_name }}</span>
+      </div>
+      {%- endif %}
+      <div class="dedication-card__content">
+        <blockquote class="dedication-card__message">{{ d.message }}</blockquote>
+        <p class="dedication-card__from">— {{ d.from }}</p>
+      </div>
+    </div>
+    {%- endfor %}
+  </div>
+  {%- endif %}
+
+</article>

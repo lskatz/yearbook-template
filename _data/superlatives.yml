@@ -1,0 +1,53 @@
+# =============================================================================
+# SUPERLATIVES — one entry per award category
+# =============================================================================
+#
+# Fields:
+#   category  — award name, e.g. "Most Likely to Succeed" (required)
+#   winner    — person ID from _data/people.yml (required)
+#   runner_up — person ID (optional)
+#
+# To add a category: copy any block below, change `category`, `winner`, and
+# optionally `runner_up` to the IDs you want.
+# To remove a category: delete its block.
+# =============================================================================
+
+- category: "Most Likely to Succeed"
+  winner: malcolm-wilkerson
+  runner_up: stevie-kenarban
+
+- category: "Class Clown"
+  winner: reese-wilkerson
+  runner_up: dabney-hooper
+
+- category: "Most Artistic"
+  winner: dewey-wilkerson
+  runner_up: chloe-young
+
+- category: "Best Smile"
+  winner: victoria-adams
+  runner_up: layla-scott
+
+- category: "Most Athletic"
+  winner: reese-wilkerson
+  runner_up: jackson-green
+
+- category: "Most Creative"
+  winner: dewey-wilkerson
+  runner_up: nora-carter
+
+- category: "Most Improved"
+  winner: layla-scott
+  runner_up: samuel-wright
+
+- category: "Most Likely to Be Famous"
+  winner: victoria-adams
+  runner_up: francis-wilkerson
+
+- category: "Best Friends"
+  winner: malcolm-wilkerson
+  runner_up: stevie-kenarban
+
+- category: "Biggest Heart"
+  winner: nora-carter
+  runner_up: aria-clark

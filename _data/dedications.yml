@@ -1,0 +1,58 @@
+# =============================================================================
+# DEDICATIONS & ADS — messages from families and the school community
+# =============================================================================
+#
+# Fields:
+#   message — dedication text (required; use > for multi-line YAML block scalar)
+#   from    — who it's from, e.g. "The Smith Family" (required)
+#   for     — person ID to display a small portrait next to the message (optional)
+#   size    — layout size on the page (optional, default: "quarter")
+#               "half"    → spans the full two-column width
+#               "quarter" → single column (fits two side-by-side)
+#
+# To add a dedication: copy any block below and fill in your message and `from`.
+# To remove one: delete its block.
+# To show a portrait: set `for:` to any person ID in _data/people.yml.
+# =============================================================================
+
+- message: >
+    We are so proud of you, Malcolm! From Pre-K to 5th grade you have
+    amazed us every single day. Keep asking questions and never stop
+    proving everyone wrong. We love you to the moon and back.
+  from: "Mom, Dad, Reese &amp; Dewey"
+  for: malcolm-wilkerson
+  size: half
+
+- message: >
+    Stevie — your determination, your humor, and your heart inspire
+    everyone around you. The world is lucky to have you in it.
+  from: "The Kenarban Family"
+  for: stevie-kenarban
+  size: half
+
+- message: >
+    To our creative Dewey: keep painting, keep singing, keep being
+    exactly who you are. The world needs more of your kind of magic.
+  from: "Mom &amp; Dad"
+  for: dewey-wilkerson
+  size: quarter
+
+- message: >
+    Victoria — "Every ending is just a new beginning." We believe
+    every word of it. Congratulations, graduate!
+  from: "The Adams Family"
+  for: victoria-adams
+  size: quarter
+
+- message: >
+    Francis — from Marlin Academy to North Hollywood Elementary,
+    we couldn't be prouder. You've got this, Frankie!
+  from: "The Wilkerson Family"
+  for: francis-wilkerson
+  size: quarter
+
+- message: >
+    Thank you, North Hollywood Elementary teachers and staff, for
+    another incredible year. You make this community shine.
+  from: "The PTA"
+  size: quarter

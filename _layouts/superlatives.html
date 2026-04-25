@@ -1,0 +1,66 @@
+---
+layout: default
+---
+{%- comment -%}
+  =============================================================================
+  superlatives.html — renders the Class Superlatives page (/superlatives/)
+  =============================================================================
+  Data source: _data/superlatives.yml
+
+  Each entry in superlatives.yml supports:
+    category  — award name, e.g. "Most Likely to Succeed" (required)
+    winner    — person ID from _data/people.yml (required)
+    runner_up — person ID (optional)
+
+  To customize:
+    • Add/remove/reorder categories → edit _data/superlatives.yml.
+    • Change winners → update the person IDs in _data/superlatives.yml.
+    • Change labels → edit `labels.eyebrow_superlatives` in _config.yml.
+  =============================================================================
+{%- endcomment -%}
+<article class="page-superlatives wrap">
+
+  <header class="page-header">
+    <p class="page-header__eyebrow">{{ site.labels.eyebrow_superlatives | default: "Superlatives" }}</p>
+    <h1 class="page-header__title">{{ page.title }}</h1>
+    {%- if page.subtitle %}<p class="page-header__meta">{{ page.subtitle }}</p>{%- endif %}
+  </header>
+
+  {%- if content and content != "" %}
+  <section class="prose">
+    {{ content }}
+  </section>
+  {%- endif %}
+
+  {%- assign superlatives = site.data.superlatives -%}
+  {%- if superlatives and superlatives.size > 0 %}
+  <div class="superlative-grid">
+    {%- for s in superlatives %}
+    {%- assign winner = site.data.people_by_id[s.winner] -%}
+    {%- assign runner = site.data.people_by_id[s.runner_up] -%}
+    <div class="superlative-card">
+      <p class="superlative-card__category">{{ s.category }}</p>
+      {%- if winner %}
+      <div class="superlative-card__winner">
+        <a href="{{ winner.url | relative_url }}" class="superlative-card__link">
+          <figure class="superlative-card__frame">
+            <img
+              src="{{ winner.photo | relative_url }}"
+              alt="{{ winner.display_name }}"
+              onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'superlative-card__fallback',textContent:{{ winner.initials | jsonify | escape }}}))">
+          </figure>
+          <span class="superlative-card__name">{{ winner.display_name }}</span>
+        </a>
+        {%- if runner %}
+        <span class="superlative-card__runner-up">Runner-up: {{ runner.display_name }}</span>
+        {%- endif %}
+      </div>
+      {%- else %}
+      <p class="superlative-card__missing">Unknown person: {{ s.winner }}</p>
+      {%- endif %}
+    </div>
+    {%- endfor %}
+  </div>
+  {%- endif %}
+
+</article>
