@@ -49,7 +49,15 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.2"
-          bundler-cache: true
+          bundler-cache: false
+
+      - name: Install Ruby gems
+        run: |
+          ruby -v
+          bundle -v
+          bundle config set path vendor/bundle
+          bundle install --jobs 4 --retry 3
+          bundle exec jekyll -v
 
       - uses: actions/configure-pages@v5
         id: pages
