@@ -320,7 +320,7 @@ block from `_layouts/home.html`.
 The browser-tab icon lives at `assets/images/site/favicon.svg`. It's a
 heraldic shield design containing a school initial.
 
-To customise it:
+To customize it:
 1. Open `assets/images/site/favicon.svg`
 2. Change the `fill` on the first `<path>` (shield body) to your school colour
 3. Change the character inside `<text>` to your school's initial letter
@@ -360,9 +360,16 @@ class_thumbnail_default: "/assets/images/my-school-banner.jpg"
 To override the image for just one page, add `thumbnail:` to that page's
 front-matter (see [Changing the default class thumbnail](#changing-the-default-class-thumbnail)).
 
-To customise the placeholder SVG colours, open the file and edit the `fill`
+To customize the placeholder SVG colors, open the file and edit the `fill`
 values on the top/bottom `<rect>` elements (the accent bands) and the `stroke`
 values on the corner marks.
+
+> **Note:** Colors are hardcoded in each thumbnail SVG because external SVG
+> files (referenced via `src=`) cannot read CSS custom properties from the
+> parent document. The four thumbnail files share the same default accent band
+> style (`fill="#7b2d1e"` for class, `#2f6a3a` for club, `#1a3a6a` for sport,
+> `#7b5c1e` for photo). If you change `--color-accent` in `main.css`, update
+> the accent-band fill in any placeholder SVG you still use.
 
 ---
 
