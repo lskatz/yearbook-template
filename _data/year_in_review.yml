@@ -35,7 +35,7 @@ sections:
   - title: "Things People Actually Said"
     icon: "💬"
     items:
-      - text: '"That\'s not right, Mr. Herkabe."'
+      - text: '"That''s not right, Mr. Herkabe."'
         by: "Malcolm Wilkerson, repeatedly"
         person: malcolm-wilkerson
       - text: '"Malcolm... is... wrong."'
