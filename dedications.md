@@ -5,5 +5,6 @@ permalink: /dedications/
 subtitle: "Messages from our school community"
 ---
 
-A heartfelt thank-you to all the families and friends who
-shared a message to celebrate this year's students.
+Congratulations to our students from the families and community
+members who love them most. All messages were pre-screened by
+the front office. Most were approved on the first try.

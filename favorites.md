@@ -5,5 +5,6 @@ permalink: /favorites/
 subtitle: "What we loved most this year"
 ---
 
-From favorite subjects to most memorable moments —
-here's what our students will remember about this school year.
+We asked our students to share what made this school year special.
+The results were thoughtful, honest, and — in at least one case —
+still under review by the administration.

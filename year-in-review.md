@@ -4,5 +4,7 @@ title: "Year in Review"
 permalink: /year-in-review/
 ---
 
-From chart-topping songs to unforgettable school moments,
-here's a look back at everything that defined this school year.
+Another unforgettable year at North Hollywood Elementary. From the
+Science Fair to the Spring Play, from Quiz Bowl semifinals to the
+district cooking invitational — here's everything we'll still be
+talking about at our ten-year reunion.
