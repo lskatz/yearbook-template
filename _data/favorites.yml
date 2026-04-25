@@ -1,0 +1,92 @@
+# =============================================================================
+# STUDENT FAVORITES SURVEY — one entry per student
+# =============================================================================
+#
+# id      — must match a person ID in _data/people.yml (required)
+# subject — favorite school subject (optional)
+# book    — favorite book this year (optional)
+# lunch   — favorite lunch from the cafeteria (optional)
+# memory  — favorite memory from the school year (optional)
+#
+# To add a student: copy any block below and change `id` to their person ID.
+# To add a new question: add a new field (e.g. `sport:`) to each entry here,
+#   then add a matching <dt>/<dd> pair in _layouts/favorites.html.
+# =============================================================================
+
+- id: malcolm-wilkerson
+  subject: "Mathematics"
+  book: "Gödel, Escher, Bach (I'm on my second read-through)"
+  lunch: "Pizza Friday (whatever Reese left behind)"
+  memory: "Proving Mr. Herkabe's bonus problem had two valid solutions — out loud, in class"
+
+- id: reese-wilkerson
+  subject: "Lunch"
+  book: "Chef Marco's Guide to Advanced Flavor Profiles"
+  lunch: "All of it, ideally at once"
+  memory: "Placing 2nd at the district cooking invitational. Nobody saw that coming. Including me."
+
+- id: dewey-wilkerson
+  subject: "Art"
+  book: "The Lives of the Great Painters"
+  lunch: "Mac and cheese (the color palette reminds me of Van Gogh's yellows)"
+  memory: "The moment Principal Block admitted the east wing mural had 'grown on him'"
+
+- id: stevie-kenarban
+  subject: "Science"
+  book: "A Brief History of Time"
+  lunch: "Grilled cheese"
+  memory: "Beating...Malcolm...at chess...three times. He still...hasn't...recovered."
+
+- id: dabney-hooper
+  subject: "History"
+  book: "The Complete Works of Josephus"
+  lunch: "Whatever my mother packed (she pre-inspects the cafeteria menu)"
+  memory: "Quiz Bowl semifinals — my mother came to cheer and accidentally sat in the judges' section"
+
+- id: lloyd
+  subject: "Latin"
+  book: "Harrius Potter et Philosophi Lapis (Latin edition)"
+  lunch: "Tacos"
+  memory: "The Krelboyne field trip — specifically the part before Reese found us"
+
+- id: kevin
+  subject: "Music"
+  book: "The Elements of Style (we were assigned it)"
+  lunch: "Chicken nuggets"
+  memory: "The talent show — I only dropped the tuba once, and it was a soft drop"
+
+- id: victoria-adams
+  subject: "English"
+  book: "Little Women"
+  lunch: "Yogurt parfait"
+  memory: "5th grade graduation rehearsal — we have all waited a long time for this"
+
+- id: benjamin-baker
+  subject: "Science"
+  book: "The Hitchhiker's Guide to the Galaxy"
+  lunch: "Breakfast for lunch day"
+  memory: "The overnight field trip (the parts I was awake for)"
+
+- id: nora-carter
+  subject: "Reading"
+  book: "Charlotte's Web"
+  lunch: "Soup day"
+  memory: "Reading Buddy Tuesdays with the Pre-K class — those kids are the best audience"
+
+- id: elias-mitchell
+  subject: "PE"
+  book: "Dog Man #12"
+  lunch: "Pizza Friday"
+  memory: "The spelling bee final — I still maintain 'necessary' has two c's"
+
+- id: francis-wilkerson
+  subject: "Drama"
+  book: "The Count of Monte Cristo"
+  lunch: "Pasta bar"
+  memory: "The spring play. I remembered every single line. You are welcome."
+
+- id: jessica
+  subject: "Art"
+  book: "Matilda"
+  lunch: "Grilled cheese"
+  memory: "When Dewey helped me finish the spring play backdrop the night before opening"

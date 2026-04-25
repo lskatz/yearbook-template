@@ -1,0 +1,53 @@
+---
+layout: default
+---
+{%- comment -%}
+  =============================================================================
+  autographs.html — renders autograph / signature pages (/autographs/)
+  =============================================================================
+  No data source required. The printed pages are intentionally left blank
+  so classmates can write and sign.
+
+  Front-matter options (set in autographs.md):
+    title      — page title shown in the header (required)
+    subtitle   — optional subtitle shown beneath the title
+    page_count — number of autograph pages to include in the print PDF
+                 (default: 2). Each page shows 18 signature lines.
+
+  To customize:
+    • More pages → increase `page_count:` in autographs.md.
+    • Fewer lines per page → change `(1..18)` to a smaller range below.
+    • Add a header prompt on each page (e.g. "Sign here!") → add it inside
+      the .autograph-page div below.
+  =============================================================================
+{%- endcomment -%}
+<article class="page-autographs wrap">
+
+  <header class="page-header">
+    <p class="page-header__eyebrow">{{ site.labels.eyebrow_autographs | default: "Autographs" }}</p>
+    <h1 class="page-header__title">{{ page.title }}</h1>
+    {%- if page.subtitle %}<p class="page-header__meta">{{ page.subtitle }}</p>{%- endif %}
+  </header>
+
+  {%- comment -%} Screen-only message — hidden when printing {%- endcomment -%}
+  <p class="autograph-screen-note no-print">
+    These pages are left blank in the printed yearbook so classmates can write
+    messages and sign their names. Print your yearbook and bring it to school!
+  </p>
+
+  {%- comment -%}
+    Signature lines — rendered for both screen preview and print.
+    Increase `page_count` in autographs.md front-matter to add more pages.
+  {%- endcomment -%}
+  {%- assign autograph_count = site.autograph_pages | default: page.page_count | default: 2 -%}
+  {%- for n in (1..autograph_count) %}
+  <div class="autograph-page{%- unless forloop.first %} autograph-page--break{%- endunless %}">
+    <div class="autograph-lines">
+      {%- for line in (1..18) %}
+      <div class="autograph-line"></div>
+      {%- endfor %}
+    </div>
+  </div>
+  {%- endfor %}
+
+</article>

@@ -1,0 +1,61 @@
+---
+layout: default
+---
+{%- comment -%}
+  =============================================================================
+  year-in-review.html — renders the Year in Review page (/year-in-review/)
+  =============================================================================
+  Data source: _data/year_in_review.yml
+
+  Structure of year_in_review.yml:
+    school_year: "2025–2026"
+    sections:
+      - title: "Top Songs"
+        icon:  "🎵"        (any emoji)
+        items:
+          - "Item one"
+          - "Item two"
+
+  To customize:
+    • Add/remove sections → edit the `sections:` list in _data/year_in_review.yml.
+    • Change items → edit the `items:` list under each section.
+    • Change the icon → update the `icon:` field with any emoji.
+    • Change labels → edit `labels.eyebrow_yir` in _config.yml.
+  =============================================================================
+{%- endcomment -%}
+{%- assign yir = site.data.year_in_review -%}
+<article class="page-yir wrap">
+
+  <header class="page-header">
+    <p class="page-header__eyebrow">{{ site.labels.eyebrow_yir | default: "Year in Review" }}</p>
+    <h1 class="page-header__title">{{ page.title }}</h1>
+    {%- if yir.school_year %}<p class="page-header__meta">{{ yir.school_year }}</p>{%- endif %}
+  </header>
+
+  {%- if content and content != "" %}
+  <section class="prose">
+    {{ content }}
+  </section>
+  {%- endif %}
+
+  {%- if yir and yir.sections and yir.sections.size > 0 %}
+  <div class="yir-grid">
+    {%- for section in yir.sections %}
+    <section class="yir-card">
+      <h2 class="yir-card__title">
+        {%- if section.icon %}<span class="yir-card__icon" aria-hidden="true">{{ section.icon }}</span>{%- endif -%}
+        {{ section.title }}
+      </h2>
+      {%- if section.items and section.items.size > 0 %}
+      <ul class="yir-card__list">
+        {%- for item in section.items %}
+        <li class="yir-card__item">{{ item }}</li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+    </section>
+    {%- endfor %}
+  </div>
+  {%- endif %}
+
+</article>

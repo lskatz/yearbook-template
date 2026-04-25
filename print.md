@@ -78,6 +78,34 @@ permalink: /print/
     </li>
     {%- endfor %}
     {%- endif %}
+    {%- if site.data.superlatives and site.data.superlatives.size > 0 %}
+    <li class="print-toc__item">
+      <span class="print-toc__label">{{ site.labels.eyebrow_superlatives | default: "Superlatives" }}</span>
+      <span class="print-toc__name">Class Superlatives</span>
+    </li>
+    {%- endif %}
+    {%- if site.data.year_in_review %}
+    <li class="print-toc__item">
+      <span class="print-toc__label">{{ site.labels.eyebrow_yir | default: "Year in Review" }}</span>
+      <span class="print-toc__name">{{ site.data.year_in_review.school_year }} in Review</span>
+    </li>
+    {%- endif %}
+    {%- if site.data.favorites and site.data.favorites.size > 0 %}
+    <li class="print-toc__item">
+      <span class="print-toc__label">{{ site.labels.eyebrow_favorites | default: "Favorites" }}</span>
+      <span class="print-toc__name">Student Favorites</span>
+    </li>
+    {%- endif %}
+    {%- if site.data.dedications and site.data.dedications.size > 0 %}
+    <li class="print-toc__item">
+      <span class="print-toc__label">{{ site.labels.eyebrow_dedications | default: "Dedications &amp; Ads" }}</span>
+      <span class="print-toc__name">Dedications &amp; Ads</span>
+    </li>
+    {%- endif %}
+    <li class="print-toc__item">
+      <span class="print-toc__label">{{ site.labels.eyebrow_autographs | default: "Autographs" }}</span>
+      <span class="print-toc__name">Autograph Pages</span>
+    </li>
   </ol>
 </section>
 
@@ -339,7 +367,156 @@ permalink: /print/
 {%- endfor %}
 {%- endif %}
 
-{%- comment -%} ═══ 8. BACK COVER ═══ {%- endcomment -%}
+{%- comment -%} ═══ 8. SUPERLATIVES ═══ {%- endcomment -%}
+{%- assign superlatives = site.data.superlatives -%}
+{%- if superlatives and superlatives.size > 0 %}
+<article class="print-section print-page-break">
+  <header class="print-section__header">
+    <p class="print-section__eyebrow">{{ site.labels.eyebrow_superlatives | default: "Superlatives" }}</p>
+    <h2 class="print-section__title">Class Superlatives</h2>
+  </header>
+  <div class="superlative-grid">
+    {%- for s in superlatives %}
+    {%- assign winner = site.data.people_by_id[s.winner] -%}
+    {%- assign runner = site.data.people_by_id[s.runner_up] -%}
+    <div class="superlative-card">
+      <p class="superlative-card__category">{{ s.category }}</p>
+      {%- if winner %}
+      <div class="superlative-card__winner">
+        <figure class="superlative-card__frame">
+          <img
+            src="{{ winner.photo | relative_url }}"
+            alt="{{ winner.display_name }}"
+            onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'superlative-card__fallback',textContent:{{ winner.initials | jsonify | escape }}}))">
+        </figure>
+        <span class="superlative-card__name">{{ winner.display_name }}</span>
+        {%- if runner %}
+        <span class="superlative-card__runner-up">Runner-up: {{ runner.display_name }}</span>
+        {%- endif %}
+      </div>
+      {%- endif %}
+    </div>
+    {%- endfor %}
+  </div>
+</article>
+{%- endif %}
+
+{%- comment -%} ═══ 9. YEAR IN REVIEW ═══ {%- endcomment -%}
+{%- assign yir = site.data.year_in_review -%}
+{%- if yir and yir.sections and yir.sections.size > 0 %}
+<article class="print-section print-page-break">
+  <header class="print-section__header">
+    <p class="print-section__eyebrow">{{ site.labels.eyebrow_yir | default: "Year in Review" }}</p>
+    <h2 class="print-section__title">{{ yir.school_year | default: "The Year" }} in Review</h2>
+  </header>
+  <div class="yir-grid">
+    {%- for section in yir.sections %}
+    <section class="yir-card">
+      <h3 class="yir-card__title">
+        {%- if section.icon %}<span class="yir-card__icon" aria-hidden="true">{{ section.icon }}</span>{%- endif -%}
+        {{ section.title }}
+      </h3>
+      {%- if section.items and section.items.size > 0 %}
+      <ul class="yir-card__list">
+        {%- for item in section.items %}
+        <li class="yir-card__item">{{ item }}</li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+    </section>
+    {%- endfor %}
+  </div>
+</article>
+{%- endif %}
+
+{%- comment -%} ═══ 10. STUDENT FAVORITES ═══ {%- endcomment -%}
+{%- assign favorites = site.data.favorites -%}
+{%- if favorites and favorites.size > 0 %}
+<article class="print-section print-page-break">
+  <header class="print-section__header">
+    <p class="print-section__eyebrow">{{ site.labels.eyebrow_favorites | default: "Favorites" }}</p>
+    <h2 class="print-section__title">Student Favorites</h2>
+  </header>
+  <div class="favorites-grid">
+    {%- for fav in favorites %}
+    {%- assign person = site.data.people_by_id[fav.id] -%}
+    {%- if person %}
+    <div class="favorites-card">
+      <figure class="favorites-card__frame">
+        <img
+          src="{{ person.photo | relative_url }}"
+          alt="{{ person.display_name }}"
+          onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'favorites-card__fallback',textContent:{{ person.initials | jsonify | escape }}}))">
+      </figure>
+      <div class="favorites-card__body">
+        <p class="favorites-card__name">{{ person.display_name }}</p>
+        <dl class="favorites-card__list">
+          {%- if fav.subject %}<dt>📚 Subject</dt><dd>{{ fav.subject }}</dd>{%- endif %}
+          {%- if fav.book %}<dt>📖 Book</dt><dd>{{ fav.book }}</dd>{%- endif %}
+          {%- if fav.lunch %}<dt>🍕 Lunch</dt><dd>{{ fav.lunch }}</dd>{%- endif %}
+          {%- if fav.memory %}<dt>⭐ Memory</dt><dd>{{ fav.memory }}</dd>{%- endif %}
+        </dl>
+      </div>
+    </div>
+    {%- endif %}
+    {%- endfor %}
+  </div>
+</article>
+{%- endif %}
+
+{%- comment -%} ═══ 11. DEDICATIONS & ADS ═══ {%- endcomment -%}
+{%- assign dedications = site.data.dedications -%}
+{%- if dedications and dedications.size > 0 %}
+<article class="print-section print-page-break">
+  <header class="print-section__header">
+    <p class="print-section__eyebrow">{{ site.labels.eyebrow_dedications | default: "Dedications &amp; Ads" }}</p>
+    <h2 class="print-section__title">Dedications &amp; Ads</h2>
+  </header>
+  <div class="dedications-grid">
+    {%- for d in dedications %}
+    {%- assign honoree = site.data.people_by_id[d.for] -%}
+    <div class="dedication-card{% if d.size == 'half' %} dedication-card--half{% endif %}">
+      {%- if honoree %}
+      <div class="dedication-card__portrait">
+        <figure class="dedication-card__frame">
+          <img
+            src="{{ honoree.photo | relative_url }}"
+            alt="{{ honoree.display_name }}"
+            onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'dedication-card__fallback',textContent:{{ honoree.initials | jsonify | escape }}}))">
+        </figure>
+        <span class="dedication-card__honoree-name">{{ honoree.display_name }}</span>
+      </div>
+      {%- endif %}
+      <div class="dedication-card__content">
+        <blockquote class="dedication-card__message">{{ d.message }}</blockquote>
+        <p class="dedication-card__from">— {{ d.from }}</p>
+      </div>
+    </div>
+    {%- endfor %}
+  </div>
+</article>
+{%- endif %}
+
+{%- comment -%} ═══ 12. AUTOGRAPHS ═══
+  Number of autograph pages is controlled by `autograph_pages` in _config.yml.
+  Update that value to change the count in both the print PDF and the web page.
+{%- endcomment -%}
+{%- assign autograph_count = site.autograph_pages | default: 2 -%}
+{%- for autograph_n in (1..autograph_count) %}
+<article class="print-section print-page-break">
+  <header class="print-section__header">
+    <p class="print-section__eyebrow">{{ site.labels.eyebrow_autographs | default: "Autographs" }}</p>
+    <h2 class="print-section__title">Autographs</h2>
+  </header>
+  <div class="autograph-lines">
+    {%- for _line in (1..18) %}
+    <div class="autograph-line"></div>
+    {%- endfor %}
+  </div>
+</article>
+{%- endfor %}
+
+{%- comment -%} ═══ 13. BACK COVER ═══ {%- endcomment -%}
 <section class="print-back-cover print-page-break">
   <div class="print-back-cover__accent-bar"></div>
   <div class="print-back-cover__body">
@@ -349,7 +526,7 @@ permalink: /print/
   <div class="print-back-cover__accent-bar"></div>
 </section>
 
-{%- comment -%} ═══ 9. PRINT INSTRUCTIONS (screen only) ═══ {%- endcomment -%}
+{%- comment -%} ═══ 14. PRINT INSTRUCTIONS (screen only) ═══ {%- endcomment -%}
 <section class="print-instructions no-print" id="print-instructions">
   <h2 class="print-instructions__heading">How to save and submit your yearbook to a book printing service</h2>
 

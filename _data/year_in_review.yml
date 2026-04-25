@@ -1,0 +1,60 @@
+# =============================================================================
+# YEAR IN REVIEW — edit to match your school year
+# =============================================================================
+#
+# school_year — shown as the subtitle on the page, e.g. "2025–2026"
+# sections    — list of themed boxes, each with:
+#     title   — box heading
+#     icon    — any emoji (displayed before the title)
+#     items   — bullet list of things to remember from the year
+#
+# To add a section: add a new `- title:` block under `sections:`.
+# To remove a section: delete its block.
+# To reorder: drag the blocks into a new order.
+# =============================================================================
+
+school_year: "2025–2026"
+
+sections:
+  - title: "Songs We Couldn't Shake"
+    icon: "🎵"
+    items:
+      - "The Krelboyne class song — written and performed by Dewey Wilkerson"
+      - "\"Eye of the Tiger\" — played before every Quiz Bowl match, per Reese"
+      - "Whatever Reese was humming in the lunch line (still unidentified)"
+      - "The Spring Play finale — you had to be there"
+
+  - title: "Moments We'll Never Forget"
+    icon: "🎬"
+    items:
+      - "The Spring Play — Francis Wilkerson remembered most of his lines"
+      - "Dewey's east wing mural unveiling drew the biggest crowd since the fire drill"
+      - "Film Friday: the gym projector worked for one full showing"
+      - "The cooking invitational — nobody saw Reese coming"
+
+  - title: "Things People Actually Said"
+    icon: "💬"
+    items:
+      - "\"That's not right, Mr. Herkabe.\" — Malcolm Wilkerson, repeatedly"
+      - "\"Malcolm... is... wrong.\" — Stevie Kenarban, the one time it counted"
+      - "\"I don't have to listen to you!\" — heard daily near the 4th-grade tables"
+      - "\"We'll discuss this at home.\" — Lois Wilkerson, via the front office intercom"
+      - "\"My mother will be calling about this.\" — Dabney Hooper"
+
+  - title: "In the News"
+    icon: "📰"
+    items:
+      - "Krelboyne gifted class reached the regional Quiz Bowl semifinals"
+      - "Reese Wilkerson placed 2nd at the district cooking invitational"
+      - "Principal Block's coffee maker was never recovered"
+      - "The new playground equipment survived exactly three weeks intact"
+      - "Caroline Miller's substitute class attempted to stage a walkout (unsuccessful)"
+
+  - title: "School Highlights"
+    icon: "⭐"
+    items:
+      - "Science Fair — Malcolm Wilkerson's entry was disqualified for 'exceeding scope'"
+      - "Quiz Bowl semifinals — the Krelboynes took 2nd, then disputed the scoring"
+      - "Dewey Wilkerson's mural now covers the entire east hallway"
+      - "Field Day relay race — won by Reese Wilkerson by a suspicious margin"
+      - "Spelling Bee champion: Stevie Kenarban (the audience had time to settle in)"

@@ -1,0 +1,81 @@
+---
+layout: default
+---
+{%- comment -%}
+  =============================================================================
+  favorites.html — renders the Student Favorites Survey page (/favorites/)
+  =============================================================================
+  Data source: _data/favorites.yml
+
+  Each entry in favorites.yml supports:
+    id      — person ID matching _data/people.yml (required)
+    subject — favorite school subject (optional)
+    book    — favorite book (optional)
+    lunch   — favorite lunch (optional)
+    memory  — favorite memory from the year (optional)
+
+  To customize:
+    • Add a student → add a new entry in _data/favorites.yml.
+    • Add a new question → add a new field (e.g. `sport:`) to each entry in
+      favorites.yml, then copy a <dt>/<dd> pair below and reference `fav.sport`.
+    • Change question labels → edit the text inside the <dt> tags below.
+    • Change labels → edit `labels.eyebrow_favorites` in _config.yml.
+  =============================================================================
+{%- endcomment -%}
+<article class="page-favorites wrap">
+
+  <header class="page-header">
+    <p class="page-header__eyebrow">{{ site.labels.eyebrow_favorites | default: "Favorites" }}</p>
+    <h1 class="page-header__title">{{ page.title }}</h1>
+    {%- if page.subtitle %}<p class="page-header__meta">{{ page.subtitle }}</p>{%- endif %}
+  </header>
+
+  {%- if content and content != "" %}
+  <section class="prose">
+    {{ content }}
+  </section>
+  {%- endif %}
+
+  {%- assign favorites = site.data.favorites -%}
+  {%- if favorites and favorites.size > 0 %}
+  <div class="favorites-grid">
+    {%- for fav in favorites %}
+    {%- assign person = site.data.people_by_id[fav.id] -%}
+    {%- if person %}
+    <div class="favorites-card">
+      <a href="{{ person.url | relative_url }}" class="favorites-card__photo-link" aria-label="{{ person.display_name }}">
+        <figure class="favorites-card__frame">
+          <img
+            src="{{ person.photo | relative_url }}"
+            alt="{{ person.display_name }}"
+            onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'favorites-card__fallback',textContent:{{ person.initials | jsonify | escape }}}))">
+        </figure>
+      </a>
+      <div class="favorites-card__body">
+        <p class="favorites-card__name">
+          <a href="{{ person.url | relative_url }}">{{ person.display_name }}</a>
+        </p>
+        <dl class="favorites-card__list">
+          {%- if fav.subject %}
+          <dt>📚 Subject</dt><dd>{{ fav.subject }}</dd>
+          {%- endif %}
+          {%- if fav.book %}
+          <dt>📖 Book</dt><dd>{{ fav.book }}</dd>
+          {%- endif %}
+          {%- if fav.lunch %}
+          <dt>🍕 Lunch</dt><dd>{{ fav.lunch }}</dd>
+          {%- endif %}
+          {%- if fav.memory %}
+          <dt>⭐ Memory</dt><dd>{{ fav.memory }}</dd>
+          {%- endif %}
+        </dl>
+      </div>
+    </div>
+    {%- else %}
+    <div class="favorites-card favorites-card--missing">Unknown person: {{ fav.id }}</div>
+    {%- endif %}
+    {%- endfor %}
+  </div>
+  {%- endif %}
+
+</article>

@@ -18,7 +18,7 @@ mascot: "The Krelboynes"
 # page so visitors who want to create their own yearbook can find the template.
 # Update this to your own fork's URL after you use the template.
 github_repo: "https://github.com/lskatz/yearbook-template"
-template_version: "0.02"
+template_version: "0.03"
 
 # If your site is deployed at https://your-org.github.io (no subpath), leave
 # both of these empty. If it's at https://your-org.github.io/yearbook/, set
@@ -44,6 +44,7 @@ labels:
   nav_sports:    "Sports"
   nav_staff:     "Staff"
   nav_photos:    "Photos"
+  nav_extras:    "Extras"
   nav_help:      "Help"
   nav_print:     "Print PDF"
 
@@ -53,6 +54,14 @@ labels:
   eyebrow_sport: "Team"
   eyebrow_staff: "Staff"
   eyebrow_photo_page: "Photos"
+  eyebrow_superlatives: "Superlatives"
+  eyebrow_yir:          "Year in Review"
+  eyebrow_favorites:    "Favorites"
+  eyebrow_autographs:   "Autographs"
+  eyebrow_dedications:  "Dedications &amp; Ads"
+
+  # Home page "Extras" section heading
+  section_extras: "Extras"
 
   # Roster section headings (singular used when only 1, plural for 2+)
   teachers_one:  "Teacher"
@@ -103,6 +112,11 @@ sport_thumbnail_default: "/assets/images/site/sport-thumbnail-default.svg"
 # Override per page with  thumbnail: "/path/to/photo.jpg"  in the page's
 # front-matter, or set to "" to suppress the thumbnail for a specific page.
 photo_thumbnail_default: "/assets/images/site/photo-thumbnail-default.svg"
+
+# Number of autograph pages to include in the print PDF (default: 2).
+# Increase to give students more room to collect signatures. This value
+# controls both the /autographs/ web page and the print.md PDF output.
+autograph_pages: 2
 
 
 # =============================================================================

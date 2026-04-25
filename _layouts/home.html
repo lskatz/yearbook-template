@@ -155,4 +155,46 @@ layout: default
     {{ content }}
   </section>
   {%- endif %}
+
+  {%- comment -%}
+    Extras — links to the five special pages added to the yearbook template:
+    superlatives, year in review, student favorites, autographs, dedications.
+    All five links appear here. Remove any you don't need.
+  {%- endcomment -%}
+  <section id="extras" class="index-section">
+    <h2 class="index-section__heading">{{ site.labels.section_extras | default: "Extras" }}</h2>
+    <ul class="index-list">
+      <li>
+        <a href="{{ '/superlatives/' | relative_url }}">
+          <span class="index-list__eyebrow">{{ site.labels.eyebrow_superlatives | default: "Superlatives" }}</span>
+          <span class="index-list__title">Class Superlatives</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ '/year-in-review/' | relative_url }}">
+          <span class="index-list__eyebrow">{{ site.labels.eyebrow_yir | default: "Year in Review" }}</span>
+          {%- assign yir = site.data.year_in_review -%}
+          <span class="index-list__title">{% if yir.school_year %}{{ yir.school_year }} {% endif %}in Review</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ '/favorites/' | relative_url }}">
+          <span class="index-list__eyebrow">{{ site.labels.eyebrow_favorites | default: "Favorites" }}</span>
+          <span class="index-list__title">Student Favorites</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ '/dedications/' | relative_url }}">
+          <span class="index-list__eyebrow">{{ site.labels.eyebrow_dedications | default: "Dedications &amp; Ads" }}</span>
+          <span class="index-list__title">Dedications &amp; Ads</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ '/autographs/' | relative_url }}">
+          <span class="index-list__eyebrow">{{ site.labels.eyebrow_autographs | default: "Autographs" }}</span>
+          <span class="index-list__title">Autograph Pages</span>
+        </a>
+      </li>
+    </ul>
+  </section>
 </div>

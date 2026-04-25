@@ -1,0 +1,78 @@
+# =============================================================================
+# DEDICATIONS & ADS — messages from families and the school community
+# =============================================================================
+#
+# Fields:
+#   message — dedication text (required; use > for multi-line YAML block scalar)
+#   from    — who it's from, e.g. "The Smith Family" (required)
+#   for     — person ID to display a small portrait next to the message (optional)
+#   size    — layout size on the page (optional, default: "quarter")
+#               "half"    → spans the full two-column width
+#               "quarter" → single column (fits two side-by-side)
+#
+# To add a dedication: copy any block below and fill in your message and `from`.
+# To remove one: delete its block.
+# To show a portrait: set `for:` to any person ID in _data/people.yml.
+# =============================================================================
+
+- message: >
+    Malcolm — we watched you spend an entire weekend proving your teacher's
+    equation had a second valid solution. You were right. You're always right.
+    Somehow that still makes things harder, not easier. We love you more than
+    you'll ever fully calculate.
+  from: "Hal &amp; Lois Wilkerson"
+  for: malcolm-wilkerson
+  size: half
+
+- message: >
+    Reese — you have surprised every teacher, coach, and food critic who ever
+    underestimated you. Keep cooking. Keep competing. Just please stop putting
+    anonymous notes in the principal's suggestion box. We know it's you. We love
+    you anyway.
+  from: "Hal &amp; Lois Wilkerson"
+  for: reese-wilkerson
+  size: half
+
+- message: >
+    Stevie — your quiet determination, your bone-dry humor, and the way you
+    take your time and get it exactly right every time make every room you're
+    in better. The world is lucky to have you in it.
+  from: "Abe &amp; Kitty Kenarban"
+  for: stevie-kenarban
+  size: half
+
+- message: >
+    Dewey — keep painting, keep composing, keep being exactly who you are.
+    The east wing will never be the same. (The administration has mixed
+    feelings about that. We do not.)
+  from: "Hal &amp; Lois Wilkerson"
+  for: dewey-wilkerson
+  size: quarter
+
+- message: >
+    Victoria — "Every ending is just a new beginning." We believe every
+    word of it. Congratulations, graduate!
+  from: "The Adams Family"
+  for: victoria-adams
+  size: quarter
+
+- message: >
+    Francis — from Marlin Academy and back home to North Hollywood Elementary,
+    the long way around. We couldn't be prouder, Frankie.
+  from: "Hal &amp; Lois Wilkerson"
+  for: francis-wilkerson
+  size: quarter
+
+- message: >
+    To the graduating class: you have exceeded my expectations — which were,
+    as always, quite high. Most of you. You know who you are. I expect
+    thank-you notes.
+  from: "Mr. Herkabe"
+  size: quarter
+
+- message: >
+    Thank you, North Hollywood Elementary faculty and staff, for another year
+    of patience, creativity, and only three calls to the fire department.
+    You make this community shine.
+  from: "The PTA"
+  size: quarter
